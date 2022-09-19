@@ -1,5 +1,5 @@
 ---
-title: "Course title"
+title: "SIH Introduction to version control using git"
 output:
   html_document:
     toc: false
@@ -7,30 +7,22 @@ output:
 ---
 
 
-This course is aimed at researchers, students, and industry professionals who want to learn about ...
+This course is aimed at researchers, students, and industry professionals who want to learn about version controlling their code (or text files). 
+
+This course is adapted from [Version Control with Git](https://swcarpentry.github.io/git-novice) by staff from the Sydney Informatics Hub (Darya Vanichkina, ...). 
 
 
 ## Trainers
 
-* Nathaniel (Nate) Butterworth (PhD Computational Geophysics), nathaniel.butterworth@sydney.edu.au
 * Darya Vanichkina (PhD Bioinformatics, SFHEA)
 * Kristian Maras (MSc Quant Fin)
-
+* Nathaniel (Nate) Butterworth (PhD Computational Geophysics)
+* Michael Lynch (Research Software Engineering Team Lead)
 
 ## Course pre-requisites and setup requirements
 
-No previous programming experience is required, but **Session 1 is a pre-requisite for the other sessions**. Training will be delivered online, so you will need access to a modern computer with a stable internet connection and around 5GB of storage space for data downloaded prior to the course. Participants are encouraged to setup a Python environment on their local computer (as per the [Setup Instructions](./setup.html) provided), but participation using other platforms/environments can be supported where necessary.
-
-
-
-
-## Venue, online via Zoom
-Participants will be provided with a Zoom link. Trainers will be broadcasting from Sydney.
-
-#### Zoom etiquette and how we interact
-
-Sessions will be recorded for attendees only, and it is set up to only record the host shared screen and host audio. We will try and get these uploaded to this site as soon as possible. Please interrupt whenever you want! Ideally, have your camera on and interact as much as possible. There will be someone monitoring the chat-window with any questions you would like to post there.  Four hours is a long Zoom session so we have plenty of scheduled breaks combined with a mix of content to be delivered as demos, plus sections as independent exercises, but most of the course will be pretty-hands on with everyone writing their own code. We will use Zoom break-out rooms as needed with the Trainers and participants.
-
+- No previous programming experience is required.
+- Training will be delivered in-person, so you will need your own laptop with a stable internet connection and the ability to install your own software.
 
 ## Code of Conduct
 We expect all attendees of our training to follow our code of conduct, including bullying, harassment and discrimination prevention policies.
@@ -43,17 +35,10 @@ In order to foster a positive and professional learning environment we encourage
 * Focus on what is best for the community
 * Show courtesy and respect towards other community members
 
-Our full CoC, with incident reporting guidelines, is available [here]https://sydney-informatics-hub.github.io/codeofconduct/).
-
-
-
-## General session timings
-
-* ...
-
+Our full CoC, with incident reporting guidelines, is available [here](https://sydney-informatics-hub.github.io/codeofconduct/).
 
 ## Setup Instructions
 
 Please complete the [Setup Instructions](./setup.html) **before the course**.
 
-If you have any trouble, please get in contact with us ASAP.
+If you have any trouble, please get in contact with us via email ASAP. 

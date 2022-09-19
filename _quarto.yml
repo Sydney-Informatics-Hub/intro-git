@@ -3,18 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "Sydney Informatics Hub Course name"
+  title: "SIH Introduction to version control using git"
   navbar:
     background: primary
     left:
-      - href: index.qmd
+      - href: index.html
         text: Home
       - href: setup.html
         text: "Setup"
       - text: "Session 1"
         menu:
         - text: "Fundamentals"
-          href: notebooks/01a-fundamentals.html
+          href: notebooks/01_intro.html
 
   body-footer: "All materials copyright Sydney Informatics Hub, University of Sydney"
           
@@ -25,7 +25,4 @@ format:
     toc: true
     code-overflow: wrap
     highlight-style: github
-
-
-
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sydney Informatics Hub Course name - Setup</title>
+<title>SIH Introduction to version control using git - Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ ul.task-list{list-style: none;}
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Sydney Informatics Hub Course name</span>
+    <span class="navbar-title">SIH Introduction to version control using git</span>
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -81,7 +81,7 @@ ul.task-list{list-style: none;}
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 1</a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-session-1">    
         <li>
-    <a class="dropdown-item" href="./notebooks/01a-fundamentals.html">
+    <a class="dropdown-item" href="./notebooks/01_intro.html">
  <span class="dropdown-text">Fundamentals</span></a>
   </li>  
     </ul>
@@ -101,7 +101,14 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#get-a-client" id="toc-get-a-client" class="nav-link active" data-scroll-target="#get-a-client">1. Get a client</a></li>
+  <li><a href="#create-a-github-account" id="toc-create-a-github-account" class="nav-link active" data-scroll-target="#create-a-github-account">Create a Github account</a></li>
+  <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git">Install git</a>
+  <ul class="collapse">
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">MacOS</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
+  </ul></li>
+  <li><a href="#optional-install-gitkraken" id="toc-optional-install-gitkraken" class="nav-link" data-scroll-target="#optional-install-gitkraken">(Optional) Install GitKraken</a></li>
   </ul>
 </nav>
     </div>
@@ -126,9 +133,118 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<section id="get-a-client" class="level1">
-<h1>1. Get a client</h1>
-<p>These are the setup instructions…</p>
+<section id="create-a-github-account" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-github-account">Create a Github account</h2>
+<p>Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on <a href="https://github.com/">github.com</a>.</p>
+<ol type="1">
+<li>You will need a <a href="https://help.github.com/articles/supported-browsers/">supported web browser</a>.<br>
+</li>
+<li>Prior to the session, we recommend you use your “official” university email to create an account on <a href="github.com">github.com</a>. You can skip this step if you already have a <a href="github.com">github.com</a> and you know the username/password you used to log in to it. GitHub accounts are free, and - with your University affiliation - you may be able to get a “Pro” GitHub account for free (you need to email the GitHub Education team for this). Note that a free account will suffice for all of what we are doing in the training session, so you don’t need to do this before class. Please consider what personal information you’d like to reveal. For example, you may want to review these <a href="https://help.github.com/articles/keeping-your-email-address-private/">instructions for keeping your email address private</a> provided at GitHub.</li>
+</ol>
+</section>
+<section id="install-git" class="level2">
+<h2 class="anchored" data-anchor-id="install-git">Install git</h2>
+<section id="windows" class="level3">
+<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<ol type="1">
+<li><p>Download the <a href="https://gitforwindows.org/">Git for Windows</a> installer, also known as GitBash.</p></li>
+<li><p>Run the installer and follow the steps below:</p>
+<ol type="1">
+<li>Click on “Next” four times (two times if you’ve previously installed Git). You don’t need to change anything in the Information, location, components, and start menu screens.</li>
+<li><strong>From the dropdown menu, “Choosing the default editor used by Git”, select “Use the Nano editor by default” (NOTE: you will need to scroll up to find it) and click on “Next”.</strong></li>
+<li>On the page that says “Adjusting the name of the initial branch in new repositories”, ensure that “Let Git decide” is selected. This will ensure the highest level of compatibility for our lessons.</li>
+<li>Ensure that “Git from the command line and also from 3rd-party software” is selected and click on “Next”. (If you don’t do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the “Git from the command line and also from 3rd-party software” option.)</li>
+<li>Select “Use bundled OpenSSH”.</li>
+<li>Ensure that “Use the native Windows Secure Channel Library” is selected and click on “Next”.</li>
+<li>Ensure that “Checkout Windows-style, commit Unix-style line endings” is selected and click on “Next”.</li>
+<li><strong>Ensure that “Use Windows’ default console window” is selected and click on “Next”.</strong></li>
+<li>Ensure that “Default (fast-forward or merge) is selected and click”Next”</li>
+<li>Ensure that “Git Credential Manager” is selected and click on “Next”.</li>
+<li>Ensure that “Enable file system caching” is selected and click on “Next”.</li>
+<li>Click on “Install”.</li>
+<li>Click on “Finish” or “Next”.</li>
+</ol></li>
+<li><p>If your “HOME” environment variable is not set (or you don’t know what this is):</p></li>
+<li><p>Open command prompt (Open Start Menu then type <code>cmd</code> and press Enter)</p></li>
+<li><p>Type the following line into the command prompt window exactly as shown:</p></li>
+</ol>
+<p><code>setx HOME "%USERPROFILE%"</code></p>
+<ol start="3" type="1">
+<li>Press Enter, you should see <code>SUCCESS: Specified value was saved.</code></li>
+<li>Quit command prompt by typing <code>exit</code> then pressing Enter</li>
+</ol>
+<p>This will provide you with both Git and Bash in the Git Bash program.</p>
+<hr>
+</section>
+<section id="macos" class="level3">
+<h3 class="anchored" data-anchor-id="macos">MacOS</h3>
+<p>The easiest way to install git on a Mac is by installing Xcode Command Line Tools (note: you do not need all of Xcode!, which takes a lot more space on your hard drive).</p>
+<p>To do this, open your <code>Terminal</code> application and type:</p>
+<pre><code>git --version</code></pre>
+<p>If you don’t have git installed already, a popup will appear:</p>
+<p><img src="fig/setup/image-20220906145421352.png" class="img-fluid"></p>
+<p>Press on the blue “Install” button and, after entering your password, git should be installed.</p>
+<hr>
+</section>
+<section id="linux" class="level3">
+<h3 class="anchored" data-anchor-id="linux">Linux</h3>
+<p>Depending on the Linux distribution on your laptop, you will need to open a <code>Terminal</code> application and execute one of the following commands:</p>
+<section id="debianubuntu" class="level5">
+<h5 class="anchored" data-anchor-id="debianubuntu">Debian/Ubuntu</h5>
+<p>For the latest stable version for your release of Debian/Ubuntu</p>
+<pre><code># apt-get install git</code></pre>
+<p>For Ubuntu, this PPA provides the latest stable upstream Git version</p>
+<pre><code># add-apt-repository ppa:git-core/ppa``# apt update; apt install git</code></pre>
+</section>
+<section id="fedora" class="level5">
+<h5 class="anchored" data-anchor-id="fedora">Fedora</h5>
+<p><code># yum install git</code> (up to Fedora 21) <code># dnf install git</code> (Fedora 22 and later)</p>
+</section>
+<section id="gentoo" class="level5">
+<h5 class="anchored" data-anchor-id="gentoo">Gentoo</h5>
+<pre><code># emerge --ask --verbose dev-vcs/git</code></pre>
+</section>
+<section id="arch-linux" class="level5">
+<h5 class="anchored" data-anchor-id="arch-linux">Arch Linux</h5>
+<pre><code># pacman -S git</code></pre>
+</section>
+<section id="opensuse" class="level5">
+<h5 class="anchored" data-anchor-id="opensuse">openSUSE</h5>
+<pre><code># zypper install git</code></pre>
+</section>
+<section id="mageia" class="level5">
+<h5 class="anchored" data-anchor-id="mageia">Mageia</h5>
+<pre><code># urpmi git</code></pre>
+</section>
+<section id="nixnixos" class="level5">
+<h5 class="anchored" data-anchor-id="nixnixos">Nix/NixOS</h5>
+<pre><code># nix-env -i git</code></pre>
+</section>
+<section id="freebsd" class="level5">
+<h5 class="anchored" data-anchor-id="freebsd">FreeBSD</h5>
+<pre><code># pkg install git</code></pre>
+</section>
+<section id="solaris-91011" class="level5">
+<h5 class="anchored" data-anchor-id="solaris-91011">Solaris 9/10/11</h5>
+<pre><code># pkgutil -i git</code></pre>
+</section>
+<section id="solaris-11-express" class="level5">
+<h5 class="anchored" data-anchor-id="solaris-11-express">Solaris 11 Express</h5>
+<pre><code># pkg install developer/versioning/git</code></pre>
+</section>
+<section id="openbsd" class="level5">
+<h5 class="anchored" data-anchor-id="openbsd">OpenBSD</h5>
+<pre><code># pkg_add git</code></pre>
+<hr>
+</section>
+</section>
+</section>
+<section id="optional-install-gitkraken" class="level2">
+<h2 class="anchored" data-anchor-id="optional-install-gitkraken">(Optional) Install GitKraken</h2>
+<ul>
+<li><p>We will show but not necessarily walk through <a href="https://www.gitkraken.com/">GitKraken</a>, an excellent (but paid for!) Git GUI tool. When working on large, multi-branch open-source and internal projects, this type of a tool can be very useful to navigate the mess that a too-many branch workflow can create.</p></li>
+<li><p><a href="">Git</a> is a free alternative developed by GitHub which you may want to use as a free GUI instead.</p></li>
+</ul>
 
 
 </section>

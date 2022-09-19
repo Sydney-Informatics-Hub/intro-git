@@ -7,6 +7,153 @@ output:
 ---
 
 
-# 1. Get a client
 
-These are the setup instructions...
+## Create a Github account
+
+Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on [github.com](https://github.com/). 
+
+1. You will need a [supported web browser](https://help.github.com/articles/supported-browsers/).  
+2. Prior to the session, we recommend you use your "official" university email to create an account on [github.com](github.com). You can skip this step if you already have a [github.com](github.com) and you know the username/password you used to log in to it. GitHub accounts are free, and - with your University affiliation - you may be able to get a "Pro" GitHub account for free (you need to email the GitHub Education team for this). Note that a free account will suffice for all of what we are doing in the training session, so you don't need to do this before class. Please consider what personal information you'd like to reveal. For example, you may want to review these [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/) provided at GitHub.  
+
+## Install git
+
+### Windows
+
+1. Download the [Git for Windows ](https://gitforwindows.org/) installer, also known as GitBash.
+
+2. Run the installer and follow the steps below: 
+
+   1. Click on "Next" four times (two times if you've previously installed Git). You don't need to change anything in the Information, location, components, and start menu screens. 
+   2. **From the dropdown menu, "Choosing the default editor used by Git", select "Use the Vim editor by default" and click on "Next".** 
+   3. On the page that says "Adjusting the name of the initial branch in new repositories", ensure that "Let Git decide" is selected. This will ensure the highest level of compatibility for our lessons. 
+   4. Ensure that "Git from the command line and also from 3rd-party software" is selected and click on "Next". (If you don't do this Git Bash will not work properly, requiring you to remove the Git Bash installation, re-run the installer and to select the "Git from the command line and also from 3rd-party software" option.) 
+   5. Select "Use bundled OpenSSH". 
+   6. Ensure that "Use the native Windows Secure Channel Library" is selected and click on "Next". 
+   7. Ensure that "Checkout Windows-style, commit Unix-style line endings" is selected and click on "Next". 
+   8. **Ensure that "Use Windows' default console window" is selected and click on "Next".** 
+   9. Ensure that "Default (fast-forward or merge) is selected and click "Next" 
+   10. Ensure that "Git Credential Manager" is selected and click on "Next". 
+   11. Ensure that "Enable file system caching" is selected and click on "Next". 
+   12. Click on "Install".
+   13. Click on "Finish" or "Next".
+
+3.  If your "HOME" environment variable is not set (or you don't know what this is): 
+
+   1. Open command prompt (Open Start Menu then type `cmd` and press Enter)
+   2.  Type the following line into the command prompt window exactly as shown: 
+
+   `setx HOME "%USERPROFILE%"`
+
+   3. Press Enter, you should see `SUCCESS: Specified value was saved.`
+   4. Quit command prompt by typing `exit` then pressing Enter
+
+This will provide you with both Git and Bash in the Git Bash program.
+
+***
+
+### MacOS
+
+The easiest way to install git on a Mac is by installing Xcode Command Line Tools (note: you do not need all of Xcode!, which takes a lot more space on your hard drive).
+
+To do this, open your `Terminal` application and type:
+
+```
+git --version
+```
+
+If you don’t have git installed already, a popup will appear:
+
+
+
+![](fig/setup/image-20220906145421352.png)
+
+
+
+Press on the blue "Install" button and, after entering your password, git should be installed.
+
+***
+
+### Linux
+
+Depending on the Linux distribution on your laptop, you will need to open a `Terminal` application and execute one of the following commands:
+
+##### Debian/Ubuntu
+
+For the latest stable version for your release of Debian/Ubuntu
+
+```
+# apt-get install git
+```
+
+For Ubuntu, this PPA provides the latest stable upstream Git version
+
+```
+# add-apt-repository ppa:git-core/ppa``# apt update; apt install git
+```
+
+##### Fedora
+
+`# yum install git` (up to Fedora 21)
+`# dnf install git` (Fedora 22 and later)
+
+##### Gentoo
+
+```
+# emerge --ask --verbose dev-vcs/git
+```
+
+##### Arch Linux
+
+```
+# pacman -S git
+```
+
+##### openSUSE
+
+```
+# zypper install git
+```
+
+##### Mageia
+
+```
+# urpmi git
+```
+
+##### Nix/NixOS
+
+```
+# nix-env -i git
+```
+
+##### FreeBSD
+
+```
+# pkg install git
+```
+
+##### Solaris 9/10/11
+
+```
+# pkgutil -i git
+```
+
+##### Solaris 11 Express
+
+```
+# pkg install developer/versioning/git
+```
+
+##### OpenBSD
+
+```
+# pkg_add git
+```
+
+***
+
+## (Optional) Install GitKraken
+
+- We will show but not necessarily walk through [GitKraken](https://www.gitkraken.com/), an excellent (but paid for!) Git GUI tool. When working on large, multi-branch open-source and internal projects, this type of a tool can be very useful to navigate the mess that a too-many branch workflow can create.
+
+- [Git]() is a free alternative developed by GitHub which you may want to use as a free GUI instead.
