@@ -3,7 +3,7 @@ title: "SIH Version control using git"
 ---
 # Version control using git
 
-Version control is an essential part of modern software engineers, enabling
+Version control is an essential part of modern software engineering, enabling
 developers to track and revert changes to their code with confidence and
 helping teams collaborate across complex codebases. This workshop is a hands-on
 introduction to git, the most widely-used distributed version control system.
