@@ -35,13 +35,13 @@ of configurations we will set as we get started with Git:
 *   and that we want to use these settings globally (i.e. for every project).
 
 On a command line, Git commands are written as `git verb options`,
-where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how Dracula sets up his new laptop:
+where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how I set up my new laptop:
 
 ```bash
-$ git config --global user.name "Vlad Dracula"
-$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global user.name "Mike Lynch"
+$ git config --global user.email "m.lynch@sydney.edu.au"
 ```
-Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of mine. This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
 [GitLab](https://gitlab.com/) or
@@ -85,7 +85,7 @@ $ git config --global core.autocrlf false
 ```
 :::
 
-Dracula also has to set his favorite text editor, following this table:
+I also has to set his favorite text editor, following this table:
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
@@ -116,8 +116,7 @@ If you want to save your changes and quit, press <kbd>Esc</kbd> then type `:wq` 
 :::
 
 Git (2.28+) allows configuration of the name of the branch created when you
-initialize any new repository.  Dracula decides to use that feature to set it to `main` so 
-it matches the cloud service he will eventually use. 
+initialize any new repository.  We'll set it to `main`:
 
 ```bash
 $ git config --global init.defaultBranch main

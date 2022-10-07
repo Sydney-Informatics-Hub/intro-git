@@ -17,7 +17,7 @@ This course is adapted from [Version Control with Git](https://swcarpentry.githu
 * Darya Vanichkina (PhD Bioinformatics, SFHEA)
 * Kristian Maras (MSc Quant Fin)
 * Nathaniel (Nate) Butterworth (PhD Computational Geophysics)
-* Michael Lynch (Research Software Engineering Team Lead)
+* Michael Lynch (Research Software Engineering Group Lead)
 
 ## Course pre-requisites and setup requirements
 
