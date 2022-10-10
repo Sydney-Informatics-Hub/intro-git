@@ -1,17 +1,3 @@
----
-title: Creating a Repository
-teaching: 10
-exercises: 0
-questions:
-- ""
-objectives:
-- "Create a local Git repository."
-- "Describe the purpose of the `.git` directory."
-keypoints:
-- "`git init` initializes a repository."
-- "Git stores all of its repository data in the `.git` directory."
----
-
 # Creating a Repository
 
 <div class="questions">

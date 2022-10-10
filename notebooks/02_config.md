@@ -85,7 +85,7 @@ $ git config --global core.autocrlf false
 ```
 :::
 
-I also has to set his favorite text editor, following this table:
+Get rid of this - or put it in an expandable callout
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
