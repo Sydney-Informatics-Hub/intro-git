@@ -4,7 +4,8 @@
 
 ### Questions
 
-- What are branches, and why are they useful?
+- What is a Git branch?
+- Why are branches useful?
 
 </div>
 
@@ -13,7 +14,7 @@
 ### Objectives
 
 - Create an alternate version of your code on a branch.
-- Understand how branches can help manage software development.
+- Understand how branches can help us break our code with confidence
 
 </div>  
 
@@ -22,8 +23,9 @@
 
 ### Key Points
 
-- `git checkout -b branch` creates a branch.
-- `git merge BRANCH` merges changes from one branch to another
+- `git checkout -b` creates a new branch.
+- branches allow us to keep alternative versions of our code in a repository
+- `git diff` can show us the differences betweem branches
 
 </div>
 
@@ -54,10 +56,12 @@ broke it. The problem with this is that they'd need to remember the 34478ad
 hash (FIXME and is going back and forward between that and HEAD a problem)
 
 Git provides us with a better way to keep alternate versions of a single
-codebase - a branch
+codebase - a branch.
+
+In this section of the workshop, we'll just create local branches [FIXME]
 
 We've already been using a `main` branch. Let's create a new branch where
-we're free to break things
+we're free to break things. 
 
 ```bash
 $ git checkout -b development
@@ -120,66 +124,27 @@ FIXME
 ```
 
 After calculating some means for Bob, Alice returns to her development branch,
-and fixes her refactored script
+and fixes her refactored script.
 
 ```
 $ git checkout development
 $ nano mean.py
 ```
 
-If Alice is happy with her refactored script, she'll want to bring the changes
-back to the main branch. 
 
-First, Alice has to commit her changes to `develop`:
-
-```bash
-$ git add mean.py
-$ git commit mean.py
-```
-
-Usually, when bringing changes from one branch to another, we'll start on the 
-branch which we want to change - in this case we're bringing changes from
-`development` to `main`, so we'll checkout main
-
-```bash
-$ git checkout main
-```
-
-```output
-Switched to branch 'main'.
-```
 We've already seen how `git diff` can be used to show the differences between 
 commits on a single branch. Alice can use it to double-check what she's
 changed on the `development` branch:
 
 ```bash
-$ git diff development
+$ git diff main
 ```
 
 ```output
 FIXME
 ```
-Notice that the lines which Alice has added in `development` have '-' signs
-next to them, which can be a bit counterintutive. `git diff` is returning what
-changes would have to be made to change `development` into `main`, so it's
-inverted from what you might expect: it shows new code in `development` which
-would have to be removed, and old code which is not in `development` which 
-would have to be reinstated.
-
-Once Alice is happy with her changes, she can use `git merge` to bring the
-changes across from `development` to `main`
-
-```bash
-$ git merge development
-```
-
-```output
-Updating deadbea..934893
-Fast-forward
- mean.py | 1+
- 1 file changed, 1 insertion(+)
-```
-A single merge can bring across changes in multiple files: after the merge, 
-git provides us with some feedback on what files were changed by the merge, and
-how extensive the changes were.
+This output shows what changes would need to be made to the `main` branch to 
+make them the same as Alice's `development` branch. So lines which Alice has
+added in `development` would have to be inserted, and are marked with a `+`
+sign.
 

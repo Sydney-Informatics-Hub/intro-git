@@ -29,7 +29,7 @@
 
 Once Git is configured, we can start using it.
 
-We'll start with a simple Python script _ FIXME
+
 
 First, let's create a new directory in the `Desktop` folder for our work and
 then change the current working directory to the newly created one:
