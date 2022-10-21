@@ -20,24 +20,12 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- `git status` shows the status of a repository.
-- Files can be stored in a project's working directory (which users see), the staging area (where the next commit is being built up) and the local repository (where commits are permanently recorded).
-- `git add` puts files in the staging area.
-- `git commit` saves the staged content as a new commit in the local repository.
-- Write a commit message that accurately describes your changes.
-
-</div>  
-
 
 First let's make sure we're still in the right directory. 
 You should be in the `mean` directory.
 
-```bash
-$ cd ~/Desktop/mean
+```sh
+cd ~/Desktop/mean
 ```
 
 We'll create a file called `mean.py`. 
@@ -51,8 +39,8 @@ to illustrate how Git managescode.
 We'll use `nano` to edit the file; you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
-```bash
-$ nano mean.py
+```sh
+nano mean.py
 ```
 
 Type the text below into the `mean.py` file:
@@ -65,32 +53,32 @@ Let's first verify that the file was properly created by running the
 list command (`ls`):
 
 
-```bash
-$ ls
+```sh
+ls
 ```
 
-```output
+```sh
 mean.py
 ```
 
 `mean.py` contains a single line, which we can see by running:
 
-```bash
-$ cat mean.py
+```sh
+cat mean.py
 ```
 
-```output
+```sh
 import pandas as pd
 ```
 
 If we check the status of our project again, Git tells us that it's noticed
 the new file:
 
-```bash
-$ git status
+```sh
+git status
 ```
 
-```output
+```sh
 On branch main
 
 No commits yet
@@ -106,17 +94,17 @@ nothing added to commit but untracked files present (use "git add" to track)
 The "untracked files" message means that there's a file in the directory
 that Git isn't keeping track of. We can tell Git to track a file using `git add`:
 
-```
-$ git add mean.py
+```sh
+git add mean.py
 ```
 
 and then check that the right thing happened:
 
-```bash
-$ git status
+```sh
+git status
 ```
 
-```output
+```sh
 On branch main
 
 No commits yet
@@ -132,11 +120,11 @@ Git now knows that it's supposed to keep track of `mean.py`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that, we need to run one more command:
 
-```bash
-$ git commit -m "Start a script to calculate the mean"
+```sh
+git commit -m "Start a script to calculate the mean"
 ```
 
-```output
+```sh
 [main (root-commit) b03ceb6] Start a script to calculate the mean
  1 file changed, 1 insertion(+)
  create mode 100644 mean.py
@@ -144,8 +132,7 @@ $ git commit -m "Start a script to calculate the mean"
 
 When we run `git commit`, Git takes everything we have told it to save by
 using `git add` and stores a copy permanently inside the special `.git` directory.
-This permanent copy is called a [commit]({{ page.root }}{% link reference.md %}#commit)
-(or [revision]({{ page.root }}{% link reference.md %}#revision)) and its short identifier is `b03ceb6`. Your commit will likely have a different identifier.
+This permanent copy is called a commit (or revision) and its short identifier is `b03ceb6`. Your commit will likely have a different identifier.
 
 We use the `-m` flag (for "message")
 to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
@@ -159,11 +146,11 @@ If you want to go into more detail, add a blank line between the summary line an
 
 If we run `git status` now:
 
-```bash
-$ git status
+```sh
+git status
 ```
 
-```output
+```sh
 On branch main
 nothing to commit, working directory clean
 ```
@@ -171,11 +158,11 @@ nothing to commit, working directory clean
 it tells us everything is up to date. If we want to know what we've done recently,
 we can ask Git to show us the project's history using `git log`:
 
-```bash
-$ git log
+```sh
+git log
 ```
 
-```output
+```sh
 commit b03ceb64040ce8347c8f9dd1530088e0621b31f9 (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 09:58:50 2022 +1100
@@ -206,6 +193,7 @@ You can configure how Git uses pagers for displaying logs and other sorts of
 information.
 :::
 
+
 :::{.callout-note}
 ## Where Are My Changes?
 
@@ -219,9 +207,9 @@ Now suppose Alice adds more code to her script. (Again, we'll edit with
 `nano` and then `cat` the file to show its contents; you may use a different
 editor, and don't need to `cat`.)
 
-```bash
-$ nano mean.py
-$ cat mean.py
+```sh
+nano mean.py
+cat mean.py
 ```
 
 ```python
@@ -232,8 +220,8 @@ dataframe = pd.read_csv("rgb.csv")
 When we run `git status` now,
 it tells us that a file it already knows about has been modified:
 
-```bash
-$ git status
+```sh
+git status
 ```
 
 ```
@@ -254,11 +242,11 @@ So let's do that now. It is good practice to always review our changes before
 saving them. We do this using `git diff`. This shows us the differences between
 the current state of the file and the most recently saved version:
 
-```bash
-$ git diff
+```sh
+git diff
 ```
 
-```output
+```sh
 diff --git a/mean.py b/mean.py
 index ffd919b..51d2079 100644
 --- a/mean.py
@@ -290,11 +278,11 @@ given the other. If we break it down into pieces:
 
 After reviewing our change, it's time to commit it:
 
-```bash
-$ git commit -m "Add a line which loads the data from a CSV file"
+```sh
+git commit -m "Add a line which loads the data from a CSV file"
 ```
 
-```output
+```sh
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -308,12 +296,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
 Whoops: Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
-```bash
-$ git add mean.py
-$ git commit -m "Add a line which loads the data from a CSV file"
+```sh
+git add mean.py
+git commit -m "Add a line which loads the data from a CSV file"
 ```
 
-```output
+```sh
 [main cfccbd9] Add a line which loads the data from a CSV file
  1 file changed, 1 insertion(+)
 ```
@@ -329,8 +317,8 @@ bibliography entries, but *not* commit some of our work drafting the
 conclusion (which we haven't finished yet).
 
 To allow for this, Git has a special *staging area* where it keeps track of
-things that have been added to the current [changeset]({{ page.root }}{% link
-reference.md %}#changeset) but not yet committed.
+things that have been added to the current changeset but not yet committed.
+
 
 :::{.callout-note}
 ## Staging Area
@@ -354,22 +342,22 @@ more than you would like!
 Let's watch as our changes to a file move from our editor to the staging area
 and into long-term storage. First, we'll add another line to the file:
 
-```bash
-$ nano mean.py
-$ cat mean.py
+```sh
+nano mean.py
+cat mean.py
 ```
 
-```output
+```sh
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
 ```
 
-```bash
-$ git diff
+```sh
+git diff
 ```
 
-```output
+```sh
 diff --git a/mean.py b/mean.py
 index 51d2079..a6abcee 100644
 --- a/mean.py
@@ -384,20 +372,20 @@ So far, so good: we've added one line to the end of the file (shown with a `+`
 in the first column). Now let's put that change in the staging area
 and see what `git diff` reports:
 
-```bash
-$ git add mean.py
-$ git diff
+```sh
+git add mean.py
+git diff
 ```
 
 There is no output: as far as Git can tell, there's no difference between what
 it's been asked to save permanently and what's currently in the directory.
 However, if we do this:
 
-```bash
-$ git diff --staged
+```sh
+git diff --staged
 ```
 
-```output
+```sh
 diff --git a/mean.py b/mean.py
 index 51d2079..a6abcee 100644
 --- a/mean.py
@@ -413,33 +401,33 @@ staging area.
 
 Let's save our changes:
 
-```bash
-$ git commit -m "Calculates the means"
+```sh
+git commit -m "Calculates the means"
 ```
 
-```output
+```sh
 [main 99dd636] Calculates the means
  1 file changed, 1 insertion(+)
 ```
 
 check our status:
 
-```bash
-$ git status
+```sh
+git status
 ```
 
-```output
+```sh
 On branch main
 nothing to commit, working directory clean
 ```
 
 and look at the history of what we've done so far:
 
-```bash
-$ git log
+```sh
+git log
 ```
 
-```output
+```sh
 commit 99dd6362bf798f4c145be76849a638eef083d59d (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 11:53:17 2022 +1100
@@ -458,6 +446,8 @@ Date:   Wed Oct 12 09:58:50 2022 +1100
 
     Start a script to calculate the mean
 ```
+
+
 :::{.callout-note}
 ## Word-based diffing
 
@@ -474,11 +464,11 @@ number of commits that Git lists by using `-N`, where `N` is the number of
 commits that you want to view. For example, if you only want information from
 the last commit you can use:
 
-```bash
-$ git log -1
+```sh
+git log -1
 ```
 
-```output
+```sh
 commit 99dd6362bf798f4c145be76849a638eef083d59d (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 11:53:17 2022 +1100
@@ -489,11 +479,11 @@ Date:   Wed Oct 12 11:53:17 2022 +1100
 You can also reduce the quantity of information using the `--oneline` option:
 
 
-```bash
-$ git log --oneline
+```sh
+git log --oneline
 ```
 
-```output
+```sh
 99dd636 (HEAD -> main) Calculates the means
 cfccbd9 Add a line which loads the data from a CSV file
 b03ceb6 Start a script to calculate the mean
@@ -508,18 +498,18 @@ current `HEAD`, the current branch `main`, or
 [FIXME - maybe move this to the branching lesson where it's more relevant]
 
 
-```bash
-$ git log --oneline --graph
+```sh
+git log --oneline --graph
 ```
 
-```output
+```sh
 * 99dd636 (HEAD -> main) Calculates the means
 * cfccbd9 Add a line which loads the data from a CSV file
 * b03ceb6 Start a script to calculate the mean
 ```
-:::
 
-```{.callout-important}
+
+:::{.callout-important}
 ## Directories
 
 Two important facts you should know about directories in Git.
@@ -528,14 +518,14 @@ Two important facts you should know about directories in Git.
 
    Try it for yourself:
 
-   ```bash
+   ```sh
    $ mkdir extras
    $ git status
    $ git add extras
    $ git status
    ```
 
-   ```output
+   ```sh
    On branch main
    nothing to commit, working tree clean
    ```
@@ -550,13 +540,13 @@ Two important facts you should know about directories in Git.
 2. If you create a directory in your Git repository and populate it with files,
    you can add all files in the directory at once by:
 
-   ```bash
+   ```sh
    git add <directory-with-files>
    ```
    
    Try it for yourself:
 
-   ```bash
+   ```sh
    touch extras/file1 extras/file2
    git status
    git add extras
@@ -565,7 +555,7 @@ Two important facts you should know about directories in Git.
 
    Before moving on, we will commit these changes.
 
-   ```bash
+   ```sh
    $ git commit -m "Add some empty files"
    ```
 :::
@@ -577,55 +567,63 @@ repository (`git commit`):
 
 ![The Git Commit Workflow](../fig/git-committing.svg)
 
-:::{.callout-challenge}
 
-## Choosing a Commit Message
+<div class="challenge">
 
-Which of the following commit messages would be most appropriate for the
-last commit made to `mean.py`?
+### Challenge: Choosing a Commit Message
+
+Which of the following commit messages would be most appropriate for the last commit made to `mean.py`?
 
 1. "Changes"
 2. "Added line 'means = dataframe.mean()' to mean.py"
 3. "Script now calculates mean values"
 
-## Solution
+<details>
+<summary>Solution</summary>
 
 Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
 and answer 2 is redundant to using "git diff" to see what changed in this commit;
 but answer 3 is good: short, descriptive, and imperative.
-:::
 
-:::{.callout-challenge}
-## Committing Changes to Git
+</details>
+</div>
+
+<div class="challenge">
+
+### Challenge: Committing Changes to Git
 
 Which command(s) below would save the changes of `myfile.txt` to my local Git
 repository?
-1. ```bash
+
+1. ```sh
    $ git commit -m "my recent changes"
    ```
-2. ```bash
+2. ```sh
    $ git init myfile.txt
    $ git commit -m "my recent changes"
    ```
-3. ```bash
+3. ```sh
    $ git add myfile.txt
    $ git commit -m "my recent changes"
    ```
-4. ```bash
+4. ```sh
    $ git commit -m myfile.txt "my recent changes"
    ```
-:::{.callout-solution}
-## Solution
+
+<details>
+<summary>Solution</summary>
 
 1. Would only create a commit if files have already been staged.
 2. Would try to create a new repository.
 3. Is correct: first add the file to the staging area, then commit.
 4. Would try to commit a file "my recent changes" with the message myfile.txt.
-:::
-:::
 
-:::{.callout-challenge}
-## Committing Multiple Files
+</details>
+</div>
+
+<div class="challenge">
+
+### Challenge: Committing Multiple Files
 
 The staging area can hold changes from any number of files that you want to
 commit as a single snapshot.
@@ -634,110 +632,125 @@ commit as a single snapshot.
 2. Create a new file `README.md` with a line describing the script
 3. Add changes from both files to the staging area, and commit those changes.
 
-:::{.callout-solution}
-## Solution
+<details>
+<summary>Solution</summary>
 
 The output below from `cat mean.py` reflects only content added during 
 this exercise. Your output may vary.
 
 First we make our changes to the `mean.py` and `README.md` files:
 
-```bash
-$ nano mean.py
-$ cat mean.py
+```sh
+nano mean.py
+cat mean.py
 ```
 
-```output
+```sh
 # Script to calculate the mean
 import pandas as pd
 dataframe = pd.read_csv("input.csv")
 means = dataframe.mean()
 ```
 ```
-$ nano README.md
-$ cat README.md
+nano README.md
+cat README.md
 ```
 
-```output
+```sh
 A script to calculate the mean of values in a CSV
 ```
 
 Now you can add both files to the staging area. We can do that in one line:
 
-```bash
-$ git add mean.py README.md
+```sh
+git add mean.py README.md
 ```
 
 Or with multiple commands:
 
-```bash
-$ git add mean.py
-$ git add README.md
+```sh
+git add mean.py
+git add README.md
 ```
 Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 
-```bash
-$ git commit -m "Added some documentation"
+```sh
+git commit -m "Added some documentation"
 ```
 
-```output
+```sh
 [main b68244c] Added some documentation
  2 files changed, 2 insertions(+)
  create mode 100644 README.md
 ```
-:::
-:::
 
-:::{.callout-challenge}
-## `bio` Repository
+</details>
+</div>  
+
+<div class="challenge">
+
+### Challenge: `bio` Repository
 
 * Create a new Git repository on your computer called `bio`.
 * Write a three-line biography for yourself in a file called `me.txt`, commit your changes
 * Modify one line, add a fourth line
 * Display the differences between its updated state and its original state.
 
-:::{.callout-solution}
-## Solution
+
+<details>
+<summary>Solution</summary>
 
 If needed, move out of the `means` folder:
 
-```bask
-$ cd ..
+```sh
+cd ..
 ```
 
 Create a new folder called `bio` and 'move' into it:
 
-```bash
-$ mkdir bio
-$ cd bio
+```sh
+mkdir bio
+cd bio
 ```
 
 Initialise git:
 
-```bash
-$ git init
+```sh
+git init
 ```
 
 Create your biography file `me.txt` using `nano` or another text editor.
 Once in place, add and commit it to the repository:
 
-```bash
-$ git add me.txt
-$ git commit -m "Add biography file" 
+```sh
+git add me.txt
+git commit -m "Add biography file" 
 ```
 
 Modify the file as described (modify one line, add a fourth line).
 To display the differences
 between its updated state and its original state, use `git diff`:
 
-```bash
-$ git diff me.txt
+```sh
+git diff me.txt
 ```
 
-:::
-:::
+</details>
+</div>  
+
 
 [commit-messages]: https://chris.beams.io/posts/git-commit/
 [git-references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 
-{% include links.md %}
+
+<div class="keypoints">
+
+### Key Points
+
+- `git status` shows the status of a repository.
+- Files can be stored in a project's working directory (which users see), the staging area (where the next commit is being built up) and the local repository (where commits are permanently recorded).
+- `git add` puts files in the staging area.
+- `git commit` saves the staged content as a new commit in the local repository.
+- Write a commit message that accurately describes your changes.
+
+</div>  
