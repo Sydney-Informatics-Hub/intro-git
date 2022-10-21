@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SIH Introduction to Version Control using Git – fork_workflows</title>
+<title>SIH Introduction to Version Control using Git – workflows</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,20 +134,20 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Merging</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/11_conflicts.html">
+    <a class="dropdown-item" href="../notebooks/11_workflows.html">
+ <span class="dropdown-text">Branches and workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_pull_requests.html">
+ <span class="dropdown-text">Pull requests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/13_conflicts.html">
  <span class="dropdown-text">Conflicts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/12_branch_workflows.html">
- <span class="dropdown-text">Branch-based workflows</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/13_fork_workflows.html">
- <span class="dropdown-text">Fork-based workflows</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../notebooks/14_open_research.html">
- <span class="dropdown-text">Open science</span></a>
+ <span class="dropdown-text">Open research</span></a>
   </li>  
     </ul>
   </li>
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fork-based-workflows" id="toc-fork-based-workflows" class="nav-link active" data-scroll-target="#fork-based-workflows">Fork-based workflows</a>
+  <li><a href="#branches-and-workflows" id="toc-branches-and-workflows" class="nav-link active" data-scroll-target="#branches-and-workflows">Branches and workflows</a>
   <ul class="collapse">
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
@@ -180,20 +180,48 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="fork-based-workflows" class="level1">
-<h1>Fork-based workflows</h1>
+<section id="branches-and-workflows" class="level1">
+<h1>Branches and workflows</h1>
 <section id="questions" class="level3 questions">
 <h3 class="anchored" data-anchor-id="questions">Questions</h3>
 <ul>
-<li>How do I contribute to another team’s project with forks?</li>
+<li>How often should I create branches?</li>
+<li>How should I organise my branches?</li>
+<li>Can I delete branches safely?</li>
 </ul>
 </section>
 <section id="objectives" class="level3 objectives">
 <h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Understand how a convention for naming branches can make your repository easier to manage</li>
+<li>Understand how and when to delete branches without losing history</li>
+</ul>
 </section>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Creating a branch is a cheap, fast operation</li>
+<li>Git offers complete flexibility for naming branches</li>
+<li>You can pick a naming convention which best suits your needs</li>
+</ul>
 </section>
+<p>We’ve just seen an example of creating a branch to do some development work, and merging the changes back to the main branch.</p>
+<p>Our repository only has a few files, but if we were working on a repository with dozens or hundreds of files, creating a branch may seem like it’s inefficient, especially if the change we’re working on only affects one or two files.</p>
+<p>However, git is designed for working efficiently with large codebases. When you create a branch, internally, git isn’t creating another copy of your entire repository. Instead, it’s storing a reference to the HEAD of the branch which you’re starting from, and saying - here’s a new branch which starts at this commit.</p>
+<p>[ a diagram showing how a branch starts ]</p>
+<p>So, internally, a new branch isn’t really a “copy” of anything, it’s a reference to a new set of commits. You will only add new content to the repository when you add some new changes as a new commit, and the only extra content which your branch needs is the difference those changes represent.</p>
+<p>This is why you’ll see people saying things like “branches are free” or “branches are cheap” in Git, and it’s one of the differences between Git and older version control systems, where a branch really did equal a copy of your entire codebase.</p>
+<p>It also gives us a guiding principal for how to branch our code. In general, small branches are better - ideally, restricted to one feature or bugfix.</p>
+<p>Large or busy software development teams often use a convention for naming branches: <a href="https://nvie.com/posts/a-successful-git-branching-model/">Git Flow</a> is one popular example, although it’s fallen out of fashion in favour of other workflows which are suited to modern commercial software deployment practices.</p>
+<p>These are likely to be overkill for the sorts of code you’ll be working on, but they have some features which are useful at a small scale.</p>
+<p>One good convention is two-part naming strategy where the first part indicates what kind of branch this is, and the second part gives more details:</p>
+<ul>
+<li>feature-matrix-division</li>
+<li>bugfix-divide-by-zero</li>
+<li>release-v1.2</li>
+</ul>
+<p>A ‘feature’ branch adds a new ability or interface to the code; a bugfix is to correct a mistake.</p>
+<p>And release branches allow you to collect a set of features for a planned release into a single branch where they can be tested together and then merged back to the main branch when they’re all ready to go.</p>
 
 
 </section>

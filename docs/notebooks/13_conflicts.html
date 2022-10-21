@@ -134,20 +134,20 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Merging</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/11_conflicts.html">
+    <a class="dropdown-item" href="../notebooks/11_workflows.html">
+ <span class="dropdown-text">Branches and workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_pull_requests.html">
+ <span class="dropdown-text">Pull requests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/13_conflicts.html">
  <span class="dropdown-text">Conflicts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/12_branch_workflows.html">
- <span class="dropdown-text">Branch-based workflows</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../notebooks/13_fork_workflows.html">
- <span class="dropdown-text">Fork-based workflows</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../notebooks/14_open_research.html">
- <span class="dropdown-text">Open science</span></a>
+ <span class="dropdown-text">Open research</span></a>
   </li>  
     </ul>
   </li>
@@ -191,12 +191,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="objectives" class="level3 objectives">
 <h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
 <ul>
-<li>Explain what conflicts are and when they can occur.</li>
-<li>Resolve conflicts resulting from a merge.</li>
+<li>Explain what conflicts are and when they can occur</li>
+<li>Resolve conflicts resulting from a merge</li>
 </ul>
 </section>
-<p>As soon as people can work in parallel, they’ll likely step on each other’s toes. This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.</p>
-<p>To see how we can resolve conflicts, we must first create one. The file <code>mars.txt</code> currently looks like this in both partners’ copies of our <code>planets</code> repository:</p>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Conflicts occur when two or more people change the same lines of the same file.</li>
+<li>The version control system does not allow people to overwrite each other’s changes blindly, but highlights conflicts so that they can be resolved.</li>
+</ul>
+</section>
+<p>We’ve shown an example of two people working on a file and making changes which Git was able to merge. But, as soon as people can work in parallel, they’ll likely step on each other’s toes.</p>
+<p>This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.</p>
+<p>To see how we can resolve conflicts, we must first create one.</p>
+<p>The file <code>mean.py</code> currently looks like this in both partners’ copies of our <code>planets</code> repository:</p>
 <pre><code>$ cat mars.txt</code></pre>
 <p>{: .language-bash}</p>
 <pre><code>Cold and dry, but everything is my favorite color
@@ -265,7 +274,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.</code
 <p></p><figcaption class="figure-caption">The Conflicting Changes</figcaption><p></p>
 </figure>
 </div>
-<p>Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch. What we have to do is pull the changes from GitHub, merge them into the copy we’re currently working in, and then push that. Let’s start by pulling:</p>
+<p>Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch. What we have to do is pull the changes from GitHub, Let’s start by pulling:</p>
 <pre><code>$ git pull origin main</code></pre>
 <p>{: .language-bash}</p>
 <pre><code>remote: Enumerating objects: 5, done.
@@ -565,13 +574,6 @@ $ git commit -m "Use two images: surface and sky"</code></pre>
 <p>{: .solution} {: .challenge}</p>
 </blockquote>
 </blockquote>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
-<ul>
-<li>Conflicts occur when two or more people change the same lines of the same file.</li>
-<li>The version control system does not allow people to overwrite each other’s changes blindly, but highlights conflicts so that they can be resolved.</li>
-</ul>
-</section>
 
 
 </section>
