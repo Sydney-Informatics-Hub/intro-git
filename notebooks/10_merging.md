@@ -4,7 +4,7 @@
 
 ### Questions
 
-- How does Git help to merge changes on two branches
+- How does Git help to merge changes on two branches?
 
 </div>
 
@@ -13,7 +13,7 @@
 ### Objectives
 
 - Understand what fast-forwarding means
-- Understand how git tries merge two branches with divergent histories
+- Understand how git tries to merge two branches with divergent histories
 
 </div>  
 
