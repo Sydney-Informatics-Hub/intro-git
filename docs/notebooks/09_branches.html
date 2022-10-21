@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SIH Introduction to Version Control using Git – intro</title>
+<title>SIH Introduction to Version Control using Git – branches</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -229,15 +229,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#automated-version-control" id="toc-automated-version-control" class="nav-link active" data-scroll-target="#automated-version-control">Automated Version Control</a>
+  <li><a href="#branches" id="toc-branches" class="nav-link active" data-scroll-target="#branches">Branches</a>
   <ul class="collapse">
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#version-control-systems" id="toc-version-control-systems" class="nav-link" data-scroll-target="#version-control-systems">Version control systems</a></li>
-  <li><a href="#the-long-history-of-version-control-systems" id="toc-the-long-history-of-version-control-systems" class="nav-link" data-scroll-target="#the-long-history-of-version-control-systems">The Long History of Version Control Systems</a>
-  <ul class="collapse">
-  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key points</a></li>
-  </ul></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -247,79 +243,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="automated-version-control" class="level1">
-<h1>Automated Version Control</h1>
+<section id="branches" class="level1">
+<h1>Branches</h1>
 <section id="questions" class="level3 questions">
 <h3 class="anchored" data-anchor-id="questions">Questions</h3>
 <ul>
-<li>What is version control and why should I use it?</li>
+<li>What is a Git branch?</li>
+<li>Why are branches useful?</li>
 </ul>
 </section>
 <section id="objectives" class="level3 objectives">
 <h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
 <ul>
-<li>Understand the benefits of an automated version control system.</li>
-<li>Understand the basics of how automated version control systems work.</li>
+<li>Create an alternate version of your code on a branch.</li>
+<li>Understand how branches can help us break our code with confidence</li>
 </ul>
 </section>
-<p>We’ll start by exploring how version control can be used to keep track of what one person did and when. Even if you aren’t collaborating with other people, automated version control is much better than this situation:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../fig/phd101212s.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">“Piled Higher and Deeper” by Jorge Cham, http://www.phdcomics.com</figcaption><p></p>
-</figure>
-</div>
-<p>Or this one:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">script1_current.py</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">script1_last_working.py</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">script1_newfeature.py</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">script1_nicetohavefeature.py</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">script100_last_working.py</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">script100_nicetohavefeature.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We’ve all been in this situation before: it seems unnecessary to have multiple nearly-identical versions of the same document or script - but life just seems to get in the way.</p>
-<p>Some word processors let us deal with this a little better, such as Microsoft Word’s <a href="https://support.office.com/en-us/article/Track-changes-in-Word-197ba630-0f5f-4a8e-9a77-3712475e806a">Track Changes</a>.</p>
-<p>Version control systems start with a base version of a document - or a script file - and then record changes you make each step of the way. You can think of it as a recording of your progress: you can rewind to start at the base document and play back each change you made, eventually arriving at your more recent version.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../fig/play-changes.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Changes Are Saved Sequentially</figcaption><p></p>
-</figure>
-</div>
-<p>Once you think of changes as separate from the document itself, you can then think about “playing back” different sets of changes on the base document, ultimately resulting in different versions of that document. For example, two users can make independent sets of changes on the same document.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../fig/versions.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Different Versions Can be Saved</figcaption><p></p>
-</figure>
-</div>
-<p>Unless multiple users make changes to the same section of the document - a conflict - you can incorporate two sets of changes into the same base document.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../fig/merge.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Multiple Versions Can be Merged</figcaption><p></p>
-</figure>
-</div>
-<section id="version-control-systems" class="level2">
-<h2 class="anchored" data-anchor-id="version-control-systems">Version control systems</h2>
-<p>A <strong>version control system</strong> is a tool that keeps track of these changes for us, effectively creating different versions of our files. It allows us to decide which changes will be made to the next version (each record of these changes is called a <strong>commit</strong>, and keeps useful metadata about them. The complete history of commits for a particular project and their metadata make up a <strong>repository</strong>. Repositories can be kept in sync across different computers, facilitating collaboration among different people.</p>
-</section>
-<section id="the-long-history-of-version-control-systems" class="level2">
-<h2 class="anchored" data-anchor-id="the-long-history-of-version-control-systems">The Long History of Version Control Systems</h2>
-<p>Automated version control systems are nothing new. Tools like <a href="https://en.wikipedia.org/wiki/Revision_Control_System">RCS</a>, <a href="https://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a>, or <a href="https://en.wikipedia.org/wiki/Apache_Subversion">Subversion</a> have been around since the early 1980s and are used by many large companies. However, many of these are now considered legacy systems (i.e., outdated) due to various limitations in their capabilities.</p>
-<p>More modern systems, such as Git and <a href="https://swcarpentry.github.io/hg-novice/">Mercurial</a>, are <em>distributed</em>, meaning that they do not need a centralized server to host the repository. These modern systems also include powerful merging tools that make it possible for multiple authors to work on the same files concurrently.</p>
-<p>The vast, vast majority of developers of both open-source and commercial software today use git as their version control system of choice - which is why we are teaching it in this course, and use it across all of our projects at SIH.</p>
 <section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key points</h3>
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
 <ul>
-<li>Version control is like an unlimited ‘undo’ (kind of, and not always).</li>
-<li>Version control also allows many people to work in parallel.</li>
+<li><code>git checkout -b</code> creates a new branch.</li>
+<li>branches allow us to keep alternative versions of our code in a repository</li>
+<li><code>git diff</code> can show us the differences betweem branches</li>
 </ul>
 </section>
+<p>Part of software development is breaking things. You have code that works, but you need to add a new feature or fix a bug. Sometimes, these fixes are small and self-contained, but in many cases, they require the equivalent of putting the codebase up on some blocks, getting underneath it with a spanner and pulling all the bits out.</p>
+<p>While you are in this active development stage, your code will be broken. You still want to be able to commit small changes while you’re working on it. The problem is, each of these incremental commits will still be, in some sense, broken code. They might be passing more tests, but the whole thing is still not ready.</p>
+<p>It’s good to be able to get a copy of the last working version of the code while this active development is ongoing. You may need to deploy it somewhere, or you may just need to use it.</p>
+<p>With the tools we’ve covered so far, Alice and Bob could make a note of the most recent working commit of their script:</p>
+<pre><code>34478ad Works great</code></pre>
+<p>This would give them the ability to retrieve the last version before they broke it. The problem with this is that they’d need to remember the 34478ad hash (FIXME and is going back and forward between that and HEAD a problem)</p>
+<p>Git provides us with a better way to keep alternate versions of a single codebase - a branch.</p>
+<p>In this section of the workshop, we’ll just create local branches [FIXME]</p>
+<p>We’ve already been using a <code>main</code> branch. Let’s create a new branch where we’re free to break things.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> development</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>Switched to a new branch 'development'</code></pre>
+<p>Notice that the command to create a new branch is the same as the command we’ve been using to checkout different points on our repository’s commit history - what makes it create a new branch is the <code>-b</code> flag, followed by our new branch name</p>
+<p>Our new branch is a copy of the last state of the branch we were on when we created it - in this case, <code>main</code>.</p>
+<p>We can see all the branches in our local repo if we use the <code>git branch</code> command: this also indicates which branch we currently have checked out using an asterisk.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>* develop
+  main</code></pre>
+<p>Alice wants to reorganise her script, so she makes a change:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And commits the changes</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add mean.py</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now Alice’s development branch doesn’t work - which is not unusual. If Bob asks her to use the script to compute the mean of some values, she can switch her repository back to the <code>main</code> branch, which is still working</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can check that the content of <code>mean.py</code> is as we left it:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>FIXME</code></pre>
+<p>After calculating some means for Bob, Alice returns to her development branch, and fixes her refactored script.</p>
+<pre><code>$ git checkout development
+$ nano mean.py</code></pre>
+<p>We’ve already seen how <code>git diff</code> can be used to show the differences between commits on a single branch. Alice can use it to double-check what she’s changed on the <code>development</code> branch:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>FIXME</code></pre>
+<p>This output shows what changes would need to be made to the <code>main</code> branch to make them the same as Alice’s <code>development</code> branch. So lines which Alice has added in <code>development</code> would have to be inserted, and are marked with a <code>+</code> sign.</p>
 
 
-</section>
 </section>
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
