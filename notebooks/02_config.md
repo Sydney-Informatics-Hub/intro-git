@@ -37,7 +37,7 @@ of configurations we will set as we get started with Git:
 On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how I set up my new laptop:
 
-```bash
+```sh
 $ git config --global user.name "Mike Lynch"
 $ git config --global user.email "m.lynch@sydney.edu.au"
 ```
@@ -75,12 +75,12 @@ The following settings are recommended:
 
 On macOS and Linux:
 
-```bash
+```sh
 $ git config --global core.autocrlf input
 ```
 And on Windows:
 
-```bash`
+```sh`
 $ git config --global core.autocrlf false
 ```
 :::
@@ -118,7 +118,7 @@ If you want to save your changes and quit, press <kbd>Esc</kbd> then type `:wq` 
 Git (2.28+) allows configuration of the name of the branch created when you
 initialize any new repository.  We'll set it to `main`:
 
-```bash
+```sh
 $ git config --global init.defaultBranch main
 ```
 
@@ -148,7 +148,7 @@ to use the settings for every project, in your user account, on this computer.
 
 You can check your settings at any time:
 
-```bash
+```sh
 $ git config --list
 ```
 
@@ -162,14 +162,14 @@ In some networks you need to use a
 [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
 may also need to tell Git about the proxy:
 
-```bash
+```sh
 $ git config --global http.proxy proxy-url
 $ git config --global https.proxy proxy-url
 ```
 
 To disable the proxy, use
 
-```bash
+```sh
 $ git config --global --unset http.proxy
 $ git config --global --unset https.proxy
 ```
@@ -182,7 +182,7 @@ Always remember that if you forget the subcommands or options of a `git` command
 relevant list of options typing `git <command> -h` or access the corresponding Git manual by typing
 `git <command> --help`, e.g.:
 
-```bash
+```sh
 $ git config -h
 $ git config --help
 ```
@@ -190,7 +190,7 @@ While viewing the manual, remember the `:` is a prompt waiting for commands and 
 
 More generally, you can get the list of available `git` commands and further resources of the Git manual typing:
 
-```bash
+```sh
 $ git help
 ```
 :::

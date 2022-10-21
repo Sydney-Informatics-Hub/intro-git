@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -184,13 +247,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis? Let’s create a few dummy files:</p>
-<pre><code>$ mkdir results
-$ touch a.dat b.dat c.dat results/a.out results/b.out</code></pre>
-<p>{: .language-bash}</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> results</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> a.dat b.dat c.dat results/a.out results/b.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and see what Git says:</p>
-<pre><code>$ git status</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>On branch main
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>On branch main
 Untracked files:
   (use "git add &lt;file&gt;..." to include in what will be committed)
 
@@ -200,46 +261,36 @@ Untracked files:
     results/
 
 nothing added to commit but untracked files present (use "git add" to track)</code></pre>
-<p>{: .output}</p>
 <p>Putting these files under version control would be a waste of disk space. What’s worse, having them all listed could distract us from changes that actually matter, so let’s tell Git to ignore them.</p>
 <p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>:</p>
-<pre><code>$ nano .gitignore
-$ cat .gitignore</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>*.dat
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .gitignore</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>*.dat
 results/</code></pre>
-<p>{: .output}</p>
-<p>These patterns tell Git to ignore any file whose name ends in <code>.dat</code> and everything in the <code>results</code> directory. (If any of these files were already being tracked, Git would continue to track them.)</p>
+<p>These patterns tell Git to ignore any file whose name ends in <code>.dat</code> and everything in the <code>results</code> directory.(If any of these files were already being tracked, Git would continue to track them.)</p>
 <p>Once we have created this file, the output of <code>git status</code> is much cleaner:</p>
-<pre><code>$ git status</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>On branch main
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>On branch main
 Untracked files:
   (use "git add &lt;file&gt;..." to include in what will be committed)
 
     .gitignore
 
 nothing added to commit but untracked files present (use "git add" to track)</code></pre>
-<p>{: .output}</p>
 <p>The only thing Git notices now is the newly-created <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
-<pre><code>$ git add .gitignore
-$ git commit -m "Ignore data files and the results folder."
-$ git status</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>On branch main
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ignore data files and the results folder."</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>On branch main
 nothing to commit, working directory clean</code></pre>
-<p>{: .output}</p>
 <p>As a bonus, using <code>.gitignore</code> helps us avoid accidentally adding files to the repository that we don’t want to track:</p>
-<pre><code>$ git add a.dat</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>The following paths are ignored by one of your .gitignore files:
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add a.dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>The following paths are ignored by one of your .gitignore files:
 a.dat
 Use -f if you really want to add them.</code></pre>
-<p>{: .output}</p>
 <p>If we really want to override our ignore settings, we can use <code>git add -f</code> to force Git to add something. For example, <code>git add -f a.dat</code>. We can also always see the status of ignored files if we want:</p>
-<pre><code>$ git status --ignored</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>On branch main
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>On branch main
 Ignored files:
  (use "git add -f &lt;file&gt;..." to include in what will be committed)
 
@@ -249,102 +300,205 @@ Ignored files:
         results/
 
 nothing to commit, working directory clean</code></pre>
-<p>{: .output}</p>
-<blockquote class="blockquote">
-<h2 id="ignoring-nested-files" class="anchored">Ignoring Nested Files</h2>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignoring Nested Files
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Given a directory structure that looks like:</p>
-<pre><code>results/data
-results/plots</code></pre>
-<p>{: .language-bash}</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">results/data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">results/plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>How would you ignore only <code>results/plots</code> and not <code>results/data</code>?</p>
-<blockquote class="blockquote">
-<h2 id="solution" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If you only want to ignore the contents of <code>results/plots</code>, you can change your <code>.gitignore</code> to ignore only the <code>/plots/</code> subfolder by adding the following line to your .gitignore:</p>
-<pre><code>results/plots/</code></pre>
-<p>{: .output}</p>
+<pre class="output"><code>results/plots/</code></pre>
 <p>This line will ensure only the contents of <code>results/plots</code> is ignored, and not the contents of <code>results/data</code>.</p>
-<p>As with most programming issues, there are a few alternative ways that one may ensure this ignore rule is followed. The “Ignoring Nested Files: Variation” exercise has a slightly different directory structure that presents an alternative solution. Further, the discussion page has more detail on ignore rules. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="including-specific-files" class="anchored">Including Specific Files</h2>
+<p>As with most programming issues, there are a few alternative ways that one may ensure this ignore rule is followed. The “Ignoring Nested Files: Variation” exercise has a slightly different directory structure that presents an alternative solution. Further, the discussion page has more detail on ignore rules.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Including Specific Files
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>How would you ignore all <code>.dat</code> files in your root directory except for <code>final.dat</code>? Hint: Find out what <code>!</code> (the exclamation point operator) does</p>
-<blockquote class="blockquote">
-<h2 id="solution-1" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You would add the following two lines to your .gitignore:</p>
-<pre><code>*.dat           # ignore all data files
+<pre class="output"><code>*.dat           # ignore all data files
 !final.dat      # except final.data</code></pre>
-<p>{: .output}</p>
 <p>The exclamation point operator will include a previously excluded entry.</p>
-<p>Note also that because you’ve previously committed <code>.dat</code> files in this lesson they will not be ignored with this new rule. Only future additions of <code>.dat</code> files added to the root directory will be ignored. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="ignoring-nested-files-variation" class="anchored">Ignoring Nested Files: Variation</h2>
+<p>Note also that because you’ve previously committed <code>.dat</code> files in this lesson they will not be ignored with this new rule. Only future additions of <code>.dat</code> files added to the root directory will be ignored.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignoring Nested Files: Variation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Given a directory structure that looks similar to the earlier Nested Files exercise, but with a slightly different directory structure:</p>
-<pre><code>results/data
+<pre class="output"><code>results/data
 results/images
 results/plots
 results/analysis</code></pre>
-<p>{: .language-bash}</p>
-<p>How would you ignore all of the contents in the results folder, but not <code>results/data</code>?</p>
-<p>Hint: think a bit about how you created an exception with the <code>!</code> operator before.</p>
-<blockquote class="blockquote">
-<h2 id="solution-2" class="anchored">Solution</h2>
+<p>How would you ignore all of the contents in the results folder, but not <code>results/data</code>? Hint: think a bit about how you created an exception with the <code>!</code> operator before.</p>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If you want to ignore the contents of <code>results/</code> but not those of <code>results/data/</code>, you can change your <code>.gitignore</code> to ignore the contents of results folder, but create an exception for the contents of the <code>results/data</code> subfolder. Your .gitignore would look like this:</p>
-<pre><code>results/*               # ignore everything in results folder
+<pre class="output"><code>results/*               # ignore everything in results folder
 !results/data/          # do not ignore results/data/ contents</code></pre>
-<p>{: .output}</p>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="ignoring-all-data-files-in-a-directory" class="anchored">Ignoring all data Files in a Directory</h2>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignoring all data Files in a Directory
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Assuming you have an empty .gitignore file, and given a directory structure that looks like:</p>
-<pre><code>results/data/position/gps/a.dat
+<pre class="output"><code>results/data/position/gps/a.dat
 results/data/position/gps/b.dat
 results/data/position/gps/c.dat
 results/data/position/gps/info.txt
 results/plots</code></pre>
-<p>{: .language-bash}</p>
 <p>What’s the shortest <code>.gitignore</code> rule you could write to ignore all <code>.dat</code> files in <code>result/data/position/gps</code>? Do not ignore the <code>info.txt</code>.</p>
-<blockquote class="blockquote">
-<h2 id="solution-3" class="anchored">Solution</h2>
-<p>Appending <code>results/data/position/gps/*.dat</code> will match every file in <code>results/data/position/gps</code> that ends with <code>.dat</code>. The file <code>results/data/position/gps/info.txt</code> will not be ignored. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="ignoring-all-data-files-in-the-repository" class="anchored">Ignoring all data Files in the repository</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Appending <code>results/data/position/gps/*.dat</code> will match every file in <code>results/data/position/gps</code> that ends with <code>.dat</code>. The file <code>results/data/position/gps/info.txt</code> will not be ignored.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignoring all data Files in the repository
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Let us assume you have many <code>.dat</code> files in different subdirectories of your repository. For example, you might have:</p>
-<pre><code>results/a.dat
+<pre class="output"><code>results/a.dat
 data/experiment_1/b.dat
 data/experiment_2/c.dat
 data/experiment_2/variation_1/d.dat</code></pre>
-<p>{: .language-bash}</p>
 <p>How do you ignore all the <code>.dat</code> files, without explicitly listing the names of the corresponding folders?</p>
-<blockquote class="blockquote">
-<h2 id="solution-4" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In the <code>.gitignore</code> file, write:</p>
-<pre><code>**/*.dat               </code></pre>
-<p>{: .output}</p>
-<p>This will ignore all the <code>.dat</code> files, regardless of their position in the directory tree. You can still include some specific exception with the exclamation point operator. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="the-order-of-rules" class="anchored">The Order of Rules</h2>
+<pre class="output"><code>**/*.dat               </code></pre>
+<p>This will ignore all the <code>.dat</code> files, regardless of their position in the directory tree. You can still include some specific exception with the exclamation point operator.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The Order of Rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Given a <code>.gitignore</code> file with the following contents:</p>
-<pre><code>*.dat
+<pre class="output"><code>*.dat
 !*.dat</code></pre>
-<p>{: .language-bash}</p>
 <p>What will be the result?</p>
-<blockquote class="blockquote">
-<h2 id="solution-5" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The <code>!</code> modifier will negate an entry from a previously defined ignore pattern. Because the <code>!*.dat</code> entry negates all of the previous <code>.dat</code> files in the <code>.gitignore</code>, none of them will be ignored, and all <code>.dat</code> files will be tracked.</p>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="log-files" class="anchored">Log Files</h2>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Log Files
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You wrote a script that creates many intermediate log-files of the form <code>log_01</code>, <code>log_02</code>, <code>log_03</code>, etc. You want to keep them but you do not want to track them through <code>git</code>.</p>
 <ol type="1">
 <li><p>Write <strong>one</strong> <code>.gitignore</code> entry that excludes files of the form <code>log_01</code>, <code>log_02</code>, etc.</p></li>
@@ -352,14 +506,24 @@ data/experiment_2/variation_1/d.dat</code></pre>
 <li><p>You find that the file <code>log_01</code> is very important after all, add it to the tracked files without changing the <code>.gitignore</code> again.</p></li>
 <li><p>Discuss with your neighbor what other types of files could reside in your directory that you do not want to track and thus would exclude via <code>.gitignore</code>.</p></li>
 </ol>
-<blockquote class="blockquote">
-<h2 id="solution-6" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>append either <code>log_*</code> or <code>log*</code> as a new entry in your .gitignore</li>
-<li>track <code>log_01</code> using <code>git add -f log_01</code> {: .solution} {: .challenge}</li>
+<li>track <code>log_01</code> using <code>git add -f log_01</code></li>
 </ol>
-</blockquote>
-</blockquote>
+</div>
+</div>
+</div>
+</div>
 
 
 
