@@ -43,8 +43,8 @@ broken code. They might be passing more tests, but the whole thing is still
 not ready.
 
 It's good to be able to get a copy of the last working version of the code
-while this active development is ongoing. You may need to deploy it somewhere,
-or you may just need to use it.
+while this active development is ongoing - this means that if you need to use
+the code, you don't have to finish your development work first.
 
 With the tools we've covered so far, Alice and Bob could make a note of the
 most recent working commit of their script:

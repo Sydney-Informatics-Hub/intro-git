@@ -1,26 +1,44 @@
----
-title: Conflicts
-teaching: 15
-exercises: 0
-questions:
-- "What do I do when my changes conflict with someone else's?"
-objectives:
-- "Explain what conflicts are and when they can occur."
-- "Resolve conflicts resulting from a merge."
-keypoints:
-- "Conflicts occur when two or more people change the same lines of the same file."
-- "The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved."
----
+# Conflicts
 
-As soon as people can work in parallel, they'll likely step on each other's
-toes.  This will even happen with a single person: if we are working on
+<div class="questions">
+
+### Questions
+
+- What do I do when my changes conflict with someone else's?
+
+</div>
+
+<div class="objectives">
+
+### Objectives
+
+- Explain what conflicts are and when they can occur
+- Resolve conflicts resulting from a merge
+
+</div>  
+
+
+<div class="keypoints">
+
+### Key Points
+
+- Conflicts occur when two or more people change the same lines of the same file.
+- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
+</div>
+
+We've shown an example of two people working on a file and making changes which
+Git was able to merge. But, as soon as people can work in parallel, they'll
+likely step on each other's toes.
+
+This will even happen with a single person: if we are working on
 a piece of software on both our laptop and a server in the lab, we could make
 different changes to each copy.  Version control helps us manage these
 [conflicts]({{ page.root}}{% link reference.md %}#conflict) by giving us tools to
 [resolve]({{ page.root }}{% link reference.md %}#resolve) overlapping changes.
 
-To see how we can resolve conflicts, we must first create one.  The file
-`mars.txt` currently looks like this in both partners' copies of our `planets`
+To see how we can resolve conflicts, we must first create one.
+
+The file `mean.py` currently looks like this in both partners' copies of our `planets`
 repository:
 
 ~~~
