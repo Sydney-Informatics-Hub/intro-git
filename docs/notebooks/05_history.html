@@ -271,14 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <p>As we saw in the previous episode, we can refer to commits by their identifiers. You can refer to the <em>most recent commit</em> of the working directory by using the identifier <code>HEAD</code>.</p>
 <p>We’ve been adding one line at a time to <code>mean.pu</code>, so it’s easy to track our progress by looking, so let’s do that using our <code>HEAD</code>s. Before we start, let’s make a change to <code>mean.py</code>, adding yet another line.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano mean.py</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano mean.py</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>import pandas as pd
 dataframe = pd.read_csv("input.csv")
 means = dataframe.mean()
 # an ill-considered comment</code></pre>
 <p>Now, let’s see what we get.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>diff --git a/mean.py b/mean.py
 index a6abcee..1da11d6 100644
 --- a/mean.py
@@ -289,9 +289,9 @@ index a6abcee..1da11d6 100644
  means = dataframe.mean()
 +# an ill-considered change</code></pre>
 <p>which is the same as what you would get if you leave out <code>HEAD</code> (try it). The real goodness in all this is when you can refer to previous commits. We do that by adding <code>~1</code> (where “~” is “tilde”, pronounced [<strong>til</strong>-d<em>uh</em>]) to refer to the commit one before <code>HEAD</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we want to see the differences between older commits we can use <code>git diff</code> again, but with the notation <code>HEAD~1</code>, <code>HEAD~2</code>, and so on, to refer to them:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>diff --git a/mean.py b/mean.py
 index ffd919b..1da11d6 100644
 --- a/mean.py
@@ -302,7 +302,7 @@ index ffd919b..1da11d6 100644
 +means = dataframe.mean()
 +# an ill-considered change</code></pre>
 <p>We could also use <code>git show</code> which shows us what changes we made at an older commit as well as the commit message, rather than the <em>differences</em> between a commit and our working directory that we see by using <code>git diff</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git show HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git show HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>commit b03ceb64040ce8347c8f9dd1530088e0621b31f9
 Author: Mike Lynch &lt;m.lynch@sydney.edu.au&gt;
 Date:   Wed Oct 12 09:58:50 2022 +1100
@@ -318,7 +318,7 @@ index 0000000..ffd919b
 +import pandas as pd</code></pre>
 <p>In this way, we can build up a chain of commits. The most recent end of the chain is referred to as <code>HEAD</code>; we can refer to previous commits using the <code>~</code> notation, so <code>HEAD~1</code> means “the previous commit”, while <code>HEAD~123</code> goes back 123 commits from where we are now.</p>
 <p>We can also refer to commits using those long strings of digits and letters that <code>git log</code> displays. These are unique IDs for the changes, and “unique” really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID <code>b03ceb64040ce8347c8f9dd1530088e0621b31f9</code> so let’s try this:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff b03ceb64040ce8347c8f9dd1530088e0621b31f9 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff b03ceb64040ce8347c8f9dd1530088e0621b31f9 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>diff --git a/mean.py b/mean.py
 index ffd919b..1da11d6 100644
 --- a/mean.py
@@ -329,7 +329,7 @@ index ffd919b..1da11d6 100644
 +means = dataframe.mean()
 +# an ill-considered change</code></pre>
 <p>That’s the right answer, but typing out random 40-character strings is annoying, so Git lets us use just the first few characters (typically seven for normal size projects):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>diff --git a/mean.py b/mean.py
 index ffd919b..1da11d6 100644
 --- a/mean.py
@@ -341,7 +341,7 @@ index ffd919b..1da11d6 100644
 +# an ill-considered change</code></pre>
 <p>All right! So we can save changes to files and see what we’ve changed. Now, how can we restore older versions of things? Let’s suppose we change our mind about the last update to <code>mean.py</code> (the “ill-considered change”).</p>
 <p><code>git status</code> now tells us that the file has been changed, but those changes haven’t been staged:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>On branch main
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
@@ -351,19 +351,19 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
 <p>We can put things back the way they were by using <code>git checkout</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Updated 1 path from 025c665</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>import pandas as pd
 dataframe = pd.read_csv("input.csv")
 means = dataframe.mean()</code></pre>
 <p>{: .output}</p>
 <p>As you might guess from its name, <code>git checkout</code> checks out (i.e., restores) an old version of a file. In this case, we’re telling Git that we want to recover the version of the file recorded in <code>HEAD</code>, which is the last saved commit. If we want to go back even further, we can use a commit identifier instead:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Updated 1 path from e79e40d</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>import pandas as pd</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>On branch main
 Changes to be committed:
   (use "git reset HEAD &lt;file&gt;..." to unstage)
@@ -372,7 +372,7 @@ Changes to be committed:
 </code></pre>
 <p>{: .output}</p>
 <p>Notice that the changes are currently in the staging area. Again, we can put things back the way they were by using <code>git checkout</code>:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -384,9 +384,9 @@ Don’t Lose Your HEAD
 </div>
 <div class="callout-body-container callout-body">
 <p>Above we used</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout f22b25e mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout f22b25e mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>to revert <code>mean.py</code> to its state after the commit <code>f22b25e</code>. But be careful! The command <code>checkout</code> has other important functionalities and Git will misunderstand your intentions if you are not accurate with the typing. For example, if you forget <code>mean.py</code> in the previous command:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout f22b25e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout f22b25e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Note: switching to 'b03ceb6'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -477,80 +477,136 @@ Solution
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<h2 id="reverting-a-commit" class="anchored" data-anchor-id="exploring-history">Reverting a Commit</h2>
-<p>Jennifer is collaborating with colleagues on her Python script. She realizes her last commit to the project’s repository contained an error, and wants to undo it. Jennifer wants to undo correctly so everyone in the project’s repository gets the correct change. The command <code>git revert [erroneous commit ID]</code> will create a new commit that reverses the erroneous commit.</p>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Reverting a Commit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alice is collaborating with colleagues on her Python script. She realizes her last commit to the project’s repository contained an error, and wants to undo it. Alice wants to undo correctly so everyone in the project’s repository gets the correct change. The command <code>git revert [erroneous commit ID]</code> will create a new commit that reverses the erroneous commit.</p>
 <p>The command <code>git revert</code> is different from <code>git checkout [commit ID]</code> because <code>git checkout</code> returns the files not yet committed within the local repository to a previous state, whereas <code>git revert</code> reverses changes committed to the local and project repositories.</p>
-<p>Below are the right steps and explanations for Jennifer to use <code>git revert</code>, what is the missing command?<br>
-1. <code>________ # Look at the git history of the project to find the commit ID</code></p>
-<ol start="2" type="1">
+<p>Below are the right steps and explanations for Alice to use <code>git revert</code>, what is the missing command?</p>
+<ol type="1">
+<li><p><code>________ # Look at the git history of the project to find the commit ID</code></p></li>
 <li><p>Copy the ID (the first few characters of the ID, e.g.&nbsp;0b1d055).</p></li>
 <li><p><code>git revert [commit ID]</code></p></li>
 <li><p>Type in the new commit message.</p></li>
 <li><p>Save and close</p></li>
 </ol>
-<blockquote class="blockquote">
-<h2 id="solution-1" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The command <code>git log</code> lists project history with commit IDs.</p>
-<p>The command <code>git show HEAD</code> shows changes made at the latest commit, and lists the commit ID; however, Jennifer should double-check it is the correct commit, and no one else has committed changes to the repository. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="understanding-workflow-and-history" class="anchored">Understanding Workflow and History</h2>
+<p>The command <code>git show HEAD</code> shows changes made at the latest commit, and lists the commit ID; however, Alice should double-check that it is the correct commit, and no one else has committed changes to the repository.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Understanding Workflow and History
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>What is the output of the last command in</p>
-<pre><code>$ cd planets
-$ echo "Venus is beautiful and full of love" &gt; venus.txt
-$ git add venus.txt
-$ echo "Venus is too hot to be suitable as a base" &gt;&gt; venus.txt
-$ git commit -m "Comment on Venus as an unsuitable base"
-$ git checkout HEAD venus.txt
-$ cat venus.txt #this will print the contents of venus.txt to the screen</code></pre>
-<p>{: .language-bash}</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> means</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is a script to calculate means"</span> <span class="op">&gt;</span> doc.txt</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add venus.txt</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"It is a work in progress"</span> <span class="op">&gt;&gt;</span> doc.txt</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Started some documentation"</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout HEAD doc.txt</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
-<li><pre><code>   Venus is too hot to be suitable as a base</code></pre>
-{: .output}</li>
-<li><pre><code>   Venus is beautiful and full of love</code></pre>
-{: .output}</li>
-<li><pre><code>   Venus is beautiful and full of love
-   Venus is too hot to be suitable as a base</code></pre>
-{: .output}</li>
-<li><pre><code>   Error because you have changed venus.txt without committing the changes</code></pre>
-{: .output}</li>
+<li><pre class="output"><code>   It is a work in progress</code></pre></li>
+<li><pre class="output"><code>   This is a script to calculate means</code></pre></li>
+<li><pre class="output"><code>   This is a script to calculate means
+   It is a work in progress</code></pre></li>
+<li><pre class="output"><code>  Error because you have changed doc.txt without committing the changes</code></pre></li>
 </ol>
-<blockquote class="blockquote">
-<h2 id="solution-2" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The answer is 2.</p>
-<p>The command <code>git add venus.txt</code> places the current version of <code>venus.txt</code> into the staging area. The changes to the file from the second <code>echo</code> command are only applied to the working copy, not the version in the staging area.</p>
-<p>So, when <code>git commit -m "Comment on Venus as an unsuitable base"</code> is executed, the version of <code>venus.txt</code> committed to the repository is the one from the staging area and has only one line.</p>
-<p>At this time, the working copy still has the second line (and <code>git status</code> will show that the file is modified). However, <code>git checkout HEAD venus.txt</code> replaces the working copy with the most recently committed version of <code>venus.txt</code>.</p>
-<p>So, <code>cat venus.txt</code> will output <code>Venus is beautiful and full of love.</code> {: .output} {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="checking-understanding-of-git-diff" class="anchored">Checking Understanding of <code>git diff</code></h2>
-<p>Consider this command: <code>git diff HEAD~9 mean.py</code>. What do you predict this command will do if you execute it? What happens when you do execute it? Why?</p>
-<p>Try another command, <code>git diff [ID] mean.py</code>, where [ID] is replaced with the unique identifier for your most recent commit. What do you think will happen, and what does happen? {: .challenge}</p>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="getting-rid-of-staged-changes" class="anchored">Getting Rid of Staged Changes</h2>
-<p><code>git checkout</code> can be used to restore a previous commit when unstaged changes have been made, but will it also work for changes that have been staged but not committed? Make a change to <code>mean.py</code>, add that change, and use <code>git checkout</code> to see if you can remove your change. {: .challenge}</p>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="explore-and-summarize-histories" class="anchored">Explore and Summarize Histories</h2>
+<p>The command <code>git add doc.txt</code> places the current version of <code>doc.txt</code> into the staging area. The changes to the file from the second <code>echo</code> command are only applied to the working copy, not the version in the staging area.</p>
+<p>So, when <code>git commit -m "Started some documentation"</code> is executed, the version of <code>doc.txt</code> committed to the repository is the one from the staging area and has only one line.</p>
+<p>At this time, the working copy still has the second line (and <code>git status</code> will show that the file is modified). However, <code>git checkout HEAD doc.txt</code> replaces the working copy with the most recently committed version of <code>doc.txt</code>.</p>
+<p>So, <code>cat doc.txt</code> will output</p>
+<pre class="output"><code>This is a script to calculate means</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Checking Understanding of <code>git diff</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider this command: <code>git diff HEAD~9 mean.py</code>. What do you predict this command will do if you execute it? What happens when you do execute it? Why? Try another command, <code>git diff [ID] mean.py</code>, where [ID] is replaced with the unique identifier for your most recent commit. What do you think will happen, and what does happen?</p>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Getting Rid of Staged Changes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>git checkout</code> can be used to restore a previous commit when unstaged changes have been made, but will it also work for changes that have been staged but not committed? Make a change to <code>mean.py</code>, add that change, and use <code>git checkout</code> to see if you can remove your change.</p>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Explore and Summarize Histories
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Exploring history is an important part of Git, and often it is a challenge to find the right commit ID, especially if the commit is from several months ago.</p>
-<p>Imagine the <code>planets</code> project has more than 50 files. You would like to find a commit that modifies some specific text in <code>mean.py</code>. When you type <code>git log</code>, a very long list appeared. How can you narrow down the search?</p>
+<p>Imagine the <code>means</code> project has more than 50 files. You would like to find a commit that modifies some specific text in <code>mean.py</code>. When you type <code>git log</code>, a very long list appeared. How can you narrow down the search?</p>
 <p>Recall that the <code>git diff</code> command allows us to explore one specific file, e.g., <code>git diff mean.py</code>. We can apply a similar idea here.</p>
-<pre><code>$ git log mean.py</code></pre>
-<p>{: .language-bash}</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Unfortunately some of these commit messages are very ambiguous, e.g., <code>update files</code>. How can you search through these files?</p>
-<p>Both <code>git diff</code> and <code>git log</code> are very useful and they summarize a different part of the history for you. Is it possible to combine both? Let’s try the following:</p>
-<pre><code>$ git log --patch mean.py</code></pre>
-<p>{: .language-bash}</p>
+<p>Both <code>git diff</code> and <code>git log</code> are very useful and they summarize a different part of the history for you.</p>
+<p>Is it possible to combine both? Let’s try the following:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--patch</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should get a long list of output, and you should be able to see both commit messages and the difference between each commit.</p>
 <p>Question: What does the following command do?</p>
-<pre><code>$ git log --patch HEAD~9 *.txt</code></pre>
-<p>{: .language-bash} {: .challenge}</p>
-</blockquote>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--patch</span> HEAD~9 <span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>
