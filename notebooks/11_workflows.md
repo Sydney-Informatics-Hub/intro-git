@@ -75,10 +75,110 @@ what kind of branch this is, and the second part gives more details:
 * bugfix-divide-by-zero
 * release-v1.2
 
-A 'feature' branch adds a new ability or interface to the code; a bugfix is
+A feature branch adds a new ability or interface to the code; a bugfix is
 to correct a mistake.
 
 And release branches allow you to collect a set of features for a planned
 release into a single branch where they can be tested together and then
 merged back to the main branch when they're all ready to go.
 
+As a codebase is worked on over time, it will accumulate branches. It can be
+helpful to remove these, so that you're not having to sort through bugfixes
+from last year when inspecting your repository's branches. A branch, in one sense,
+is nothing more than a set of commits, so once those commits have been merged
+into another branch, it's safe to delete the branch - we won't lose any 
+history by doing so.
+
+Let's add another branch to Alice's repository (remembering that branching
+is a cheap operation):
+
+```sh
+git checkout -b just-testing
+```
+
+```output
+Switched to branch 'just-testing'
+```
+
+```sh
+nano mean.py
+```
+
+It doesn't matter what you add to mean.py - a comment is fine. Now, add and
+commit the changes to the current branch, which is `just-testing`:
+
+```sh
+git add mean.py
+git commit -m "Just testing"
+```
+
+```output
+[just-testing 56edc59] Just testing
+ 1 file changed, 2 insertions(+)
+```
+
+If we use `git branch`, we can see that there are now three branches in the
+repo:
+
+```sh
+git branch
+```
+
+```output
+  development
+* just-testing
+  main
+```
+
+Let's change back to the `main` branch:
+
+```sh
+git checkout main
+```
+
+```output
+Switched to branch 'main'
+```
+
+To help Alice tidy up her branches, git can list only those branches which 
+have been merged, using the `--merged` flag.
+
+```sh
+git branch --merged
+```
+
+```output
+  development
+* main
+```
+
+We can see that the new branch, `just-testing`, isn't listed: this is because
+it contains commits which have not yet been merged into the current branch.
+
+In other words, the branches listed with the `--merged` flag are safe to delete.
+To delete a branch, use `git branch` with the `-d` flag and the name of the
+branch to be deleted
+
+```sh
+git branch -d development
+```
+
+```output
+Deleted branch development (was 2c3e2c0).
+```
+
+If we accidentally ask git to delete a branch which we haven't yet merged using
+the `-d` flag, git raises an error, because we're asking it to remove work which
+hasn't been merged into another branch:
+
+```sh
+git branch -d just-testing
+```
+
+```output
+error: the branch 'just-testing' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D just-testing'
+```
+
+If we're sure that this branch isn't worth keeping, the capital `-D` flag 
+will get rid of it.
