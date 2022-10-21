@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SIH Introduction to Version Control using Git - Collaborating</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../lesson.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">SIH Introduction to Version Control using Git</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html">Setup</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 1</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-1">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/01_intro.html">
+ <span class="dropdown-text">Introduction to version control</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/02_config.html">
+ <span class="dropdown-text">Configure git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/03_create.html">
+ <span class="dropdown-text">Creating a repository</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/04_changes.html">
+ <span class="dropdown-text">Making changes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/05_history.html">
+ <span class="dropdown-text">Seeing history</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/06_ignore.html">
+ <span class="dropdown-text">Ignoring files</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/07_github.html">
+ <span class="dropdown-text">Pushing to GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/08_collab.html">
+ <span class="dropdown-text">Collaborating</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 2</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-2">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/09_branches.html">
+ <span class="dropdown-text">Branching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/10_merging.html">
+ <span class="dropdown-text">Merging</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/11_conflicts.html">
+ <span class="dropdown-text">Conflicts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_branch_workflows.html">
+ <span class="dropdown-text">Branch-based workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/13_fork_workflows.html">
+ <span class="dropdown-text">Fork-based workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/14_open_research.html">
+ <span class="dropdown-text">Open science</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Collaborating</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>For the next step, get into pairs. One person will be the “Owner” and the other will be the “Collaborator”. The goal is that the Collaborator add changes into the Owner’s repository. We will switch roles at the end, so both persons will play Owner and Collaborator.</p>
+<blockquote class="blockquote">
+<h2 id="practicing-by-yourself" class="anchored">Practicing By Yourself</h2>
+<p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window. This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you. {: .callout}</p>
+</blockquote>
+<p>The Owner needs to give the Collaborator access. On GitHub, click the “Settings” button on the right, select “Collaborators”, click “Add people”, and then enter your partner’s username.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/github-add-collaborators.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Adding Collaborators on GitHub</figcaption><p></p>
+</figure>
+</div>
+<p>To accept access to the Owner’s repo, the Collaborator needs to go to <a href="https://github.com/notifications">https://github.com/notifications</a> or check for email notification. Once there she can accept access to the Owner’s repo.</p>
+<p>Next, the Collaborator needs to download a copy of the Owner’s repository to her machine. This is called “cloning a repo”.</p>
+<p>The Collaborator doesn’t want to overwrite her own version of <code>planets.git</code>, so needs to clone the Owner’s repository to a different location than her own repository with the same name.</p>
+<p>To clone the Owner’s repo into her <code>Desktop</code> folder, the Collaborator enters:</p>
+<pre><code>$ git clone git@github.com:vlad/planets.git ~/Desktop/vlad-planets</code></pre>
+<p>{: .language-bash}</p>
+<p>Replace ‘vlad’ with the Owner’s username.</p>
+<p>If you choose to clone without the clone path (<code>~/Desktop/vlad-planets</code>) specified at the end, you will clone inside your own planets folder! Make sure to navigate to the <code>Desktop</code> folder first.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/github-collaboration.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">After Creating Clone of Repository</figcaption><p></p>
+</figure>
+</div>
+<p>The Collaborator can now make a change in her clone of the Owner’s repository, exactly the same way as we’ve been doing before:</p>
+<pre><code>$ cd ~/Desktop/vlad-planets
+$ nano pluto.txt
+$ cat pluto.txt</code></pre>
+<p>{: .language-bash}</p>
+<pre><code>It is so a planet!</code></pre>
+<p>{: .output}</p>
+<pre><code>$ git add pluto.txt
+$ git commit -m "Add notes about Pluto"</code></pre>
+<p>{: .language-bash}</p>
+<pre><code> 1 file changed, 1 insertion(+)
+ create mode 100644 pluto.txt</code></pre>
+<p>{: .output}</p>
+<p>Then push the change to the <em>Owner’s repository</em> on GitHub:</p>
+<pre><code>$ git push origin main</code></pre>
+<p>{: .language-bash}</p>
+<pre><code>Enumerating objects: 4, done.
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 306 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/vlad/planets.git
+   9272da5..29aba7c  main -&gt; main</code></pre>
+<p>{: .output}</p>
+<p>Note that we didn’t have to create a remote called <code>origin</code>: Git uses this name by default when we clone a repository. (This is why <code>origin</code> was a sensible choice earlier when we were setting up remotes by hand.)</p>
+<p>Take a look at the Owner’s repository on GitHub again, and you should be able to see the new commit made by the Collaborator. You may need to refresh your browser to see the new commit.</p>
+<blockquote class="blockquote">
+<h2 id="some-more-about-remotes" class="anchored">Some more about remotes</h2>
+<p>In this episode and the previous one, our local repository has had a single “remote”, called <code>origin</code>. A remote is a copy of the repository that is hosted somewhere else, that we can push to and pull from, and there’s no reason that you have to work with only one. For example, on some large projects you might have your own copy in your own GitHub account (you’d probably call this <code>origin</code>) and also the main “upstream” project repository (let’s call this <code>upstream</code> for the sake of examples). You would pull from <code>upstream</code> from time to time to get the latest updates that other people have committed.</p>
+<p>Remember that the name you give to a remote only exists locally. It’s an alias that you choose - whether <code>origin</code>, or <code>upstream</code>, or <code>fred</code> - and not something intrinstic to the remote repository.</p>
+<p>The <code>git remote</code> family of commands is used to set up and alter the remotes associated with a repository. Here are some of the most useful ones:</p>
+<ul>
+<li><code>git remote -v</code> lists all the remotes that are configured (we already used this in the last episode)</li>
+<li><code>git remote add [name] [url]</code> is used to add a new remote</li>
+<li><code>git remote remove [name]</code> removes a remote. Note that it doesn’t affect the remote repository at all - it just removes the link to it from the local repo.</li>
+<li><code>git remote set-url [name] [newurl]</code> changes the URL that is associated with the remote. This is useful if it has moved, e.g.&nbsp;to a different GitHub account, or from GitHub to a different hosting service. Or, if we made a typo when adding it!</li>
+<li><code>git remote rename [oldname] [newname]</code> changes the local alias by which a remote is known - its name. For example, one could use this to change <code>upstream</code> to <code>fred</code>. {: .callout}</li>
+</ul>
+</blockquote>
+<p>To download the Collaborator’s changes from GitHub, the Owner now enters:</p>
+<pre><code>$ git pull origin main</code></pre>
+<p>{: .language-bash}</p>
+<pre><code>remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/vlad/planets
+ * branch            main     -&gt; FETCH_HEAD
+   9272da5..29aba7c  main     -&gt; origin/main
+Updating 9272da5..29aba7c
+Fast-forward
+ pluto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 pluto.txt</code></pre>
+<p>{: .output}</p>
+<p>Now the three repositories (Owner’s local, Collaborator’s local, and Owner’s on GitHub) are back in sync.</p>
+<blockquote class="blockquote">
+<h2 id="a-basic-collaborative-workflow" class="anchored">A Basic Collaborative Workflow</h2>
+<p>In practice, it is good to be sure that you have an updated version of the repository you are collaborating on, so you should <code>git pull</code> before making our changes. The basic collaborative workflow would be:</p>
+<ul>
+<li>update your local repo with <code>git pull origin main</code>,</li>
+<li>make your changes and stage them with <code>git add</code>,</li>
+<li>commit your changes with <code>git commit -m</code>, and</li>
+<li>upload the changes to GitHub with <code>git push origin main</code></li>
+</ul>
+<p>It is better to make many commits with smaller changes rather than of one commit with massive changes: small commits are easier to read and review. {: .callout}</p>
+</blockquote>
+<blockquote class="blockquote">
+<h2 id="switch-roles-and-repeat" class="anchored">Switch Roles and Repeat</h2>
+<p>Switch roles and repeat the whole process. {: .challenge}</p>
+</blockquote>
+<blockquote class="blockquote">
+<h2 id="review-changes" class="anchored">Review Changes</h2>
+<p>The Owner pushed commits to the repository without giving any information to the Collaborator. How can the Collaborator find out what has changed with command line? And on GitHub?</p>
+<blockquote class="blockquote">
+<h2 id="solution" class="anchored">Solution</h2>
+<p>On the command line, the Collaborator can use <code>git fetch origin main</code> to get the remote changes into the local repository, but without merging them. Then by running <code>git diff main origin/main</code> the Collaborator will see the changes output in the terminal.</p>
+<p>On GitHub, the Collaborator can go to the repository and click on “commits” to view the most recent commits pushed to the repository. {: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<h2 id="comment-changes-in-github" class="anchored">Comment Changes in GitHub</h2>
+<p>The Collaborator has some questions about one line change made by the Owner and has some suggestions to propose.</p>
+<p>With GitHub, it is possible to comment on the diff of a commit. Over the line of code to comment, a blue comment icon appears to open a comment window.</p>
+<p>The Collaborator posts her comments and suggestions using the GitHub interface. {: .challenge}</p>
+</blockquote>
+<blockquote class="blockquote">
+<h2 id="version-history-backup-and-version-control" class="anchored">Version History, Backup, and Version Control</h2>
+<p>Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control? What are some of the benefits of using version control, Git and GitHub? {: .challenge}</p>
+</blockquote>
+
+
+
+<p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

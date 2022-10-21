@@ -1,23 +1,28 @@
----
-title: Conflicts
-teaching: 15
-exercises: 0
-questions:
-- "What do I do when my changes conflict with someone else's?"
-objectives:
-- "Explain what conflicts are and when they can occur."
-- "Resolve conflicts resulting from a merge."
-keypoints:
-- "Conflicts occur when two or more people change the same lines of the same file."
-- "The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved."
----
+# Conflicts
+
+<div class="questions">
+
+### Questions
+
+- What do I do when my changes conflict with someone else's?
+
+</div>
+
+<div class="objectives">
+
+### Objectives
+
+- Explain what conflicts are and when they can occur.
+- Resolve conflicts resulting from a merge.
+
+</div>  
 
 As soon as people can work in parallel, they'll likely step on each other's
 toes.  This will even happen with a single person: if we are working on
 a piece of software on both our laptop and a server in the lab, we could make
 different changes to each copy.  Version control helps us manage these
-[conflicts]({{ page.root}}{% link reference.md %}#conflict) by giving us tools to
-[resolve]({{ page.root }}{% link reference.md %}#resolve) overlapping changes.
+conflicts by giving us tools to
+resolve overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
 `mars.txt` currently looks like this in both partners' copies of our `planets`
@@ -139,7 +144,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 Git rejects the push because it detects that the remote repository has new updates that have not been
 incorporated into the local branch.
 What we have to do is pull the changes from GitHub,
-[merge]({{ page.root }}{% link reference.md %}#merge) them into the copy we're currently working in, and then push that.
+merge them into the copy we're currently working in, and then push that.
 Let's start by pulling:
 
 ~~~
@@ -547,3 +552,13 @@ Conflicts can also be minimized with project management strategies:
 > >
 > {: .solution}
 {: .challenge}
+
+
+<div class="keypoints">
+
+### Key Points
+
+- Conflicts occur when two or more people change the same lines of the same file.
+- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
+
+</div>

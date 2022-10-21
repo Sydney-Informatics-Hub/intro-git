@@ -13,10 +13,37 @@ website:
         text: "Setup"
       - text: "Session 1"
         menu:
-        - text: "Fundamentals"
+        - text: "Introduction to version control"
           href: notebooks/01_intro.html
         - text: "Configure git"
-          href: notebooks/01_config.html
+          href: notebooks/02_config.html
+        - text: "Creating a repository"
+          href: notebooks/03_create.html
+        - text: "Making changes"
+          href: notebooks/04_changes.html
+        - text: "Seeing history"
+          href: notebooks/05_history.html
+        - text: "Ignoring files"
+          href: notebooks/06_ignore.html
+        - text: "Pushing to GitHub"
+          href: notebooks/07_github.html
+        - text: "Collaborating"
+          href: notebooks/08_collab.html
+      - text: "Session 2"
+        menu:
+        - text: "Branching"
+          href: notebooks/09_branches.html
+        - text: "Merging"
+          href: notebooks/10_merging.html
+        - text: "Conflicts"
+          href: notebooks/11_conflicts.html
+        - text: "Branch-based workflows"
+          href: notebooks/12_branch_workflows.html
+        - text: "Fork-based workflows"
+          href: notebooks/13_fork_workflows.html
+        - text: "Open science"
+          href: notebooks/14_open_research.html
+
 
   body-footer: "All materials copyright Sydney Informatics Hub, University of Sydney"
           

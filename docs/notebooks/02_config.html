@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SIH Introduction to Version Control using Git – config</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../lesson.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">SIH Introduction to Version Control using Git</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html">Setup</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 1</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-1">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/01_intro.html">
+ <span class="dropdown-text">Introduction to version control</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/02_config.html">
+ <span class="dropdown-text">Configure git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/03_create.html">
+ <span class="dropdown-text">Creating a repository</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/04_changes.html">
+ <span class="dropdown-text">Making changes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/05_history.html">
+ <span class="dropdown-text">Seeing history</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/06_ignore.html">
+ <span class="dropdown-text">Ignoring files</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/07_github.html">
+ <span class="dropdown-text">Pushing to GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/08_collab.html">
+ <span class="dropdown-text">Collaborating</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 2</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-2">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/09_branches.html">
+ <span class="dropdown-text">Branching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/10_merging.html">
+ <span class="dropdown-text">Merging</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/11_conflicts.html">
+ <span class="dropdown-text">Conflicts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_branch_workflows.html">
+ <span class="dropdown-text">Branch-based workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/13_fork_workflows.html">
+ <span class="dropdown-text">Fork-based workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/14_open_research.html">
+ <span class="dropdown-text">Open science</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#configuring-git" id="toc-configuring-git" class="nav-link active" data-scroll-target="#configuring-git">Configuring Git</a>
+  <ul class="collapse">
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="configuring-git" class="level1">
+<h1>Configuring Git</h1>
+<section id="questions" class="level3 questions">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ul>
+<li>How do I configure Git?</li>
+</ul>
+</section>
+<section id="objectives" class="level3 objectives">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Configure <code>git</code> the first time it is used on a computer.</li>
+<li>Understand the meaning of the <code>--global</code> configuration flag.</li>
+</ul>
+</section>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Use <code>git config</code> with the <code>--global</code> option to configure a user name, email address, editor, and other preferences once per machine.</li>
+</ul>
+</section>
+<p>When we use Git on a new computer for the first time, we need to configure a few things. Below are a few examples of configurations we will set as we get started with Git:</p>
+<ul>
+<li>our name and email address,</li>
+<li>what our preferred text editor is,</li>
+<li>and that we want to use these settings globally (i.e.&nbsp;for every project).</li>
+</ul>
+<p>On a command line, Git commands are written as <code>git verb options</code>, where <code>verb</code> is what we actually want to do and <code>options</code> is additional optional information which may be needed for the <code>verb</code>. So here is how I set up my new laptop:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Mike Lynch"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"m.lynch@sydney.edu.au"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Please use your own name and email address instead of mine. This user name and email will be associated with your subsequent Git activity, which means that any changes pushed to <a href="https://github.com/">GitHub</a>, <a href="https://bitbucket.org/">BitBucket</a>, <a href="https://gitlab.com/">GitLab</a> or another Git host server after this lesson will include this information.</p>
+<p>For this lesson, we will be interacting with <a href="https://github.com/">GitHub</a> and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review <a href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address private</a>.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Keeping your email private
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you elect to use a private email address with GitHub, then use that same email address for the <code>user.email</code> value, e.g.&nbsp;<code>username@users.noreply.github.com</code> replacing <code>username</code> with your GitHub one.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Line Endings
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As with other keys, when you hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd> on your keyboard, your computer encodes this input as a character. Different operating systems use different character(s) to represent the end of a line. (You may also hear these referred to as newlines or line breaks.) Because Git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines. Though it is beyond the scope of this lesson, you can read more about this issue <a href="https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_core_autocrlf">in the Pro Git book</a>.</p>
+<p>You can change the way Git recognizes and encodes line endings using the <code>core.autocrlf</code> command to <code>git config</code>. The following settings are recommended:</p>
+<p>On macOS and Linux:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And on Windows:</p>
+<pre class="bash`"><code>$ git config --global core.autocrlf false</code></pre>
+</div>
+</div>
+<p>Get rid of this - or put it in an expandable callout</p>
+<table class="table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Editor</th>
+<th style="text-align: left;">Configuration command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Atom</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "atom --wait"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nano</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "nano -w"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BBEdit (Mac, with command line tools)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "bbedit -w"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sublime Text (Mac)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sublime Text (Win, 32-bit install)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sublime Text (Win, 64-bit install)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Notepad (Win)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "c:/Windows/System32/notepad.exe"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Notepad++ (Win, 32-bit install)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Notepad++ (Win, 64-bit install)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kate (Linux)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "kate"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gedit (Linux)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "gedit --wait --new-window"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Scratch (Linux)</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "scratch-text-editor"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Emacs</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "emacs"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vim</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "vim"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">VS Code</td>
+<td style="text-align: left;"><code>$ git config --global core.editor "code --wait"</code></td>
+</tr>
+</tbody>
+</table>
+<p>It is possible to reconfigure the text editor for Git whenever you want to change it.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exiting Vim
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that Vim is the default editor for many programs. If you haven’t used Vim before and wish to exit a session without saving your changes, press <kbd>Esc</kbd> then type <code>:q!</code> and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>. If you want to save your changes and quit, press <kbd>Esc</kbd> then type <code>:wq</code> and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.</p>
+</div>
+</div>
+<p>Git (2.28+) allows configuration of the name of the branch created when you initialize any new repository. We’ll set it to <code>main</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Default Git branch naming
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Source file changes are associated with a “branch.” For new learners in this lesson, it’s enough to know that branches exist, and this lesson uses one branch.<br>
+By default, Git will create a branch called <code>master</code> when you create a new repository with <code>git init</code> (as explained in the next Episode). This term evokes the racist practice of human slavery and the <a href="https://github.com/github/renaming">software development community</a> has moved to adopt more inclusive language.</p>
+<p>In 2020, most Git code hosting services transitioned to using <code>main</code> as the default branch. As an example, any new repository that is opened in GitHub and GitLab default to <code>main</code>. However, Git has not yet made the same change. As a result, local repositories must be manually configured have the same main branch name as most cloud services.</p>
+<p>For versions of Git prior to 2.28, the change can be made on an individual repository level. The command for this is in the next episode. Note that if this value is unset in your local Git configuration, the <code>init.defaultBranch</code> value defaults to <code>master</code>.</p>
+</div>
+</div>
+<p>The five commands we just ran above only need to be run once: the flag <code>--global</code> tells Git to use the settings for every project, in your user account, on this computer.</p>
+<p>You can check your settings at any time:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can change your configuration as many times as you want: use the same commands to choose another editor or update your email address.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Proxy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In some networks you need to use a <a href="https://en.wikipedia.org/wiki/Proxy_server">proxy</a>. If this is the case, you may also need to tell Git about the proxy:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To disable the proxy, use</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Git Help and Manual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always remember that if you forget the subcommands or options of a <code>git</code> command, you can access the relevant list of options typing <code>git &lt;command&gt; -h</code> or access the corresponding Git manual by typing <code>git &lt;command&gt; --help</code>, e.g.:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While viewing the manual, remember the <code>:</code> is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.</p>
+<p>More generally, you can get the list of available <code>git</code> commands and further resources of the Git manual typing:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+
+
+</section>
+
+<p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
