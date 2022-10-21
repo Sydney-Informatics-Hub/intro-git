@@ -37,7 +37,7 @@ We've been adding one line at a time to `mean.pu`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `mean.py`, adding yet another line.
 
-```bash
+```sh
 $ nano mean.py
 $ cat mean.py
 ```
@@ -51,7 +51,7 @@ means = dataframe.mean()
 
 Now, let's see what we get.
 
-```bash
+```sh
 $ git diff HEAD mean.py
 ```
 
@@ -72,7 +72,7 @@ real goodness in all this is when you can refer to previous commits.  We do
 that by adding `~1`  (where "~" is "tilde", pronounced [**til**-d*uh*]) 
 to refer to the commit one before `HEAD`.
 
-```bash
+```sh
 $ git diff HEAD~1 mean.py
 ```
 
@@ -80,7 +80,7 @@ If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 
-```bash
+```sh
 $ git diff HEAD~3 mean.py
 ```
 
@@ -100,7 +100,7 @@ We could also use `git show` which shows us what changes we made at an older com
 well as the commit message, rather than the _differences_ between a commit and our 
 working directory that we see by using `git diff`.
 
-```bash
+```sh
 $ git show HEAD~3 mean.py
 ```
 
@@ -131,7 +131,7 @@ does mean unique: every change to any set of files on any computer has a unique
 40-character identifier. Our first commit was given the ID
 `b03ceb64040ce8347c8f9dd1530088e0621b31f9` so let's try this:
 
-```bash
+```sh
 $ git diff b03ceb64040ce8347c8f9dd1530088e0621b31f9 mean.py
 ```
 
@@ -151,7 +151,7 @@ That's the right answer, but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal
 size projects):
 
-```bash
+```sh
 $ git diff b03ceb6 mean.py
 ```
 
@@ -174,7 +174,7 @@ the last update to `mean.py` (the "ill-considered change").
 `git status` now tells us that the file has been changed,
 but those changes haven't been staged:
 
-```bash
+```sh
 $ git status
 ```
 
@@ -192,7 +192,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 We can put things back the way they were
 by using `git checkout`:
 
-```bash
+```sh
 $ git checkout HEAD mean.py
 ```
 
@@ -200,7 +200,7 @@ $ git checkout HEAD mean.py
 Updated 1 path from 025c665
 ```
 
-```bash
+```sh
 $ cat mean.py
 ```
 
@@ -217,7 +217,7 @@ recover the version of the file recorded in `HEAD`, which is the last saved
 commit. If we want to go back even further, we can use a commit identifier
 instead:
 
-```bash
+```sh
 $ git checkout b03ceb6 mean.py
 ```
 
@@ -225,7 +225,7 @@ $ git checkout b03ceb6 mean.py
 Updated 1 path from e79e40d
 ```
 
-```bash
+```sh
 $ cat mean.py
 ```
 
@@ -233,7 +233,7 @@ $ cat mean.py
 import pandas as pd
 ```
 
-```bash
+```sh
 $ git status
 ```
 
@@ -251,7 +251,7 @@ Notice that the changes are currently in the staging area.
 Again, we can put things back the way they were
 by using `git checkout`:
 
-```bash
+```sh
 $ git checkout HEAD mean.py
 ```
 
@@ -260,7 +260,7 @@ $ git checkout HEAD mean.py
 
 Above we used
 
-```bash
+```sh
 $ git checkout f22b25e mean.py
 ```
 
@@ -269,7 +269,7 @@ The command `checkout` has other important functionalities and Git will misunder
 your intentions if you are not accurate with the typing. For example, 
 if you forget `mean.py` in the previous command:
 
-```bash
+```sh
 $ git checkout f22b25e
 ```
 
@@ -390,165 +390,149 @@ want to be there.
 
 
 
+:::{.callout-challenge}
+## Reverting a Commit
 
-> ## Reverting a Commit
->
-> Jennifer is collaborating with colleagues on her Python script.  She
-> realizes her last commit to the project's repository contained an error, and 
-> wants to undo it.  Jennifer wants to undo correctly so everyone in the project's
-> repository gets the correct change. The command `git revert [erroneous commit ID]` will create a 
-> new commit that reverses the erroneous commit.  
->    
-> The command `git revert` is
-> different from `git checkout [commit ID]` because `git checkout` returns the
-> files not yet committed within the local repository to a previous state, whereas `git revert`
-> reverses changes committed to the local and project repositories.   
->   
-> Below are the right steps and explanations for Jennifer to use `git revert`,
-> what is the missing command?  
-> 1. `________ # Look at the git history of the project to find the commit ID`
->
-> 2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
->
-> 3. `git revert [commit ID]`
->
-> 4. Type in the new commit message.
->
-> 5. Save and close
-> 
-> 
-> > ## Solution
-> > 
-> > The command `git log` lists project history with commit IDs.  
-> > 
-> > The command `git show HEAD` shows changes made at the latest commit, and lists
-> > the commit ID; however, Jennifer should double-check it is the correct commit, and no one
-> > else has committed changes to the repository.
-> {: .solution}
-{: .challenge}
+Alice is collaborating with colleagues on her Python script.  She
+realizes her last commit to the project's repository contained an error, and 
+wants to undo it.  Alice wants to undo correctly so everyone in the project's
+repository gets the correct change. The command `git revert [erroneous commit ID]` will create a  new commit that reverses the erroneous commit.  
+    
+The command `git revert` is different from `git checkout [commit ID]` because `git checkout` returns the files not yet committed within the local repository to a previous state, whereas `git revert` reverses changes committed to the local and project repositories.   
+   
+Below are the right steps and explanations for Alice to use `git revert`,
+what is the missing command?  
+
+1. `________ # Look at the git history of the project to find the commit ID`
+
+2. Copy the ID (the first few characters of the ID, e.g. 0b1d055).
+
+3. `git revert [commit ID]`
+
+4. Type in the new commit message.
+
+5. Save and close
+
+:::{.callout-solution}
+
+## Solution
+The command `git log` lists project history with commit IDs.  
+ 
+The command `git show HEAD` shows changes made at the latest commit, and lists
+the commit ID; however, Alice should double-check that it is the correct commit,
+and no one else has committed changes to the repository.
+:::
+:::
 
 
 
+:::{.callout-challenge}
+## Understanding Workflow and History
+
+What is the output of the last command in
+
+```sh
+cd means
+echo "This is a script to calculate means" > doc.txt
+git add venus.txt
+echo "It is a work in progress" >> doc.txt
+git commit -m "Started some documentation"
+git checkout HEAD doc.txt
+cat doc.txt
+```
+
+1. ```output
+   It is a work in progress
+   ```
+2. ```output
+   This is a script to calculate means
+   ```
+3. ```output
+   This is a script to calculate means
+   It is a work in progress
+   ```
+4. ```output
+  Error because you have changed doc.txt without committing the changes
+  ```
+
+:::{.callout-solution}
+## Solution
+The answer is 2. 
+ 
+The command `git add doc.txt` places the current version of `doc.txt` into the
+staging area. The changes to the file from the second `echo` command are only
+applied to the working copy, not the version in the staging area.
+ 
+So, when `git commit -m "Started some documentation"` is executed, the version
+of `doc.txt` committed to the repository is the one from the staging area and
+has only one line.
+  
+At this time, the working copy still has the second line (and  `git status` will
+show that the file is modified). However, `git checkout HEAD doc.txt` replaces
+the working copy with the most recently committed version of `doc.txt`.
+  
+So, `cat doc.txt` will output 
+
+```output
+This is a script to calculate means
+```
+:::
+:::
+
+:::{.callout-challenge}
+## Checking Understanding of `git diff`
+
+Consider this command: `git diff HEAD~9 mean.py`. What do you predict this command
+will do if you execute it? What happens when you do execute it? Why?
+Try another command, `git diff [ID] mean.py`, where [ID] is replaced with
+the unique identifier for your most recent commit. What do you think will happen,
+and what does happen?
+:::
 
 
-> ## Understanding Workflow and History
->
-> What is the output of the last command in
->
-> ```
-> $ cd planets
-> $ echo "Venus is beautiful and full of love" > venus.txt
-> $ git add venus.txt
-> $ echo "Venus is too hot to be suitable as a base" >> venus.txt
-> $ git commit -m "Comment on Venus as an unsuitable base"
-> $ git checkout HEAD venus.txt
-> $ cat venus.txt #this will print the contents of venus.txt to the screen
-> ```
-> {: .language-bash}
->
-> 1. ```
->    Venus is too hot to be suitable as a base
->    ```
->    {: .output}
-> 2. ```
->    Venus is beautiful and full of love
->    ```
->    {: .output}
-> 3. ```
->    Venus is beautiful and full of love
->    Venus is too hot to be suitable as a base
->    ```
->    {: .output}
-> 4. ```
->    Error because you have changed venus.txt without committing the changes
->    ```
->    {: .output}
->
-> > ## Solution
-> >
-> > The answer is 2. 
-> > 
-> > The command `git add venus.txt` places the current version of `venus.txt` into the staging area. 
-> > The changes to the file from the second `echo` command are only applied to the working copy, 
-> > not the version in the staging area.
-> > 
-> > So, when `git commit -m "Comment on Venus as an unsuitable base"` is executed, 
-> > the version of `venus.txt` committed to the repository is the one from the staging area and
-> > has only one line.
-> >  
-> >  At this time, the working copy still has the second line (and 
-> >  `git status` will show that the file is modified). However, `git checkout HEAD venus.txt` 
-> >  replaces the working copy with the most recently committed version of `venus.txt`.
-> >  
-> >  So, `cat venus.txt` will output 
-> >  ```
-> >  Venus is beautiful and full of love.
-> > ```
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Checking Understanding of `git diff`
->
-> Consider this command: `git diff HEAD~9 mean.py`. What do you predict this command
-> will do if you execute it? What happens when you do execute it? Why?
->
-> Try another command, `git diff [ID] mean.py`, where [ID] is replaced with
-> the unique identifier for your most recent commit. What do you think will happen,
-> and what does happen?
-{: .challenge}
+:::{.callout-challenge}
+## Getting Rid of Staged Changes
+`git checkout` can be used to restore a previous commit when unstaged changes have
+been made, but will it also work for changes that have been staged but not committed?
+Make a change to `mean.py`, add that change, and use `git checkout` to see if
+you can remove your change.
+:::
 
 
+:::{.callout-challenge}
 
+## Explore and Summarize Histories
 
-> ## Getting Rid of Staged Changes
->
-> `git checkout` can be used to restore a previous commit when unstaged changes have
-> been made, but will it also work for changes that have been staged but not committed?
-> Make a change to `mean.py`, add that change, and use `git checkout` to see if
-> you can remove your change.
-{: .challenge}
+Exploring history is an important part of Git, and often it is a challenge to find
+the right commit ID, especially if the commit is from several months ago.
 
+Imagine the `means` project has more than 50 files.
+You would like to find a commit that modifies some specific text in `mean.py`.
+When you type `git log`, a very long list appeared.
+How can you narrow down the search?
 
+Recall that the `git diff` command allows us to explore one specific file,
+e.g., `git diff mean.py`. We can apply a similar idea here.
 
+```sh
+git log mean.py
+```
+Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
+How can you search through these files?
 
-> ## Explore and Summarize Histories
->
-> Exploring history is an important part of Git, and often it is a challenge to find
-> the right commit ID, especially if the commit is from several months ago.
->
-> Imagine the `planets` project has more than 50 files.
-> You would like to find a commit that modifies some specific text in `mean.py`.
-> When you type `git log`, a very long list appeared.
-> How can you narrow down the search?
->
-> Recall that the `git diff` command allows us to explore one specific file,
-> e.g., `git diff mean.py`. We can apply a similar idea here.
->
-> ```
-> $ git log mean.py
-> ```
-> {: .language-bash}
->
-> Unfortunately some of these commit messages are very ambiguous, e.g., `update files`.
-> How can you search through these files?
->
-> Both `git diff` and `git log` are very useful and they summarize a different part of the history 
-> for you.
-> Is it possible to combine both? Let's try the following:
->
-> ```
-> $ git log --patch mean.py
-> ```
-> {: .language-bash}
->
-> You should get a long list of output, and you should be able to see both commit messages and 
-> the difference between each commit.
->
-> Question: What does the following command do?
->
-> ```
-> $ git log --patch HEAD~9 *.txt
-> ```
-> {: .language-bash}
-{: .challenge}
+Both `git diff` and `git log` are very useful and they summarize a different part of the history for you.
+
+Is it possible to combine both? Let's try the following:
+
+```sh
+git log --patch mean.py
+```
+You should get a long list of output, and you should be able to see both commit messages and 
+the difference between each commit.
+
+Question: What does the following command do?
+
+```sh
+git log --patch HEAD~9 *.txt
+```
+:::
