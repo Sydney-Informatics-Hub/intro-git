@@ -6,7 +6,7 @@
 
 - How often should I create branches?
 - How should I organise my branches?
-- Can I delete branches safely?
+- How can I delete branches safely?
 
 </div>
 
@@ -14,8 +14,8 @@
 
 ### Objectives
 
-- Understand how a convention for naming branches can make your repository
-easier to manage
+- Understand branch-based workflows
+- Understand how to name branches
 - Understand how and when to delete branches without losing history
 
 </div>  
@@ -26,8 +26,9 @@ easier to manage
 ### Key Points
 
 - Creating a branch is a cheap, fast operation
-- Git offers complete flexibility for naming branches
+- Branch-based workflows are a good way for an individual or team to organise their repository
 - You can pick a naming convention which best suits your needs
+- Once a branch is merged, it can be safely deleted
 
 </div>
 
@@ -60,6 +61,9 @@ entire codebase.
 It also gives us a guiding principal for how to branch our code. In general,
 small branches are better - ideally, restricted to one feature or bugfix.
 
+This way of working with git, where a team collaborates with their own set
+of branches, is called a branch-basked workflow.
+
 Large or busy software development teams often use a convention for naming
 branches: [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
 is one popular example, although it's fallen out of fashion in favour of other
@@ -68,7 +72,7 @@ workflows which are suited to modern commercial software deployment practices.
 These are likely to be overkill for the sorts of code you'll be working on,
 but they have some features which are useful at a small scale.
 
-One good convention is two-part naming strategy where the first part indicates
+One convention is a two-part naming strategy where the first part indicates
 what kind of branch this is, and the second part gives more details:
 
 * feature-matrix-division
@@ -84,10 +88,14 @@ merged back to the main branch when they're all ready to go.
 
 As a codebase is worked on over time, it will accumulate branches. It can be
 helpful to remove these, so that you're not having to sort through bugfixes
-from last year when inspecting your repository's branches. A branch, in one sense,
-is nothing more than a set of commits, so once those commits have been merged
-into another branch, it's safe to delete the branch - we won't lose any 
-history by doing so.
+from last year when inspecting your repository's branches.
+
+A branch, in one sense, is nothing more than a set of commits, so once those
+commits have been merged into another branch, it's safe to delete the branch -
+we won't lose any history by doing so.
+
+You might also want to keep certain branches - for example, release branches are
+a way of being able to switch to a particular state of your codebase's history.
 
 Let's add another branch to Alice's repository (remembering that branching
 is a cheap operation):
