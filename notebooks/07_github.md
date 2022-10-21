@@ -26,7 +26,8 @@ services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) o
 and cons of this in a later episode.
 
 Let's start by sharing the changes we've made to our current project with the
-world. To this end we are going to create a *remote* repository that will be linked to our *local* repository.
+world. To this end we are going to create a *remote* repository that will be
+linked to our *local* repository.
 
 ## 1. Create a remote repository
 Log in to [GitHub](https://github.com), then click on the icon in the top right corner to
@@ -58,7 +59,7 @@ $ git init
 {: .language-bash}
 
 If you remember back to the earlier [episode](../04-changes/) where we added and
-committed our earlier work on `mars.txt`, we had a diagram of the local repository
+committed our earlier work on `mean.py`, we had a diagram of the local repository
 which looked like this:
 
 ![The Local Repository with Git Staging Area](../fig/git-staging-area.svg)
@@ -67,7 +68,7 @@ Now that we have two repositories, we need a diagram like this:
 
 ![Freshly-Made GitHub Repository](../fig/git-freshly-made-github-repo.svg)
 
-Note that our local repository still contains our earlier work on `mars.txt`, but the
+Note that our local repository still contains our earlier work on `mean.py`, but the
 remote repository on GitHub appears empty as it doesn't contain any files yet.
 
 ## 2. Connect local to remote repository
