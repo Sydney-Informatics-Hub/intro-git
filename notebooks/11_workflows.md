@@ -1,4 +1,4 @@
-# Branch-based workflows
+# Branches and workflows
 
 <div class="questions">
 

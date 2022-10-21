@@ -35,13 +35,13 @@ website:
           href: notebooks/09_branches.html
         - text: "Merging"
           href: notebooks/10_merging.html
+        - text: "Branches and workflows"
+          href: notebooks/11_workflows.html
+        - text: "Pull requests"
+          href: notebooks/12_pull_requests.html
         - text: "Conflicts"
-          href: notebooks/11_conflicts.html
-        - text: "Branch-based workflows"
-          href: notebooks/12_branch_workflows.html
-        - text: "Fork-based workflows"
-          href: notebooks/13_fork_workflows.html
-        - text: "Open science"
+          href: notebooks/13_conflicts.html
+        - text: "Open research"
           href: notebooks/14_open_research.html
 
 
