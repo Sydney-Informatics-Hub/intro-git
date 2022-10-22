@@ -34,7 +34,7 @@ This will be a very simple Python script which uses Pandas, a popular Python
 library for working with data, to calculate the mean of a set of values in
 a CSV script. If you're new to Python or you don't have it set up on your
 laptop, don't worry - in this workshop we're just using it as a text file
-to illustrate how Git managescode.
+to illustrate how Git manages code.
 
 We'll use `nano` to edit the file; you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
@@ -67,7 +67,7 @@ mean.py
 cat mean.py
 ```
 
-```sh
+```output
 import pandas as pd
 ```
 
@@ -140,8 +140,9 @@ If we just run `git commit` without the `-m` option,
 Git will launch `nano` (or whatever other editor we configured as `core.editor`)
 so that we can write a longer message.
 
-[Good commit messages][commit-messages] start with a brief (<50 characters) statement about the
+[Good commit messages](https://cbea.ms/git-commit/) start with a brief (<50 characters) statement about the
 changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will" <commit message here>.
+
 If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
 
 If we run `git status` now:
@@ -268,7 +269,7 @@ given the other. If we break it down into pieces:
 2.  The second line tells exactly which versions of the file
     Git is comparing;
     `ffd919b` and `51d2079` are unique computer-generated labels for those versions.
-    100644 is the permissions on the file - who is allowed to read, write or run
+    `100644` is the permissions on the file - who is allowed to read, write or run
     it
 3.  The third and fourth lines once again show the name of the file being changed.
 4.  The remaining lines are the most interesting, they show us the actual differences
@@ -337,7 +338,7 @@ things manually, or you might find yourself searching for "git undo commit"
 more than you would like!
 :::
 
-![The Git Staging Area](../fig/git-staging-area.svg)
+![The Git Staging Area](https://swcarpentry.github.io/git-novice/fig/git-staging-area.svg)
 
 Let's watch as our changes to a file move from our editor to the staging area
 and into long-term storage. First, we'll add another line to the file:
@@ -347,7 +348,7 @@ nano mean.py
 cat mean.py
 ```
 
-```sh
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
@@ -495,7 +496,6 @@ graph and to indicate which commits are associated with the
 current `HEAD`, the current branch `main`, or
 [other Git references][git-references]:
 
-[FIXME - maybe move this to the branching lesson where it's more relevant]
 
 
 ```sh
@@ -519,10 +519,10 @@ Two important facts you should know about directories in Git.
    Try it for yourself:
 
    ```sh
-   $ mkdir extras
-   $ git status
-   $ git add extras
-   $ git status
+   mkdir extras
+   git status
+   git add extras
+   git status
    ```
 
    ```sh
@@ -556,7 +556,7 @@ Two important facts you should know about directories in Git.
    Before moving on, we will commit these changes.
 
    ```sh
-   $ git commit -m "Add some empty files"
+   git commit -m "Add some empty files"
    ```
 :::
 
@@ -565,7 +565,7 @@ we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`):
 
-![The Git Commit Workflow](../fig/git-committing.svg)
+![The Git Commit Workflow](https://swcarpentry.github.io/git-novice/fig/git-committing.svg)
 
 
 <div class="challenge">
@@ -581,9 +581,9 @@ Which of the following commit messages would be most appropriate for the last co
 <details>
 <summary>Solution</summary>
 
-Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
-and answer 2 is redundant to using "git diff" to see what changed in this commit;
-but answer 3 is good: short, descriptive, and imperative.
+- Answer 1 is not descriptive enough, and the purpose of the commit is unclear
+- Answer 2 is redundant to using "git diff" to see what changed in this commit
+- Answer 3 is good: short, descriptive, and imperative.
 
 </details>
 </div>
@@ -596,18 +596,18 @@ Which command(s) below would save the changes of `myfile.txt` to my local Git
 repository?
 
 1. ```sh
-   $ git commit -m "my recent changes"
+   git commit -m "my recent changes"
    ```
 2. ```sh
-   $ git init myfile.txt
-   $ git commit -m "my recent changes"
+   git init myfile.txt
+   git commit -m "my recent changes"
    ```
 3. ```sh
-   $ git add myfile.txt
-   $ git commit -m "my recent changes"
+   git add myfile.txt
+   git commit -m "my recent changes"
    ```
 4. ```sh
-   $ git commit -m myfile.txt "my recent changes"
+   git commit -m myfile.txt "my recent changes"
    ```
 
 <details>
@@ -645,18 +645,19 @@ nano mean.py
 cat mean.py
 ```
 
-```sh
+```python
 # Script to calculate the mean
 import pandas as pd
 dataframe = pd.read_csv("input.csv")
 means = dataframe.mean()
 ```
-```
+
+```sh
 nano README.md
 cat README.md
 ```
 
-```sh
+```output
 A script to calculate the mean of values in a CSV
 ```
 
