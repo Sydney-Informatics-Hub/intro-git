@@ -74,7 +74,7 @@
     "href": "notebooks/02_config.html",
     "title": "SIH Introduction to Version Control using Git",
     "section": "",
-    "text": "All materials copyright Sydney Informatics Hub, University of Sydney"
+    "text": "Key Points\n\nUse git config with the --global option to configure a user name, email address, editor, and other preferences once per machine.\n\n\n\n\n\n\nAll materials copyright Sydney Informatics Hub, University of Sydney"
   },
   {
     "objectID": "notebooks/07_github.html",

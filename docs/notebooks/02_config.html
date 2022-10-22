@@ -233,6 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#using-other-text-editors" id="toc-using-other-text-editors" class="nav-link" data-scroll-target="#using-other-text-editors">Using other text editors</a></li>
   <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
   </ul></li>
   </ul>
@@ -258,23 +259,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand the meaning of the <code>--global</code> configuration flag.</li>
 </ul>
 </section>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
-<ul>
-<li>Use <code>git config</code> with the <code>--global</code> option to configure a user name, email address, editor, and other preferences once per machine.</li>
-</ul>
-</section>
 <p>When we use Git on a new computer for the first time, we need to configure a few things. Below are a few examples of configurations we will set as we get started with Git:</p>
 <ul>
-<li>our name and email address,</li>
-<li>what our preferred text editor is,</li>
-<li>and that we want to use these settings globally (i.e.&nbsp;for every project).</li>
+<li>Our name and email address,</li>
+<li>What our preferred text editor is</li>
+<li>That we want to use these settings globally (i.e.&nbsp;for every project, so we don’t need to set it every time we create a new project/repository)</li>
 </ul>
 <p>On a command line, Git commands are written as <code>git verb options</code>, where <code>verb</code> is what we actually want to do and <code>options</code> is additional optional information which may be needed for the <code>verb</code>. So here is how I set up my new laptop:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Mike Lynch"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"m.lynch@sydney.edu.au"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Mike Lynch"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"m.lynch@sydney.edu.au"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Please use your own name and email address instead of mine. This user name and email will be associated with your subsequent Git activity, which means that any changes pushed to <a href="https://github.com/">GitHub</a>, <a href="https://bitbucket.org/">BitBucket</a>, <a href="https://gitlab.com/">GitLab</a> or another Git host server after this lesson will include this information.</p>
-<p>For this lesson, we will be interacting with <a href="https://github.com/">GitHub</a> and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review <a href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address private</a>.</p>
+<p><strong>For this lesson, we will be interacting with <a href="https://github.com/">GitHub</a> and so the email address used should be the same as the one used when setting up your GitHub account.</strong> If you are concerned about privacy, please review <a href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address private</a>.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -301,87 +296,11 @@ Line Endings
 <p>As with other keys, when you hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd> on your keyboard, your computer encodes this input as a character. Different operating systems use different character(s) to represent the end of a line. (You may also hear these referred to as newlines or line breaks.) Because Git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines. Though it is beyond the scope of this lesson, you can read more about this issue <a href="https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_core_autocrlf">in the Pro Git book</a>.</p>
 <p>You can change the way Git recognizes and encodes line endings using the <code>core.autocrlf</code> command to <code>git config</code>. The following settings are recommended:</p>
 <p>On macOS and Linux:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf input</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And on Windows:</p>
-<pre class="sh`"><code>$ git config --global core.autocrlf false</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Get rid of this - or put it in an expandable callout</p>
-<table class="table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Editor</th>
-<th style="text-align: left;">Configuration command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Atom</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "atom --wait"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">nano</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "nano -w"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">BBEdit (Mac, with command line tools)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "bbedit -w"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sublime Text (Mac)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sublime Text (Win, 32-bit install)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Sublime Text (Win, 64-bit install)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Notepad (Win)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "c:/Windows/System32/notepad.exe"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Notepad++ (Win, 32-bit install)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Notepad++ (Win, 64-bit install)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Kate (Linux)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "kate"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Gedit (Linux)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "gedit --wait --new-window"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Scratch (Linux)</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "scratch-text-editor"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Emacs</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "emacs"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Vim</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "vim"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">VS Code</td>
-<td style="text-align: left;"><code>$ git config --global core.editor "code --wait"</code></td>
-</tr>
-</tbody>
-</table>
-<p>It is possible to reconfigure the text editor for Git whenever you want to change it.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -395,8 +314,76 @@ Exiting Vim
 <p>Note that Vim is the default editor for many programs. If you haven’t used Vim before and wish to exit a session without saving your changes, press <kbd>Esc</kbd> then type <code>:q!</code> and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>. If you want to save your changes and quit, press <kbd>Esc</kbd> then type <code>:wq</code> and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.</p>
 </div>
 </div>
+<section id="using-other-text-editors" class="level3">
+<h3 class="anchored" data-anchor-id="using-other-text-editors">Using other text editors</h3>
+<p>If you’d like to use another plain text editor, you can also configure git to use it. Below we provide (and hide) the configuration options for a number of possible options:</p>
+<details>
+<summary>
+Details
+</summary>
+<section id="atom" class="level4">
+<h4 class="anchored" data-anchor-id="atom">Atom</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"atom --wait"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nano" class="level4">
+<h4 class="anchored" data-anchor-id="nano">nano</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"nano -w"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bbedit-mac-with-command-line-tools" class="level4">
+<h4 class="anchored" data-anchor-id="bbedit-mac-with-command-line-tools">BBEdit (Mac, with command line tools)</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"bbedit -w"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sublime-text-mac" class="level4">
+<h4 class="anchored" data-anchor-id="sublime-text-mac">Sublime Text (Mac)</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sublime-text-win-32-bit-install" class="level4">
+<h4 class="anchored" data-anchor-id="sublime-text-win-32-bit-install">Sublime Text (Win, 32-bit install)</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sublime-text-win-64-bit-install" class="level4">
+<h4 class="anchored" data-anchor-id="sublime-text-win-64-bit-install">Sublime Text (Win, 64-bit install)</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"'c:/program files/sublime text 3/sublime_text.exe' -w"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="notepad-win" class="level4">
+<h4 class="anchored" data-anchor-id="notepad-win">Notepad (Win)</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"c:/Windows/System32/notepad.exe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="notepad-win-32-bit-install" class="level4">
+<h4 class="anchored" data-anchor-id="notepad-win-32-bit-install">Notepad++ (Win, 32-bit install)</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="notepad-win-64-bit-install" class="level4">
+<h4 class="anchored" data-anchor-id="notepad-win-64-bit-install">Notepad++ (Win, 64-bit install)</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="kate-linux" class="level4">
+<h4 class="anchored" data-anchor-id="kate-linux">Kate (Linux)</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"kate"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gedit-linux" class="level4">
+<h4 class="anchored" data-anchor-id="gedit-linux">Gedit (Linux)</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"gedit --wait --new-window"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="scratch-linux" class="level4">
+<h4 class="anchored" data-anchor-id="scratch-linux">Scratch (Linux)</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"scratch-text-editor"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="emacs" class="level4">
+<h4 class="anchored" data-anchor-id="emacs">Emacs</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"emacs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vim" class="level4">
+<h4 class="anchored" data-anchor-id="vim">Vim</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"vim"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vs-code" class="level4">
+<h4 class="anchored" data-anchor-id="vs-code">VS Code</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"code --wait"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It is possible to reconfigure the text editor for Git whenever you want to change it.</p>
+</section></details>
 <p>Git (2.28+) allows configuration of the name of the branch created when you initialize any new repository. We’ll set it to <code>main</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> init.defaultBranch main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -415,7 +402,7 @@ By default, Git will create a branch called <code>master</code> when you create 
 </div>
 <p>The five commands we just ran above only need to be run once: the flag <code>--global</code> tells Git to use the settings for every project, in your user account, on this computer.</p>
 <p>You can check your settings at any time:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can change your configuration as many times as you want: use the same commands to choose another editor or update your email address.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -428,11 +415,11 @@ Proxy
 </div>
 <div class="callout-body-container callout-body">
 <p>In some networks you need to use a <a href="https://en.wikipedia.org/wiki/Proxy_server">proxy</a>. If this is the case, you may also need to tell Git about the proxy:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> http.proxy proxy-url</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> https.proxy proxy-url</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To disable the proxy, use</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -446,16 +433,24 @@ Git Help and Manual
 </div>
 <div class="callout-body-container callout-body">
 <p>Always remember that if you forget the subcommands or options of a <code>git</code> command, you can access the relevant list of options typing <code>git &lt;command&gt; -h</code> or access the corresponding Git manual by typing <code>git &lt;command&gt; --help</code>, e.g.:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">-h</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>While viewing the manual, remember the <code>:</code> is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.</p>
 <p>More generally, you can get the list of available <code>git</code> commands and further resources of the Git manual typing:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Use <code>git config</code> with the <code>--global</code> option to configure a user name, email address, editor, and other preferences once per machine.</li>
+</ul>
+</section>
+
+
+
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

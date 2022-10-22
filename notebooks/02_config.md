@@ -18,28 +18,20 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- Use `git config` with the `--global` option to configure a user name, email address, editor, and other preferences once per machine.
-
-</div>  
-
 When we use Git on a new computer for the first time,
 we need to configure a few things. Below are a few examples
 of configurations we will set as we get started with Git:
 
-*   our name and email address,
-*   what our preferred text editor is,
-*   and that we want to use these settings globally (i.e. for every project).
+*   Our name and email address,
+*   What our preferred text editor is
+*   That we want to use these settings globally (i.e. for every project, so we don't need to set it every time we create a new project/repository)
 
 On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how I set up my new laptop:
 
 ```sh
-$ git config --global user.name "Mike Lynch"
-$ git config --global user.email "m.lynch@sydney.edu.au"
+git config --global user.name "Mike Lynch"
+git config --global user.email "m.lynch@sydney.edu.au"
 ```
 Please use your own name and email address instead of mine. This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to [GitHub](https://github.com/),
@@ -48,8 +40,7 @@ which means that any changes pushed to [GitHub](https://github.com/),
 another Git host server
 after this lesson will include this information.
 
-For this lesson, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/
-). 
+**For this lesson, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account.** If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/). 
 
 :::{.callout-tip}
 ## Keeping your email private
@@ -76,36 +67,16 @@ The following settings are recommended:
 On macOS and Linux:
 
 ```sh
-$ git config --global core.autocrlf input
+git config --global core.autocrlf input
 ```
 And on Windows:
 
-```sh`
-$ git config --global core.autocrlf false
+```sh
+git config --global core.autocrlf false
 ```
 :::
 
-Get rid of this - or put it in an expandable callout
 
-| Editor             | Configuration command                            |
-|:-------------------|:-------------------------------------------------|
-| Atom | `$ git config --global core.editor "atom --wait"`|
-| nano               | `$ git config --global core.editor "nano -w"`    |
-| BBEdit (Mac, with command line tools) | `$ git config --global core.editor "bbedit -w"`    |
-| Sublime Text (Mac) | `$ git config --global core.editor "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"` |
-| Sublime Text (Win, 32-bit install) | `$ git config --global core.editor "'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"` |
-| Sublime Text (Win, 64-bit install) | `$ git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"` |
-| Notepad (Win)    | `$ git config --global core.editor "c:/Windows/System32/notepad.exe"`|
-| Notepad++ (Win, 32-bit install)    | `$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`|
-| Notepad++ (Win, 64-bit install)    | `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`|
-| Kate (Linux)       | `$ git config --global core.editor "kate"`       |
-| Gedit (Linux)      | `$ git config --global core.editor "gedit --wait --new-window"`   |
-| Scratch (Linux)       | `$ git config --global core.editor "scratch-text-editor"`  |
-| Emacs              | `$ git config --global core.editor "emacs"`   |
-| Vim                | `$ git config --global core.editor "vim"`   |
-| VS Code                | `$ git config --global core.editor "code --wait"`   |
-
-It is possible to reconfigure the text editor for Git whenever you want to change it.
 
 :::{.callout-tip}
 ## Exiting Vim
@@ -115,15 +86,121 @@ your changes, press <kbd>Esc</kbd> then type `:q!` and hit <kbd>Enter</kbd> or <
 If you want to save your changes and quit, press <kbd>Esc</kbd> then type `:wq` and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.
 :::
 
+### Using other text editors
+
+If you'd like to use another plain text editor, you can also configure git to use it. Below we provide (and hide) the configuration options for a number of possible options:
+
+<details>
+
+<summary>Details</summary>
+
+#### Atom
+
+```sh
+git config --global core.editor "atom --wait"
+```
+
+#### nano
+
+```sh
+git config --global core.editor "nano -w"
+```
+
+#### BBEdit (Mac, with command line tools)
+
+```sh
+git config --global core.editor "bbedit -w"
+```
+
+#### Sublime Text (Mac)
+
+```sh
+git config --global core.editor "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"
+```
+
+#### Sublime Text (Win, 32-bit install)
+
+```sh
+git config --global core.editor "'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"
+```
+
+#### Sublime Text (Win, 64-bit install)
+
+```sh
+git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"
+```
+
+#### Notepad (Win)
+
+```sh
+git config --global core.editor "c:/Windows/System32/notepad.exe"
+```
+
+#### Notepad++ (Win, 32-bit install)
+
+```sh
+git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+```
+
+#### Notepad++ (Win, 64-bit install)
+
+```sh
+git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+```
+
+#### Kate (Linux)
+
+```sh
+git config --global core.editor "kate"
+```
+
+#### Gedit (Linux)
+
+```sh
+git config --global core.editor "gedit --wait --new-window"
+```
+
+#### Scratch (Linux)
+
+```sh
+git config --global core.editor "scratch-text-editor"
+```
+
+#### Emacs
+
+```sh
+git config --global core.editor "emacs"
+```
+
+#### Vim
+
+```sh
+git config --global core.editor "vim"
+```
+
+#### VS Code
+
+```sh
+git config --global core.editor "code --wait"
+```
+
+
+It is possible to reconfigure the text editor for Git whenever you want to change it.
+
+</details>
+
+## Default branch naming
+
 Git (2.28+) allows configuration of the name of the branch created when you
 initialize any new repository.  We'll set it to `main`:
 
 ```sh
-$ git config --global init.defaultBranch main
+git config --global init.defaultBranch main
 ```
 
+
 :::{.callout-note}
-## Default Git branch naming
+## Some history of default Git branch naming
 
 Source file changes are associated with a "branch." 
 For new learners in this lesson, it's enough to know that branches exist, and this lesson uses one branch.  
@@ -149,7 +226,7 @@ to use the settings for every project, in your user account, on this computer.
 You can check your settings at any time:
 
 ```sh
-$ git config --list
+git config --list
 ```
 
 You can change your configuration as many times as you want: use the
@@ -163,15 +240,15 @@ In some networks you need to use a
 may also need to tell Git about the proxy:
 
 ```sh
-$ git config --global http.proxy proxy-url
-$ git config --global https.proxy proxy-url
+git config --global http.proxy proxy-url
+git config --global https.proxy proxy-url
 ```
 
 To disable the proxy, use
 
 ```sh
-$ git config --global --unset http.proxy
-$ git config --global --unset https.proxy
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 :::
 
@@ -183,15 +260,22 @@ relevant list of options typing `git <command> -h` or access the corresponding G
 `git <command> --help`, e.g.:
 
 ```sh
-$ git config -h
-$ git config --help
+git config -h
+git config --help
 ```
 While viewing the manual, remember the `:` is a prompt waiting for commands and you can press <kbd>Q</kbd> to exit the manual.
 
 More generally, you can get the list of available `git` commands and further resources of the Git manual typing:
 
 ```sh
-$ git help
+git help
 ```
 :::
 
+<div class="keypoints">
+
+### Key Points
+
+- Use `git config` with the `--global` option to configure a user name, email address, editor, and other preferences once per machine.
+
+</div>  
