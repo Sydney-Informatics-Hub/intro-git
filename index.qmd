@@ -9,15 +9,17 @@ output:
 
 This course is aimed at researchers, students, and industry professionals who want to learn about version controlling their code (or text files). 
 
-This course is adapted from [Version Control with Git](https://swcarpentry.github.io/git-novice) by staff from the Sydney Informatics Hub (Darya Vanichkina, ...). 
+This course is adapted from [Version Control with Git](https://swcarpentry.github.io/git-novice) by staff from the Sydney Informatics Hub (Michael Lynch, with help from Darya Vanichkina). 
 
 
 ## Trainers
 
-* Darya Vanichkina (PhD Bioinformatics, SFHEA)
+* Michael Lynch (Research Software Engineering Group Lead)
 * Kristian Maras (MSc Quant Fin)
 * Nathaniel (Nate) Butterworth (PhD Computational Geophysics)
-* Michael Lynch (Research Software Engineering Group Lead)
+* Tim White (PhD Astrophysics)
+* Darya Vanichkina (PhD Bioinformatics, SFHEA)
+
 
 ## Course pre-requisites and setup requirements
 

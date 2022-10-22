@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -200,9 +263,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="create-a-github-account">Create a Github account</h2>
 <p>Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on <a href="https://github.com/">github.com</a>.</p>
 <ol type="1">
-<li>You will need a <a href="https://help.github.com/articles/supported-browsers/">supported web browser</a>.<br>
-</li>
-<li>Prior to the session, we recommend you use your “official” university email to create an account on <a href="github.com">github.com</a>. You can skip this step if you already have a <a href="github.com">github.com</a> and you know the username/password you used to log in to it. GitHub accounts are free, and - with your University affiliation - you may be able to get a “Pro” GitHub account for free (you need to email the GitHub Education team for this). Note that a free account will suffice for all of what we are doing in the training session, so you don’t need to do this before class. Please consider what personal information you’d like to reveal. For example, you may want to review these <a href="https://help.github.com/articles/keeping-your-email-address-private/">instructions for keeping your email address private</a> provided at GitHub.</li>
+<li><p>You will need a <a href="https://help.github.com/articles/supported-browsers/">supported web browser</a>.<br>
+</p></li>
+<li><p>Prior to the session, we recommend you use your “official” university email to create an account on <a href="github.com">github.com</a>. You can skip this step if you already have a <a href="github.com">github.com</a> and you know the username/password you used to log in to it.</p>
+<ul>
+<li>GitHub accounts are free, and - with your University affiliation - you may be able to get a “Pro” GitHub account for free (you need to email the GitHub Education team for this).</li>
+<li>Note that a free account will suffice for all of what we are doing in the training session, so you don’t need to do this before class.</li>
+<li>Please consider what personal information you’d like to reveal. For example, you may want to review these <a href="https://help.github.com/articles/keeping-your-email-address-private/">instructions for keeping your email address private</a> provided at GitHub.</li>
+</ul></li>
 </ol>
 </section>
 <section id="install-git" class="level2">
@@ -243,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="macos">MacOS</h3>
 <p>The easiest way to install git on a Mac is by installing Xcode Command Line Tools (note: you do not need all of Xcode!, which takes a lot more space on your hard drive).</p>
 <p>To do this, open your <code>Terminal</code> application and type:</p>
-<pre><code>git --version</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you don’t have git installed already, a popup will appear:</p>
 <p><img src="fig/setup/image-20220906145421352.png" class="img-fluid"></p>
 <p>Press on the blue “Install” button and, after entering your password, git should be installed.</p>
@@ -255,49 +323,51 @@ ul.task-list li input[type="checkbox"] {
 <section id="debianubuntu" class="level5">
 <h5 class="anchored" data-anchor-id="debianubuntu">Debian/Ubuntu</h5>
 <p>For the latest stable version for your release of Debian/Ubuntu</p>
-<pre><code># apt-get install git</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For Ubuntu, this PPA provides the latest stable upstream Git version</p>
-<pre><code># add-apt-repository ppa:git-core/ppa``# apt update; apt install git</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">add-apt-repository</span> ppa:git-core/ppa</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update<span class="kw">;</span> <span class="ex">apt</span> install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="fedora" class="level5">
 <h5 class="anchored" data-anchor-id="fedora">Fedora</h5>
-<p><code># yum install git</code> (up to Fedora 21) <code># dnf install git</code> (Fedora 22 and later)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">yum</span> install git <span class="co"># up to Fedora 21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> install git <span class="co"># Fedora 22 and later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="gentoo" class="level5">
 <h5 class="anchored" data-anchor-id="gentoo">Gentoo</h5>
-<pre><code># emerge --ask --verbose dev-vcs/git</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">emerge</span> <span class="at">--ask</span> <span class="at">--verbose</span> dev-vcs/git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arch-linux" class="level5">
 <h5 class="anchored" data-anchor-id="arch-linux">Arch Linux</h5>
-<pre><code># pacman -S git</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pacman</span> <span class="at">-S</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="opensuse" class="level5">
 <h5 class="anchored" data-anchor-id="opensuse">openSUSE</h5>
-<pre><code># zypper install git</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="mageia" class="level5">
 <h5 class="anchored" data-anchor-id="mageia">Mageia</h5>
-<pre><code># urpmi git</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">urpmi</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="nixnixos" class="level5">
 <h5 class="anchored" data-anchor-id="nixnixos">Nix/NixOS</h5>
-<pre><code># nix-env -i git</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nix-env</span> <span class="at">-i</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="freebsd" class="level5">
 <h5 class="anchored" data-anchor-id="freebsd">FreeBSD</h5>
-<pre><code># pkg install git</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="solaris-91011" class="level5">
 <h5 class="anchored" data-anchor-id="solaris-91011">Solaris 9/10/11</h5>
-<pre><code># pkgutil -i git</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkgutil</span> <span class="at">-i</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="solaris-11-express" class="level5">
 <h5 class="anchored" data-anchor-id="solaris-11-express">Solaris 11 Express</h5>
-<pre><code># pkg install developer/versioning/git</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg</span> install developer/versioning/git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="openbsd" class="level5">
 <h5 class="anchored" data-anchor-id="openbsd">OpenBSD</h5>
-<pre><code># pkg_add git</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pkg_add</span> git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
 </section>
@@ -306,7 +376,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="optional-install-gitkraken">(Optional) Install GitKraken</h2>
 <ul>
 <li><p>We will show but not necessarily walk through <a href="https://www.gitkraken.com/">GitKraken</a>, an excellent (but paid for!) Git GUI tool. When working on large, multi-branch open-source and internal projects, this type of a tool can be very useful to navigate the mess that a too-many branch workflow can create.</p></li>
-<li><p><a href="">Git</a> is a free alternative developed by GitHub which you may want to use as a free GUI instead.</p></li>
+<li><p><a href="https://desktop.github.com/">GitHub Desktop</a> is a free alternative developed by GitHub which you may want to use as a free GUI instead.</p></li>
 </ul>
 
 
