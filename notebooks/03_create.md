@@ -82,7 +82,7 @@ See the [setup episode](../setup.html) for more information on this change.
 git checkout -b main
 ```
 
-```output
+```abc
 Switched to a new branch 'main'
 ```
 
@@ -94,7 +94,7 @@ by asking Git to tell us the status of our project:
 git status
 ```
 
-```output
+```abc
 On branch main
 
 No commits yet
@@ -149,7 +149,7 @@ above:
 git status
 ```
 
-```output
+```abc
 fatal: Not a git repository (or any of the parent directories): .git
 ```
 

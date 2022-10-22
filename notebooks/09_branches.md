@@ -67,7 +67,7 @@ we're free to break things.
 $ git checkout -b development
 ```
 
-```output
+```abc
 Switched to a new branch 'development'
 ```
 
@@ -87,7 +87,7 @@ an asterisk.
 $ git branch
 ```
 
-```output
+```abc
 * develop
   main
 ```
@@ -119,7 +119,7 @@ We can check that the content of `mean.py` is as we left it:
 $ cat mean.py
 ```
 
-```output
+```abc
 FIXME
 ```
 
@@ -140,7 +140,7 @@ changed on the `development` branch:
 $ git diff main
 ```
 
-```output
+```abc
 FIXME
 ```
 This output shows what changes would need to be made to the `main` branch to 

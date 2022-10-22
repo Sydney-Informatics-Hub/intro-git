@@ -46,7 +46,7 @@ branch which we want to change - in this case we're bringing changes from
 $ git checkout main
 ```
 
-```output
+```abc
 Switched to branch 'main'.
 ```
 
@@ -57,7 +57,7 @@ To bring changes from the `development` branch to `main`, Alice uses the
 $ git merge development
 ```
 
-```output
+```abc
 Updating deadbea..934893
 Fast-forward
  mean.py | 1+
@@ -149,7 +149,7 @@ We can compare the two files across branches using `git diff`
 git diff development
 ```
 
-```output
+```abc
 FIXME
 ```
 Once again, because this is a diff from `development` to `main`, the changes
@@ -162,7 +162,7 @@ We can now ask Git to merge the changes from `development` into our main branch
 git merge development
 ```
 
-```output
+```abc
 Merge branch 'development'
 # Please enter a commit message to explain why this merge is necessary,
 # especially if it merges an updated upstream into a topic branch.
@@ -184,7 +184,7 @@ for a merge commit.
 You have the option here to add a more complicated message explaining why you're
 merging, but for now we'll just accept git's default message and save:
 
-```output
+```abc
 Auto-merging mean.py
 Merge made by the 'ort' strategy.
  mean.py | 2 ++

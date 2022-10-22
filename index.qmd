@@ -9,7 +9,7 @@ output:
 
 This course is aimed at researchers, students, and industry professionals who want to learn about version controlling their code (or text files). 
 
-This course is adapted from [Version Control with Git](https://swcarpentry.github.io/git-novice) by staff from the Sydney Informatics Hub (Michael Lynch, with help from Darya Vanichkina). 
+This course is adapted from [Version Control with Git](https://swcarpentry.github.io/git-novice) by staff from the Sydney Informatics Hub (Michael Lynch and Darya Vanichkina). 
 
 
 ## Trainers

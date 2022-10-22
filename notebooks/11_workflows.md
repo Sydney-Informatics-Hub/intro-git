@@ -104,7 +104,7 @@ is a cheap operation):
 git checkout -b just-testing
 ```
 
-```output
+```abc
 Switched to branch 'just-testing'
 ```
 
@@ -120,7 +120,7 @@ git add mean.py
 git commit -m "Just testing"
 ```
 
-```output
+```abc
 [just-testing 56edc59] Just testing
  1 file changed, 2 insertions(+)
 ```
@@ -132,7 +132,7 @@ repo:
 git branch
 ```
 
-```output
+```abc
   development
 * just-testing
   main
@@ -144,7 +144,7 @@ Let's change back to the `main` branch:
 git checkout main
 ```
 
-```output
+```abc
 Switched to branch 'main'
 ```
 
@@ -155,7 +155,7 @@ have been merged, using the `--merged` flag.
 git branch --merged
 ```
 
-```output
+```abc
   development
 * main
 ```
@@ -171,7 +171,7 @@ branch to be deleted
 git branch -d development
 ```
 
-```output
+```abc
 Deleted branch development (was 2c3e2c0).
 ```
 
@@ -183,7 +183,7 @@ hasn't been merged into another branch:
 git branch -d just-testing
 ```
 
-```output
+```abc
 error: the branch 'just-testing' is not fully merged.
 If you are sure you want to delete it, run 'git branch -D just-testing'
 ```

@@ -67,7 +67,7 @@ mean.py
 cat mean.py
 ```
 
-```output
+```abc
 import pandas as pd
 ```
 
@@ -657,7 +657,7 @@ nano README.md
 cat README.md
 ```
 
-```output
+```abc
 A script to calculate the mean of values in a CSV
 ```
 
