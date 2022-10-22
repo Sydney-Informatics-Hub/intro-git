@@ -234,7 +234,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#using-other-text-editors" id="toc-using-other-text-editors" class="nav-link" data-scroll-target="#using-other-text-editors">Using other text editors</a></li>
+  <li><a href="#default-branch-naming" id="toc-default-branch-naming" class="nav-link" data-scroll-target="#default-branch-naming">Default branch naming</a>
+  <ul class="collapse">
   <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -382,6 +385,10 @@ Details
 <div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.editor <span class="st">"code --wait"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>It is possible to reconfigure the text editor for Git whenever you want to change it.</p>
 </section></details>
+</section>
+</section>
+<section id="default-branch-naming" class="level2">
+<h2 class="anchored" data-anchor-id="default-branch-naming">Default branch naming</h2>
 <p>Git (2.28+) allows configuration of the name of the branch created when you initialize any new repository. We’ll set it to <code>main</code>:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> init.defaultBranch main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -390,7 +397,7 @@ Details
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Default Git branch naming
+Some history of default Git branch naming
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -440,8 +447,6 @@ Git Help and Manual
 <div class="sourceCode" id="cb24"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</section>
-</section>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
 <ul>
@@ -450,6 +455,7 @@ Git Help and Manual
 </section>
 
 
+</section>
 
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
