@@ -225,7 +225,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#questions" id="toc-questions" class="nav-link active" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key points</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -246,60 +254,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<section id="questions" class="level3 questions">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ul>
+<li>How can I tell Git to ignore files I don’t want to track?</li>
+</ul>
+</section>
+<section id="objectives" class="level3 objectives">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Configure Git to ignore specific files.</li>
+<li>Explain why ignoring files can be useful.</li>
+</ul>
+</section>
 <p>What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis? Let’s create a few dummy files:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> results</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> a.dat b.dat c.dat results/a.out results/b.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and see what Git says:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>On branch main
-Untracked files:
-  (use "git add &lt;file&gt;..." to include in what will be committed)
-
-    a.dat
-    b.dat
-    c.dat
-    results/
-
-nothing added to commit but untracked files present (use "git add" to track)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Untracked files<span class="ch">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">(</span>use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="dt">)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    a.dat</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    b.dat</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    c.dat</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    results/</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>nothing added to commit but untracked files present <span class="dt">(</span>use <span class="st">"git add"</span> to track<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Putting these files under version control would be a waste of disk space. What’s worse, having them all listed could distract us from changes that actually matter, so let’s tell Git to ignore them.</p>
 <p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .gitignore</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>*.dat
-results/</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>*.dat</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>results/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>These patterns tell Git to ignore any file whose name ends in <code>.dat</code> and everything in the <code>results</code> directory.(If any of these files were already being tracked, Git would continue to track them.)</p>
 <p>Once we have created this file, the output of <code>git status</code> is much cleaner:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>On branch main
-Untracked files:
-  (use "git add &lt;file&gt;..." to include in what will be committed)
-
-    .gitignore
-
-nothing added to commit but untracked files present (use "git add" to track)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Untracked files<span class="ch">:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">(</span>use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="dt">)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    .gitignore</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>nothing added to commit but untracked files present <span class="dt">(</span>use <span class="st">"git add"</span> to track<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The only thing Git notices now is the newly-created <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .gitignore</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ignore data files and the results folder."</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>On branch main
-nothing to commit, working directory clean</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nothing to commit, working directory clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As a bonus, using <code>.gitignore</code> helps us avoid accidentally adding files to the repository that we don’t want to track:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add a.dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>The following paths are ignored by one of your .gitignore files:
-a.dat
-Use -f if you really want to add them.</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>The following paths are ignored by one of your .gitignore files<span class="ch">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>a.dat</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Use -f if you really want to add them.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we really want to override our ignore settings, we can use <code>git add -f</code> to force Git to add something. For example, <code>git add -f a.dat</code>. We can also always see the status of ignored files if we want:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status <span class="at">--ignored</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>On branch main
-Ignored files:
- (use "git add -f &lt;file&gt;..." to include in what will be committed)
-
-        a.dat
-        b.dat
-        c.dat
-        results/
-
-nothing to commit, working directory clean</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Ignored files<span class="ch">:</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="dt">(</span>use <span class="st">"git add -f &lt;file&gt;..."</span> to include in what will be committed<span class="dt">)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        a.dat</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        b.dat</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        c.dat</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        results/</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>nothing to commit, working directory clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout-challenge callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -325,7 +346,7 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p>If you only want to ignore the contents of <code>results/plots</code>, you can change your <code>.gitignore</code> to ignore only the <code>/plots/</code> subfolder by adding the following line to your .gitignore:</p>
-<pre class="output"><code>results/plots/</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>results/plots/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This line will ensure only the contents of <code>results/plots</code> is ignored, and not the contents of <code>results/data</code>.</p>
 <p>As with most programming issues, there are a few alternative ways that one may ensure this ignore rule is followed. The “Ignoring Nested Files: Variation” exercise has a slightly different directory structure that presents an alternative solution. Further, the discussion page has more detail on ignore rules.</p>
 </div>
@@ -354,8 +375,8 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p>You would add the following two lines to your .gitignore:</p>
-<pre class="output"><code>*.dat           # ignore all data files
-!final.dat      # except final.data</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>*.dat           # ignore all data files</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>!final.dat      # except final.data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The exclamation point operator will include a previously excluded entry.</p>
 <p>Note also that because you’ve previously committed <code>.dat</code> files in this lesson they will not be ignored with this new rule. Only future additions of <code>.dat</code> files added to the root directory will be ignored.</p>
 </div>
@@ -373,10 +394,10 @@ Ignoring Nested Files: Variation
 </div>
 <div class="callout-body-container callout-body">
 <p>Given a directory structure that looks similar to the earlier Nested Files exercise, but with a slightly different directory structure:</p>
-<pre class="output"><code>results/data
-results/images
-results/plots
-results/analysis</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>results/data</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>results/images</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>results/plots</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>results/analysis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>How would you ignore all of the contents in the results folder, but not <code>results/data</code>? Hint: think a bit about how you created an exception with the <code>!</code> operator before.</p>
 <div class="callout-solution callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -389,8 +410,8 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p>If you want to ignore the contents of <code>results/</code> but not those of <code>results/data/</code>, you can change your <code>.gitignore</code> to ignore the contents of results folder, but create an exception for the contents of the <code>results/data</code> subfolder. Your .gitignore would look like this:</p>
-<pre class="output"><code>results/*               # ignore everything in results folder
-!results/data/          # do not ignore results/data/ contents</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>results/*               # ignore everything in results folder</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>!results/data/          # do not ignore results/data/ contents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -406,11 +427,11 @@ Ignoring all data Files in a Directory
 </div>
 <div class="callout-body-container callout-body">
 <p>Assuming you have an empty .gitignore file, and given a directory structure that looks like:</p>
-<pre class="output"><code>results/data/position/gps/a.dat
-results/data/position/gps/b.dat
-results/data/position/gps/c.dat
-results/data/position/gps/info.txt
-results/plots</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>results/data/position/gps/a.dat</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>results/data/position/gps/b.dat</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>results/data/position/gps/c.dat</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>results/data/position/gps/info.txt</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>results/plots</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>What’s the shortest <code>.gitignore</code> rule you could write to ignore all <code>.dat</code> files in <code>result/data/position/gps</code>? Do not ignore the <code>info.txt</code>.</p>
 <div class="callout-solution callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -438,10 +459,10 @@ Ignoring all data Files in the repository
 </div>
 <div class="callout-body-container callout-body">
 <p>Let us assume you have many <code>.dat</code> files in different subdirectories of your repository. For example, you might have:</p>
-<pre class="output"><code>results/a.dat
-data/experiment_1/b.dat
-data/experiment_2/c.dat
-data/experiment_2/variation_1/d.dat</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>results/a.dat</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>data/experiment_1/b.dat</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>data/experiment_2/c.dat</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>data/experiment_2/variation_1/d.dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>How do you ignore all the <code>.dat</code> files, without explicitly listing the names of the corresponding folders?</p>
 <div class="callout-solution callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -454,7 +475,7 @@ Solution
 </div>
 <div class="callout-body-container callout-body">
 <p>In the <code>.gitignore</code> file, write:</p>
-<pre class="output"><code>**/*.dat               </code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>**/*.dat               </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will ignore all the <code>.dat</code> files, regardless of their position in the directory tree. You can still include some specific exception with the exclamation point operator.</p>
 </div>
 </div>
@@ -471,8 +492,8 @@ The Order of Rules
 </div>
 <div class="callout-body-container callout-body">
 <p>Given a <code>.gitignore</code> file with the following contents:</p>
-<pre class="output"><code>*.dat
-!*.dat</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>*.dat</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>!*.dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>What will be the result?</p>
 <div class="callout-solution callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -524,6 +545,12 @@ Solution
 </div>
 </div>
 </div>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key points</h3>
+<ul>
+<li>The <code>.gitignore</code> file tells Git what files to ignore.</li>
+</ul>
+</section>
 
 
 

@@ -169,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
         <li>
     <a class="dropdown-item" href="../notebooks/05_history.html">
- <span class="dropdown-text">Seeing history</span></a>
+ <span class="dropdown-text">Exploring history</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../notebooks/06_ignore.html">
@@ -277,13 +277,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this section of the workshop, we’ll just create local branches [FIXME]</p>
 <p>We’ve already been using a <code>main</code> branch. Let’s create a new branch where we’re free to break things.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> development</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>Switched to a new branch 'development'</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Switched to a new branch 'development'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Notice that the command to create a new branch is the same as the command we’ve been using to checkout different points on our repository’s commit history - what makes it create a new branch is the <code>-b</code> flag, followed by our new branch name</p>
 <p>Our new branch is a copy of the last state of the branch we were on when we created it - in this case, <code>main</code>.</p>
 <p>We can see all the branches in our local repo if we use the <code>git branch</code> command: this also indicates which branch we currently have checked out using an asterisk.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>* develop
-  main</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>* develop</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Alice wants to reorganise her script, so she makes a change:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And commits the changes</p>
@@ -293,13 +293,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can check that the content of <code>mean.py</code> is as we left it:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>FIXME</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>FIXME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After calculating some means for Bob, Alice returns to her development branch, and fixes her refactored script.</p>
 <pre><code>$ git checkout development
 $ nano mean.py</code></pre>
 <p>We’ve already seen how <code>git diff</code> can be used to show the differences between commits on a single branch. Alice can use it to double-check what she’s changed on the <code>development</code> branch:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre class="output"><code>FIXME</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>FIXME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This output shows what changes would need to be made to the <code>main</code> branch to make them the same as Alice’s <code>development</code> branch. So lines which Alice has added in <code>development</code> would have to be inserted, and are marked with a <code>+</code> sign.</p>
 
 
