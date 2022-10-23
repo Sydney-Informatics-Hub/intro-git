@@ -1,15 +1,21 @@
 ---
 title: Ignoring Things
-teaching: 5
-exercises: 0
-questions:
-- "How can I tell Git to ignore files I don't want to track?"
-objectives:
-- "Configure Git to ignore specific files."
-- "Explain why ignoring files can be useful."
-keypoints:
-- "The `.gitignore` file tells Git what files to ignore."
 ---
+
+<div class="questions">  
+
+### Questions
+
+- How can I tell Git to ignore files I don't want to track?
+</div>  
+
+<div class="objectives">  
+
+### Objectives
+
+- Configure Git to ignore specific files.
+- Explain why ignoring files can be useful.
+</div>  
 
 What if we have files that we do not want Git to track for us, like backup files
 created by our editor or intermediate files created during data analysis? Let's
@@ -26,7 +32,7 @@ and see what Git says:
 git status
 ```
 
-```output
+```abc
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -50,7 +56,7 @@ nano .gitignore
 cat .gitignore
 ```
 
-```output
+```abc
 *.dat
 results/
 ```
@@ -65,7 +71,7 @@ Once we have created this file, the output of `git status` is much cleaner:
 $ git status
 ```
 
-```output
+```abc
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -86,7 +92,7 @@ git commit -m "Ignore data files and the results folder."
 git status
 ```
 
-```output
+```abc
 On branch main
 nothing to commit, working directory clean
 ```
@@ -98,7 +104,7 @@ repository that we don't want to track:
 git add a.dat
 ```
 
-```output
+```abc
 The following paths are ignored by one of your .gitignore files:
 a.dat
 Use -f if you really want to add them.
@@ -112,7 +118,7 @@ see the status of ignored files if we want:
 $ git status --ignored
 ```
 
-```output
+```abc
 On branch main
 Ignored files:
  (use "git add -f <file>..." to include in what will be committed)
@@ -145,7 +151,7 @@ If you only want to ignore the contents of `results/plots`, you can change your
 `.gitignore` to ignore only the `/plots/` subfolder by adding the following
 line to your .gitignore:
 
-```output
+```abc
 results/plots/
 ```
 
@@ -173,7 +179,7 @@ How would you ignore all `.dat` files in your root directory except for
 
 You would add the following two lines to your .gitignore:
 
-```output
+```abc
 *.dat           # ignore all data files
 !final.dat      # except final.data
 ```
@@ -193,7 +199,7 @@ of `.dat` files added to the root directory will be ignored.
 Given a directory structure that looks similar to the earlier Nested Files
 exercise, but with a slightly different directory structure:
 
-```output
+```abc
 results/data
 results/images
 results/plots
@@ -213,7 +219,7 @@ If you want to ignore the contents of
 the contents of results folder, but create an exception for the contents of the
 `results/data` subfolder. Your .gitignore would look like this:
 
-```output
+```abc
 results/*               # ignore everything in results folder
 !results/data/          # do not ignore results/data/ contents
 ```
@@ -224,7 +230,7 @@ results/*               # ignore everything in results folder
 ## Ignoring all data Files in a Directory
 Assuming you have an empty .gitignore file, and given a directory structure that looks like:
 
-```output
+```abc
 results/data/position/gps/a.dat
 results/data/position/gps/b.dat
 results/data/position/gps/c.dat
@@ -250,7 +256,7 @@ The file `results/data/position/gps/info.txt` will not be ignored.
 Let us assume you have many `.dat` files in different subdirectories of your repository.
 For example, you might have:
  
-```output
+```abc
 results/a.dat
 data/experiment_1/b.dat
 data/experiment_2/c.dat
@@ -263,7 +269,7 @@ How do you ignore all the `.dat` files, without explicitly listing the names of 
 
 In the `.gitignore` file, write:
  
-```output
+```abc
 **/*.dat               
 ```
 This will ignore all the `.dat` files, regardless of their position in the directory tree. 
@@ -277,7 +283,7 @@ You can still include some specific exception with the exclamation point operato
 
 Given a `.gitignore` file with the following contents:
 
-```output
+```abc
 *.dat
 !*.dat
 ```
@@ -318,3 +324,15 @@ track them through `git`.
 3. track `log_01` using   `git add -f log_01`
 :::
 :::
+
+
+
+
+
+<div class="keypoints">
+
+### Key points
+
+- The `.gitignore` file tells Git what files to ignore.
+
+</div>  

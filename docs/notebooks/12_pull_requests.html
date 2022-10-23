@@ -171,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  <li><a href="#outline-of-this-section" id="toc-outline-of-this-section" class="nav-link" data-scroll-target="#outline-of-this-section">Outline of this section</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,8 +203,34 @@ ul.task-list li input[type="checkbox"] {
 <li>Pull requests are a way to offer your changes back to a project</li>
 </ul>
 </section>
+<p>We’ve just seen a branching workflow for allowing collaboration between a team of developers, each of whom has a local repo and who share a repo on GitHub.</p>
+<p>In this section, we’ll step through what’s called a fork-based workflow, which is a way to contribute code to another team’s project.</p>
+<p>A fork-based workflow has the following steps:</p>
+<ol type="1">
+<li><p>You fork the projects repo on GitHub - this is similar to cloning, but you’re creating a clone of the repo in your own GitHub account, not on your local machine.</p></li>
+<li><p>You create a local copy of your fork of the project</p></li>
+<li><p>You create a branch on your repo where you’ll work on the changes that you want to contribute</p></li>
+<li><p>You push your changes to your remote copy of the project’s repo</p></li>
+<li><p>On GitHub, you create a pull request for the maintainer of the original project</p></li>
+</ol>
+<p>It’s called a pull request because you’re asking the maintainer to pull your contribution into their version of the project.</p>
+<p>After you’ve made the pull request, the maintainer can accept it straight away, or start a form of collaboration to talk about the changes - this can take the form of a code review. We won’t have time to cover that in this workshop, but it’s a very common form of quality control for open source projects, and is also used within teams.</p>
+<section id="outline-of-this-section" class="level3">
+<h3 class="anchored" data-anchor-id="outline-of-this-section">Outline of this section</h3>
+<ol type="1">
+<li><p>Bob already has a copy of the repository, so he doesn’t need to fork it</p></li>
+<li><p>Bob starts a branch called <code>my-cool-feature</code></p></li>
+<li><p>Bob makes a change to mean.py</p></li>
+<li><p>Bob pushes his change to GitHub</p></li>
+<li><p>We get Alice to also make a change to her main branch of mean.py</p></li>
+<li><p>Alice pushes her change to GitHub</p></li>
+<li><p>Bob creates a pull request based on his <code>my-cool-feature</code> branch</p></li>
+<li><p>Alice confirms to see if the pull request is there</p></li>
+<li><p>Alice tries to merge and we get to the conflict.</p></li>
+</ol>
 
 
+</section>
 </section>
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->

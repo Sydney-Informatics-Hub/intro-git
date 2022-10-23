@@ -21,7 +21,7 @@ website:
           href: notebooks/03_create.html
         - text: "Making changes"
           href: notebooks/04_changes.html
-        - text: "Seeing history"
+        - text: "Exploring history"
           href: notebooks/05_history.html
         - text: "Ignoring files"
           href: notebooks/06_ignore.html

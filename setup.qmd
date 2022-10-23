@@ -1,19 +1,17 @@
 ---
 title: "Setup"
-output:
-  html_document:
-    toc: false
-    toc_float: false
 ---
-
-
 
 ## Create a Github account
 
 Git is a version control system that lets you track who made changes to what when and has options for easily updating a shared or public version of your code on [github.com](https://github.com/). 
 
 1. You will need a [supported web browser](https://help.github.com/articles/supported-browsers/).  
-2. Prior to the session, we recommend you use your "official" university email to create an account on [github.com](github.com). You can skip this step if you already have a [github.com](github.com) and you know the username/password you used to log in to it. GitHub accounts are free, and - with your University affiliation - you may be able to get a "Pro" GitHub account for free (you need to email the GitHub Education team for this). Note that a free account will suffice for all of what we are doing in the training session, so you don't need to do this before class. Please consider what personal information you'd like to reveal. For example, you may want to review these [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/) provided at GitHub.  
+2. Prior to the session, we recommend you use your "official" university email to create an account on [github.com](github.com). You can skip this step if you already have a [github.com](github.com) and you know the username/password you used to log in to it. 
+
+   - GitHub accounts are free, and - with your University affiliation - you may be able to get a "Pro" GitHub account for free (you need to email the GitHub Education team for this). 
+   - Note that a free account will suffice for all of what we are doing in the training session, so you don't need to do this before class. 
+   - Please consider what personal information you'd like to reveal. For example, you may want to review these [instructions for keeping your email address private](https://help.github.com/articles/keeping-your-email-address-private/) provided at GitHub.  
 
 ## Install git
 
@@ -57,7 +55,7 @@ The easiest way to install git on a Mac is by installing Xcode Command Line Tool
 
 To do this, open your `Terminal` application and type:
 
-```
+```sh
 git --version
 ```
 
@@ -81,73 +79,79 @@ Depending on the Linux distribution on your laptop, you will need to open a `Ter
 
 For the latest stable version for your release of Debian/Ubuntu
 
-```
-# apt-get install git
+```sh
+apt-get install git
 ```
 
 For Ubuntu, this PPA provides the latest stable upstream Git version
 
-```
-# add-apt-repository ppa:git-core/ppa``# apt update; apt install git
+```sh
+add-apt-repository ppa:git-core/ppa
+apt update; apt install git
 ```
 
 ##### Fedora
 
-`# yum install git` (up to Fedora 21)
-`# dnf install git` (Fedora 22 and later)
+```sh
+yum install git # up to Fedora 21
+```
+
+```sh
+dnf install git # Fedora 22 and later
+```
 
 ##### Gentoo
 
-```
-# emerge --ask --verbose dev-vcs/git
+```sh
+emerge --ask --verbose dev-vcs/git
 ```
 
 ##### Arch Linux
 
-```
-# pacman -S git
+```sh
+pacman -S git
 ```
 
 ##### openSUSE
 
-```
-# zypper install git
+```sh
+zypper install git
 ```
 
 ##### Mageia
 
-```
-# urpmi git
+```sh
+urpmi git
 ```
 
 ##### Nix/NixOS
 
-```
-# nix-env -i git
+```sh
+nix-env -i git
 ```
 
 ##### FreeBSD
 
-```
-# pkg install git
+```sh
+pkg install git
 ```
 
 ##### Solaris 9/10/11
 
-```
-# pkgutil -i git
+```sh
+pkgutil -i git
 ```
 
 ##### Solaris 11 Express
 
-```
-# pkg install developer/versioning/git
+```sh
+pkg install developer/versioning/git
 ```
 
 ##### OpenBSD
 
-```
-# pkg_add git
+```sh
+pkg_add git
 ```
 
 ***
@@ -156,4 +160,4 @@ For Ubuntu, this PPA provides the latest stable upstream Git version
 
 - We will show but not necessarily walk through [GitKraken](https://www.gitkraken.com/), an excellent (but paid for!) Git GUI tool. When working on large, multi-branch open-source and internal projects, this type of a tool can be very useful to navigate the mess that a too-many branch workflow can create.
 
-- [Git]() is a free alternative developed by GitHub which you may want to use as a free GUI instead.
+- [GitHub Desktop](https://desktop.github.com/) is a free alternative developed by GitHub which you may want to use as a free GUI instead.
