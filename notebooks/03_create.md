@@ -27,7 +27,7 @@ then change the current working directory to the newly created one:
 ```sh
 cd ~/Desktop
 mkdir mean
-cd mkdir mean
+cd mean
 ```
 
 Then we tell Git to make `mean` a repository - a place where Git can store versions of our files:
