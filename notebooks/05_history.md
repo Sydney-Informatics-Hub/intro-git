@@ -48,7 +48,7 @@ git diff HEAD mean.py
 
 ```abc
 diff --git a/mean.py b/mean.py
-index a6abcee..1da11d6 100644
+index 67d0b5b..c9869a3 100644
 --- a/mean.py
 +++ b/mean.py
 @@ -1,3 +1,4 @@
@@ -72,12 +72,12 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 
 ```sh
-git diff HEAD~3 mean.py
+git diff HEAD~2 mean.py
 ```
 
 ```abc
 diff --git a/mean.py b/mean.py
-index ffd919b..1da11d6 100644
+index ffd919b..c9869a3 100644
 --- a/mean.py
 +++ b/mean.py
 @@ -1 +1,4 @@
@@ -92,13 +92,13 @@ well as the commit message, rather than the _differences_ between a commit and o
 working directory that we see by using `git diff`.
 
 ```sh
-git show HEAD~3 mean.py
+git show HEAD~2 mean.py
 ```
 
 ```abc
-commit b03ceb64040ce8347c8f9dd1530088e0621b31f9
+commit 3c865ca8570879e5ae8bbf3253283bf33d89bd14
 Author: Mike Lynch <m.lynch@sydney.edu.au>
-Date:   Wed Oct 12 09:58:50 2022 +1100
+Date:   Mon Oct 24 09:56:51 2022 +1100
 
     Start a script to calculate the mean
 
@@ -120,10 +120,10 @@ We can also refer to commits using those long strings of digits and letters that
 `git log` displays. These are unique IDs for the changes, and "unique" really
 does mean unique: every change to any set of files on any computer has a unique
 40-character identifier. Our first commit was given the ID
-`b03ceb64040ce8347c8f9dd1530088e0621b31f9` so let's try this:
+`3c865ca8570879e5ae8bbf3253283bf33d89bd14` so let's try this:
 
 ```sh
-git diff b03ceb64040ce8347c8f9dd1530088e0621b31f9 mean.py
+git diff 3c865ca8570879e5ae8bbf3253283bf33d89bd14 mean.py
 ```
 
 ```abc
@@ -143,7 +143,7 @@ so Git lets us use just the first few characters (typically seven for normal
 size projects):
 
 ```sh
-git diff b03ceb6 mean.py
+git diff 3c865ca mean.py
 ```
 
 ```abc
@@ -188,7 +188,7 @@ git checkout HEAD mean.py
 ```
 
 ```abc
-Updated 1 path from 025c665
+Updated 1 path from 37beb0d
 ```
 
 ```sh
@@ -208,7 +208,7 @@ commit. If we want to go back even further, we can use a commit identifier
 instead:
 
 ```sh
-git checkout b03ceb6 mean.py
+git checkout 3c865ca mean.py
 ```
 
 ```abc
@@ -250,20 +250,20 @@ git checkout HEAD mean.py
 Above we used
 
 ```sh
-git checkout f22b25e mean.py
+git checkout 3c865ca mean.py
 ```
 
-to revert `mean.py` to its state after the commit `f22b25e`. But be careful! 
+to revert `mean.py` to its state after the commit `3c865ca`. But be careful! 
 The command `checkout` has other important functionalities and Git will misunderstand
 your intentions if you are not accurate with the typing. For example, 
 if you forget `mean.py` in the previous command:
 
 ```sh
-git checkout f22b25e
+git checkout 3c865ca
 ```
 
 ```abc
-Note: switching to 'b03ceb6'.
+Note: switching to '3c865ca'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
@@ -280,7 +280,7 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at b03ceb6 Start a script to calculate the mean
+HEAD is now at 3c865ca Start a script to calculate the mean
 ```
 
 This might be one of the most alarming messages for git beginners: what it
