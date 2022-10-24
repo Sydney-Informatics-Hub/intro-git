@@ -105,7 +105,7 @@ git checkout -b just-testing
 ```
 
 ```abc
-Switched to branch 'just-testing'
+Switched to a new branch 'just-testing'
 ```
 
 ```sh
@@ -172,7 +172,7 @@ git branch -d development
 ```
 
 ```abc
-Deleted branch development (was 2c3e2c0).
+Deleted branch development (was 7290b1c).
 ```
 
 If we accidentally ask git to delete a branch which we haven't yet merged using
