@@ -49,22 +49,23 @@ the code, you don't have to finish your development work first.
 With the tools we've covered so far, Alice and Bob could make a note of the
 most recent working commit of their script:
 
-    34478ad Works great
+```abc
+34478ad This is the working version
+```
 
-This would give them the ability to retrieve the last version before they
-broke it. The problem with this is that they'd need to remember the 34478ad
-hash (FIXME and is going back and forward between that and HEAD a problem)
+This would give them the ability to retrieve the last version before they broke
+it. The problem with this is that they'd need to make a note of the hash
+somewhere.
 
 Git provides us with a better way to keep alternate versions of a single
 codebase - a branch.
 
-In this section of the workshop, we'll just create local branches [FIXME]
+In this section of the workshop, we'll just be creating branches in our local
+repository. We've already been using a `main` branch. Let's create a new branch
+where we're free to break things. 
 
-We've already been using a `main` branch. Let's create a new branch where
-we're free to break things. 
-
-```bash
-$ git checkout -b development
+```sh
+git checkout -b development
 ```
 
 ```abc
@@ -83,66 +84,100 @@ We can see all the branches in our local repo if we use the `git branch`
 command: this also indicates which branch we currently have checked out using
 an asterisk.
 
-```bash
-$ git branch
+```sh
+git branch
 ```
 
 ```abc
-* develop
+* development
   main
 ```
 
-Alice wants to reorganise her script, so she makes a change:
+Alice wants to change her script to only calculate the mean of a single
+column, which is labelled "red":
 
-```bash
-$ nano mean.py
+```sh
+nano mean.py
+cat mean.py
 ```
 
-And commits the changes
+```abc
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
+means = dataframe.mean()
 
-```bash
-$ git add mean.py
-$ git commit
+reds = dataframe.subset("red") # not sure if this is right
+print(reds.means())
 ```
 
-Now Alice's development branch doesn't work - which is not unusual. If Bob
-asks her to use the script to compute the mean of some values, she can switch
-her repository back to the `main` branch, which is still working
+She commits the changes
 
-```bash
-$ git checkout main
+```sh
+git add mean.py
+git commit -m "Subset the rgb values to just red"
+```
+
+Now Alice's development branch doesn't do the same thing as the main branch:
+in fact, it raises an exception, because she's used the wrong syntax for 
+getting a single column from a dataframe.
+
+If Bob asks her to use the script to compute the mean of some values, she can switch her repository back to the `main` branch, which is still working
+
+```sh
+git checkout main
 ```
 
 We can check that the content of `mean.py` is as we left it:
 
-```bash
-$ cat mean.py
+```sh
+cat mean.py
 ```
 
 ```abc
-FIXME
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
+means = dataframe.mean()
 ```
 
-After calculating some means for Bob, Alice returns to her development branch,
-and fixes her refactored script.
+After calculating some means for Bob, Alice returns to her development branch, and fixes her refactored script.
 
+```sh
+git checkout development
+nano mean.py
+cat mean.py
 ```
-$ git checkout development
-$ nano mean.py
+
+```abc
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
+means = dataframe.mean()
+
+reds = dataframe["red"] # Ok, that's better
+print(reds.means())
 ```
 
-
-We've already seen how `git diff` can be used to show the differences between 
-commits on a single branch. Alice can use it to double-check what she's
-changed on the `development` branch:
+We've already seen how `git diff` can be used to show the differences between
+commits on a single branch. Alice can use it to double-check what she's changed
+on the `development` branch:
 
 ```bash
 $ git diff main
 ```
 
 ```abc
-FIXME
+diff --git a/mean.py b/mean.py
+index 67d0b5b..a099e2c 100644
+--- a/mean.py
++++ b/mean.py
+@@ -1,3 +1,6 @@
+ import pandas as pd
+ dataframe = pd.read_csv("rgb.csv")
+ means = dataframe.mean()
++
++reds = dataframe["red"]
++print(red.means())
 ```
+
 This output shows what changes would need to be made to the `main` branch to 
 make them the same as Alice's `development` branch. So lines which Alice has
 added in `development` would have to be inserted, and are marked with a `+`
