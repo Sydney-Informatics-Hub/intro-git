@@ -164,7 +164,7 @@ git log
 ```
 
 ```sh
-commit b03ceb64040ce8347c8f9dd1530088e0621b31f9 (HEAD -> main)
+commit 3c865ca8570879e5ae8bbf3253283bf33d89bd14 (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 09:58:50 2022 +1100
 
@@ -225,7 +225,7 @@ it tells us that a file it already knows about has been modified:
 git status
 ```
 
-```
+```abc
 On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -249,7 +249,7 @@ git diff
 
 ```sh
 diff --git a/mean.py b/mean.py
-index ffd919b..51d2079 100644
+index ffd919b..c3c15b9 100644
 --- a/mean.py
 +++ b/mean.py
 @@ -1 +1,2 @@
@@ -303,7 +303,7 @@ git commit -m "Add a line which loads the data from a CSV file"
 ```
 
 ```sh
-[main cfccbd9] Add a line which loads the data from a CSV file
+[main 6abea37] Add a line which loads the data from a CSV file
  1 file changed, 1 insertion(+)
 ```
 
@@ -400,14 +400,14 @@ index 51d2079..a6abcee 100644
 it shows us the difference between the last committed change and what's in the
 staging area.
 
-Let's save our changes:
+Let's save our changes,
 
 ```sh
 git commit -m "Calculates the means"
 ```
 
 ```sh
-[main 99dd636] Calculates the means
+[main 927b884] Calculates the means
  1 file changed, 1 insertion(+)
 ```
 
@@ -429,21 +429,21 @@ git log
 ```
 
 ```sh
-commit 99dd6362bf798f4c145be76849a638eef083d59d (HEAD -> main)
+commit 927b88458522e686f0fd739c415ddbce0e0c66b4 (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
-Date:   Wed Oct 12 11:53:17 2022 +1100
+Date:   Mon Oct 24 11:25:16 2022 +1100
 
     Calculates the means
 
-commit cfccbd9b68ab5080ef70da1a69dfa644f97744af
+commit 6abea37f300206234455e44db30d8d087e9d8b41
 Author: Mike Lynch <m.lynch@sydney.edu.au>
-Date:   Wed Oct 12 10:19:41 2022 +1100
+Date:   Mon Oct 24 11:24:05 2022 +1100
 
     Add a line which loads the data from a CSV file
 
-commit b03ceb64040ce8347c8f9dd1530088e0621b31f9
+commit 3c865ca8570879e5ae8bbf3253283bf33d89bd14
 Author: Mike Lynch <m.lynch@sydney.edu.au>
-Date:   Wed Oct 12 09:58:50 2022 +1100
+Date:   Mon Oct 24 09:56:51 2022 +1100
 
     Start a script to calculate the mean
 ```
@@ -470,7 +470,7 @@ git log -1
 ```
 
 ```sh
-commit 99dd6362bf798f4c145be76849a638eef083d59d (HEAD -> main)
+commit 927b88458522e686f0fd739c415ddbce0e0c66b4 (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 11:53:17 2022 +1100
 
@@ -485,9 +485,9 @@ git log --oneline
 ```
 
 ```sh
-99dd636 (HEAD -> main) Calculates the means
-cfccbd9 Add a line which loads the data from a CSV file
-b03ceb6 Start a script to calculate the mean
+927b884 (HEAD -> main) Calculates the means
+6abea37 Add a line which loads the data from a CSV file
+3c865ca Start a script to calculate the mean
 ```
 
 You can also combine the `--oneline` option with others. One useful
@@ -503,9 +503,9 @@ git log --oneline --graph
 ```
 
 ```sh
-* 99dd636 (HEAD -> main) Calculates the means
-* cfccbd9 Add a line which loads the data from a CSV file
-* b03ceb6 Start a script to calculate the mean
+* 927b884 (HEAD -> main) Calculates the means
+* 6abea37 Add a line which loads the data from a CSV file
+* 3c865ca Start a script to calculate the mean
 ```
 
 
