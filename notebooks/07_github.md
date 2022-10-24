@@ -35,16 +35,15 @@ linked to our *local* repository.
 
 ## 1. Create a remote repository
 Log in to [GitHub](https://github.com), then click on the icon in the top right corner to
-create a new repository called `planets`:
+create a new repository called `mean`:
 
 ![Creating a Repository on GitHub (Step 1)](../fig/github-create-repo-01.png)
 
-Name your repository "planets" and then click "Create Repository".
+Name your repository "mean" and then click "Create Repository".
 
-Note: Since this repository will be connected to a local repository, it needs to be empty. Leave 
-"Initialize this repository with a README" unchecked, and keep "None" as options for both "Add 
-.gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full 
-explanation of why the repository needs to be empty.
+Note: Since this repository will be connected to a local repository, it needs to
+be empty. Leave "Initialize this repository with a README" unchecked, and
+keep "None" as options for both "Add .gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full explanation of why the repository needs to be empty.
 
 ![Creating a Repository on GitHub (Step 2)](../fig/github-create-repo-02.png)
 
@@ -56,8 +55,8 @@ information on how to configure your local repository:
 This effectively does the following on GitHub's servers:
 
 ```sh
-mkdir planets
-cd planets
+mkdir mean
+cd mean
 git init
 ```
 
@@ -97,15 +96,15 @@ and concepts of SSH and key pairs, and other material supplemental to git relate
 
 ![Changing the Repository URL on GitHub](../fig/github-change-repo-string.png)
 
-Copy that URL from the browser, go into the local `planets` repository, and run
+Copy that URL from the browser, go into the local `mean` repository, and run
 this command:
 
 ```
-git remote add origin git@github.com:vlad/planets.git
+git remote add origin git@github.com:spikelynch/mean.git
 ```
 
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
+Make sure to use the URL for your repository rather than mine: the only
+difference should be your username instead of `spikelynch`.
 
 `origin` is a local name used to refer to the remote repository. It could be called
 anything, but `origin` is a convention that is often used by default in git
@@ -118,38 +117,58 @@ $ git remote -v
 ```
 
 ```sh
-origin   git@github.com:vlad/planets.git (fetch)
-origin   git@github.com:vlad/planets.git (push)
+origin   git@github.com:spikelynch/mean.git (fetch)
+origin   git@github.com:spikelynch/mean.git (push)
 ```
 
 We'll discuss remotes in more detail in the next episode, while talking about how they might be used for collaboration.
 
 ## 3. SSH Background and Setup
-Before Dracula can connect to a remote repository, he needs to set up a way for his computer to authenticate with GitHub so it knows it’s him trying to connect to his remote repository. 
 
-We are going to set up the method that is commonly used by many different services to authenticate access on the command line.  This method is called Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.  
+Before Alice can connect to a remote repository, she needs to set up a way for
+his computer to authenticate with GitHub so it knows it’s him trying to connect
+to his remote repository. 
 
-SSH uses what is called a key pair. This is two keys that work together to validate access. One key is publicly known and called the public key, and the other key called the private key is kept private. Very descriptive names.
+We are going to set up the method that is commonly used by many different
+services to authenticate access on the command line.  This method is called
+Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that
+allows secure communication between computers using an otherwise insecure
+network.  
 
-You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your GitHub account.  You give this padlock, or public key, to GitHub and say “lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my GitHub account.”  
+SSH uses what is called a key pair. This is two keys that work together to
+validate access. One key is publicly known and called the public key, and the
+other key called the private key is kept private. Very descriptive names.
 
-What we will do now is the minimum required to set up the SSH keys and add the public key to a GitHub account.
+You can think of the public key as a padlock, and only you have the key
+(the private key) to open it. You use the public key where you want a secure
+method of communication, such as your GitHub account.  You give this padlock,
+or public key, to GitHub and say “lock the communications to my account with
+this so that only computers that have my private key can unlock communications
+and send git commands as my GitHub account.”  
+
+What we will do now is the minimum required to set up the SSH keys and add the
+public key to a GitHub account.
 
 
 <div class="callout">  
 ### Advanced SSH
 
-- A supplemental episode in this lesson discusses SSH and key pairs in more depth and detail. 
+- A supplemental episode in this lesson discusses SSH and key pairs in more
+  depth and detail. 
 
 </div> 
 
-The first thing we are going to do is check if this has already been done on the computer you’re on.  Because generally speaking, this setup only needs to happen once and then you can forget about it. 
+The first thing we are going to do is check if this has already been done on the
+computer you’re on.  Because generally speaking, this setup only needs to
+happen once and then you can forget about it. 
 
 <div class="callout">
 
 ### Keeping your keys secure
 
-You shouldn't really forget about your SSH keys, since they keep your account secure. It’s good practice to audit your secure shell keys every so often. Especially if you are using multiple computers to access your account. 
+You shouldn't really forget about your SSH keys, since they keep your account
+secure. It’s good practice to audit your secure shell keys every so often.
+Especially if you are using multiple computers to access your account. 
 
 </div> 
 
@@ -159,23 +178,27 @@ We will run the list command to check what key pairs already exist on your compu
 ls -al ~/.ssh
 ```
 
-Your output is going to look a little different depending on whether or not SSH has ever been set up on the computer you are using. 
+Your output is going to look a little different depending on whether or not SSH
+has ever been set up on the computer you are using. 
 
-Dracula has not set up SSH on his computer, so his output is 
+Alice has not set up SSH on his computer, so her output is 
 
 ```sh
-ls: cannot access '/c/Users/Vlad Dracula/.ssh': No such file or directory
+ls: cannot access '/c/Users/Alice/.ssh': No such file or directory
 ```
 
-If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub` or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.  
+If SSH has been set up on the computer you're using, the public and private key
+pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub`
+or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.  
 
-Since they don’t exist on Dracula’s computer, he uses this command to create them. 
+Since they don’t exist on Alice’s computer, she uses this command to create them. 
 
 ### 3.1 Create an SSH key pair
-To create an SSH key pair Vlad uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Vlad's email):  
+
+To create an SSH key pair Alice uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Alice's email):  
 
 ```sh
-ssh-keygen -t ed25519 -C "vlad@tran.sylvan.ia"
+ssh-keygen -t ed25519 -C "alice@myemail.org"
 ```
 
 If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
@@ -183,17 +206,17 @@ If you are using a legacy system that doesn't support the Ed25519 algorithm, use
 
 ```sh
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/c/Users/Vlad Dracula/.ssh/id_ed25519):
+Enter file in which to save the key (/c/Users/Alice/.ssh/id_ed25519):
 ```
 
 We want to use the default file, so just press <kbd>Enter</kbd>.
 
 ```sh
-Created directory '/c/Users/Vlad Dracula/.ssh'.
+Created directory '/c/Users/Alice/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
-Now, it is prompting Dracula for a passphrase.  Since he is using his lab’s laptop that other people sometimes have access to, he wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option. 
+Now, it is prompting Alice for a passphrase.  Since she is using his lab’s laptop that other people sometimes have access to, she wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option. 
 
 ```sh
 Enter same passphrase again:
@@ -202,10 +225,10 @@ Enter same passphrase again:
 After entering the same passphrase a second time, we receive the confirmation
 
 ```sh
-Your identification has been saved in /c/Users/Vlad Dracula/.ssh/id_ed25519
-Your public key has been saved in /c/Users/Vlad Dracula/.ssh/id_ed25519.pub
+Your identification has been saved in /c/Users/Alice/.ssh/id_ed25519
+Your public key has been saved in /c/Users/Alice/.ssh/id_ed25519.pub
 The key fingerprint is:
-SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o vlad@tran.sylvan.ia
+SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o alice@myemail.org
 The key's randomart image is:
 +--[ED25519 256]--+
 |^B== o.          |
@@ -230,10 +253,10 @@ ls -al ~/.ssh
 ```
 
 ```sh
-drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 16 14:48 ./
-drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 16 14:48 ../
--rw-r--r-- 1 Vlad Dracula 197121 419 Jul 16 14:48 id_ed25519
--rw-r--r-- 1 Vlad Dracula 197121 106 Jul 16 14:48 id_ed25519.pub
+drwxr-xr-x 1 Alice 197121   0 Jul 16 14:48 ./
+drwxr-xr-x 1 Alice 197121   0 Jul 16 14:48 ../
+-rw-r--r-- 1 Alice 197121 419 Jul 16 14:48 id_ed25519
+-rw-r--r-- 1 Alice 197121 106 Jul 16 14:48 id_ed25519.pub
 ```
 
 ### 3.2 Copy the public key to GitHub
@@ -263,10 +286,10 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 ```sh
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI vlad@tran.sylvan.ia
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI alice@myemail.org
 ```
 
-Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now, you can add the title (Dracula uses the title "Vlad's Lab Laptop" so he can remember where the original key pair files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
+Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now, you can add the title (Alice uses the title "Alice's Lab Laptop" so she can remember where the original key pair files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
 Now that we’ve set that up, let’s check our authentication again from the command line. 
 
@@ -275,7 +298,7 @@ ssh -T git@github.com
 ```
 
 ```sh
-Hi Vlad! You've successfully authenticated, but GitHub does not provide shell access.
+Hi Alice! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 Good! This output confirms that the SSH key works as intended. We are now ready to push our work to the remote repository.
@@ -289,7 +312,7 @@ our local repository to the repository on GitHub:
 git push origin main
 ```
 
-Since Dracula set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
+Since Alice set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
 will not prompt for a passphrase. 
 
 ```sh
@@ -300,7 +323,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/vlad/planets.git
+To https://github.com/alice/mean.git
  * [new branch]      main -> main
 ```
 
@@ -372,7 +395,7 @@ git pull origin main
 ```
 
 ```sh
-From https://github.com/vlad/planets
+From https://github.com/spikelynch/mean
  * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ```
@@ -393,7 +416,7 @@ GitHub, though, this command would download them to our local repository.
 
 ### Challenge: GitHub GUI
 
-- Browse to your `planets` repository on GitHub.
+- Browse to your `mean` repository on GitHub.
 - Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 - Hover over, and click on, the three buttons to the right of each commit.
 - What information can you gather/explore from these buttons?
@@ -498,7 +521,7 @@ remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/spikelynch/mean
  * branch            main     -FETCH_HEAD
  * [new branch]      main     -origin/main
 fatal: refusing to merge unrelated histories
@@ -513,7 +536,7 @@ git pull --allow-unrelated-histories origin main
 ```
 
 ```sh
-From https://github.com/vlad/planets
+From https://github.com/spikelynch/mean
  * branch            main     -FETCH_HEAD
 Merge made by the 'recursive' strategy.
 README.md | 1 +
