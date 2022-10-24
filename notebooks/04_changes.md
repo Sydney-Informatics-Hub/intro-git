@@ -78,7 +78,7 @@ the new file:
 git status
 ```
 
-```sh
+```abc
 On branch main
 
 No commits yet
@@ -104,16 +104,14 @@ and then check that the right thing happened:
 git status
 ```
 
-```sh
+```abc
 On branch main
 
 No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-
-	new file:   mean.py
-
+	    new file:   mean.py
 ```
 
 Git now knows that it's supposed to keep track of `mean.py`,
@@ -124,8 +122,8 @@ To get it to do that, we need to run one more command:
 git commit -m "Start a script to calculate the mean"
 ```
 
-```sh
-[main (root-commit) b03ceb6] Start a script to calculate the mean
+```abc
+[main (root-commit) 3c865ca] Start a script to calculate the mean
  1 file changed, 1 insertion(+)
  create mode 100644 mean.py
 ```
@@ -151,9 +149,9 @@ If we run `git status` now:
 git status
 ```
 
-```sh
+```abc
 On branch main
-nothing to commit, working directory clean
+nothing to commit, working tree clean
 ```
 
 it tells us everything is up to date. If we want to know what we've done recently,
@@ -163,7 +161,7 @@ we can ask Git to show us the project's history using `git log`:
 git log
 ```
 
-```sh
+```abc
 commit 3c865ca8570879e5ae8bbf3253283bf33d89bd14 (HEAD -> main)
 Author: Mike Lynch <m.lynch@sydney.edu.au>
 Date:   Wed Oct 12 09:58:50 2022 +1100

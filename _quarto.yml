@@ -37,10 +37,10 @@ website:
           href: notebooks/10_merging.html
         - text: "Branches and workflows"
           href: notebooks/11_workflows.html
-        - text: "Pull requests"
-          href: notebooks/12_pull_requests.html
         - text: "Conflicts"
-          href: notebooks/13_conflicts.html
+          href: notebooks/12_conflicts.html
+        - text: "Forks and pull requests"
+          href: notebooks/13_pull_requests.html
         - text: "Open research"
           href: notebooks/14_open_research.html
 
