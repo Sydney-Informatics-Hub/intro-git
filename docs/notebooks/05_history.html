@@ -201,12 +201,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">Branches and workflows</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/12_pull_requests.html">
- <span class="dropdown-text">Pull requests</span></a>
+    <a class="dropdown-item" href="../notebooks/12_conflicts.html">
+ <span class="dropdown-text">Conflicts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/13_conflicts.html">
- <span class="dropdown-text">Conflicts</span></a>
+    <a class="dropdown-item" href="../notebooks/13_pull_requests.html">
+ <span class="dropdown-text">Forks and pull requests</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../notebooks/14_open_research.html">
@@ -281,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, let’s see what we get.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diff --git a/mean.py b/mean.py</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>index a6abcee..1da11d6 100644</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>index 67d0b5b..c9869a3 100644</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>--- a/mean.py</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>+++ b/mean.py</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>@@ -1,3 +1,4 @@</span>
@@ -292,9 +292,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is the same as what you would get if you leave out <code>HEAD</code> (try it). The real goodness in all this is when you can refer to previous commits. We do that by adding <code>~1</code> (where “~” is “tilde”, pronounced [<strong>til</strong>-d<em>uh</em>]) to refer to the commit one before <code>HEAD</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff HEAD~1 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we want to see the differences between older commits we can use <code>git diff</code> again, but with the notation <code>HEAD~1</code>, <code>HEAD~2</code>, and so on, to refer to them:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff HEAD~2 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>diff --git a/mean.py b/mean.py</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index ffd919b..1da11d6 100644</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>index ffd919b..c9869a3 100644</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>--- a/mean.py</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>+++ b/mean.py</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>@@ -1 +1,4 @@</span>
@@ -303,10 +303,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>+means = dataframe.mean<span class="dt">()</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>+# an ill-considered change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We could also use <code>git show</code> which shows us what changes we made at an older commit as well as the commit message, rather than the <em>differences</em> between a commit and our working directory that we see by using <code>git diff</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show HEAD~3 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>commit b03ceb64040ce8347c8f9dd1530088e0621b31f9</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show HEAD~2 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>commit 3c865ca8570879e5ae8bbf3253283bf33d89bd14</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Author<span class="ch">:</span> Mike Lynch &lt;m.lynch@sydney.edu.au&gt;</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Date<span class="ch">:</span>   Wed Oct 12 09<span class="ch">:5</span>8<span class="ch">:5</span>0 2022 +1100</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>Date<span class="ch">:</span>   Mon Oct 24 09<span class="ch">:5</span>6<span class="ch">:5</span>1 2022 +1100</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    Start a script to calculate the mean</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -318,8 +318,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>@@ -0,0 +1 @@</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>+import pandas as pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this way, we can build up a chain of commits. The most recent end of the chain is referred to as <code>HEAD</code>; we can refer to previous commits using the <code>~</code> notation, so <code>HEAD~1</code> means “the previous commit”, while <code>HEAD~123</code> goes back 123 commits from where we are now.</p>
-<p>We can also refer to commits using those long strings of digits and letters that <code>git log</code> displays. These are unique IDs for the changes, and “unique” really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID <code>b03ceb64040ce8347c8f9dd1530088e0621b31f9</code> so let’s try this:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff b03ceb64040ce8347c8f9dd1530088e0621b31f9 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can also refer to commits using those long strings of digits and letters that <code>git log</code> displays. These are unique IDs for the changes, and “unique” really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID <code>3c865ca8570879e5ae8bbf3253283bf33d89bd14</code> so let’s try this:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff 3c865ca8570879e5ae8bbf3253283bf33d89bd14 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>diff --git a/mean.py b/mean.py</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>index ffd919b..1da11d6 100644</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>--- a/mean.py</span>
@@ -330,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>+means = dataframe.mean<span class="dt">()</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>+# an ill-considered change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>That’s the right answer, but typing out random 40-character strings is annoying, so Git lets us use just the first few characters (typically seven for normal size projects):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff 3c865ca mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>diff --git a/mean.py b/mean.py</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>index ffd919b..1da11d6 100644</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>--- a/mean.py</span>
@@ -353,13 +353,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>no changes added to commit <span class="dt">(</span>use <span class="st">"git add"</span> and/or <span class="st">"git commit -a"</span><span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can put things back the way they were by using <code>git checkout</code>:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout HEAD mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Updated 1 path from 025c665</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Updated 1 path from 37beb0d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb19"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"input.csv"</span><span class="dt">)</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>means = dataframe.mean<span class="dt">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As you might guess from its name, <code>git checkout</code> checks out (i.e., restores) an old version of a file. In this case, we’re telling Git that we want to recover the version of the file recorded in <code>HEAD</code>, which is the last saved commit. If we want to go back even further, we can use a commit identifier instead:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout b03ceb6 mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3c865ca mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Updated 1 path from e79e40d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -382,10 +382,10 @@ Don’t Lose Your HEAD
 </div>
 <div class="callout-body-container callout-body">
 <p>Above we used</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout f22b25e mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>to revert <code>mean.py</code> to its state after the commit <code>f22b25e</code>. But be careful! The command <code>checkout</code> has other important functionalities and Git will misunderstand your intentions if you are not accurate with the typing. For example, if you forget <code>mean.py</code> in the previous command:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout f22b25e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Note<span class="ch">:</span> switching to 'b03ceb6'.</span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3c865ca mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to revert <code>mean.py</code> to its state after the commit <code>3c865ca</code>. But be careful! The command <code>checkout</code> has other important functionalities and Git will misunderstand your intentions if you are not accurate with the typing. For example, if you forget <code>mean.py</code> in the previous command:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3c865ca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Note<span class="ch">:</span> switching to '3c865ca'.</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>You are in 'detached HEAD' state. You can look around, make experimental</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>changes and commit them, and you can discard any commits you make in this</span>
@@ -402,7 +402,7 @@ Don’t Lose Your HEAD
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>Turn off this advice by setting config variable advice.detachedHead to false</span>
 <span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>HEAD is now at b03ceb6 Start a script to calculate the mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>HEAD is now at 3c865ca Start a script to calculate the mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This might be one of the most alarming messages for git beginners: what it means is that HEAD, which normally points to the most recent commit of the current branch, has now been changed to point to a specific commit in your history. As the warning indicates, its main use is to be able to inspect an earlier commit.</p>
 <p>To get things back to normal, reattach your <code>HEAD</code> with <code>git checkout main</code>.</p>
 </div>
