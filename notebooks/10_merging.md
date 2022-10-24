@@ -58,10 +58,10 @@ $ git merge development
 ```
 
 ```abc
-Updating deadbea..934893
+Updating dea7c3c..905d031
 Fast-forward
- mean.py | 1+
- 1 file changed, 1 insertion(+)
+ mean.py | 3 +++
+ 1 file changed, 3 insertions(+)
 ```
 
 Note that a single merge can make changes to multiple files: after the merge, 
@@ -111,33 +111,64 @@ us for a commit message when it can fast-forward.
 We are now going to see what happens when we ask git to merge two branches
 which have diverged: that is, where there are new commits on either branch.
 
-In this example, 
+First, let's return to our development branch and make a change at the top
+of our script. Alice has noticed that she's calculating the means of all the
+columns, but not using the resulting value, so we'll remove that line:
 
-```bash
+```sh
 git checkout development
 nano mean.py
+cat mean.py
 ```
 
-We then commit this change
+```abc
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
 
-```bash
+
+reds = dataframe["red"]
+print(red.means())
+```
+
+Alice then commits this change
+
+```sh
 git add mean.py
-git commit mean.py -m "One line near the top"
+git commit mean.py -m "Removed redundant means"
+```
+
+```abc
+[development 7290b1c] Removed redundant means
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 Then, let's make a change to mean.py on the main branch
 
-```bash
+```sh
 git checkout main
 nano mean.py
+cat mean.py
+```
+```abc
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
+means = dataframe.mean()
+
+blues = dataframe["blue"]
+print(blue.means())
 ```
 
-We'll add another line in a different part of the script, save and commit
-the change.
+We've decided to calculate the mean of the blue values, by modifying the two
+last lines of the script.
 
 ```bash
 git add mean.py
 git commit mean.py -m "One line near the bottom"
+```
+
+```abc
+[main 68ccb0e] Changed subset to blue
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 ```
 
 Our two branches now have different histories: each branch has a commit which 
@@ -145,13 +176,27 @@ doesn't exist in the other branch.
 
 We can compare the two files across branches using `git diff`
 
-```bash
+```sh
 git diff development
 ```
 
 ```abc
-FIXME
+diff --git a/mean.py b/mean.py
+index 8f44245..67692ae 100644
+--- a/mean.py
++++ b/mean.py
+@@ -1,6 +1,6 @@
+ import pandas as pd
+ dataframe = pd.read_csv("rgb.csv")
++means = dataframe.mean()
+
+-
+-reds = dataframe["red"]
+-print(red.means())
++blues = dataframe["blue"]
++print(blue.means())
 ```
+
 Once again, because this is a diff from `development` to `main`, the changes
 we've made in `main` which aren't in `development` show as inserts (+) and
 the changes in `development` which aren't in `main` show as deletes (-)
@@ -171,7 +216,7 @@ Merge branch 'development'
 # the commit.
 ```
 
-When we do this, git has prompted us for a commit message: this is similar to
+When we do this, git prompts us for a commit message: this is similar to
 what we've seen earlier when we've committed a change, but in this case, git
 has pre-filled the commit message with `Merge branch 'development'`
 
@@ -187,20 +232,34 @@ merging, but for now we'll just accept git's default message and save:
 ```abc
 Auto-merging mean.py
 Merge made by the 'ort' strategy.
- mean.py | 2 ++
- 1 file changed, 2 insertions(+)
+ mean.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 This output means that git has successfully merge the two versions of mean.py.
 Git reports that it's used the 'ort' strategy - historically, git has had a
-number of different algorithms which it uses to try to combine commits. 'ort'
-is a relatively recent addition: the details of how the different strategies
-work is not something we can go into today.
+number of different algorithms which it uses to try to combine commits. If
+you're running an older version of Git, it might have used the 'recursive'
+strategy instead. Going into the details of how these algorithms work is a bit
+out of scope, but git will basically try to incorporate all of the diverging
+histories of each file into the result.
 
 If we check our log:
 
-```bash
+```sh
 git log --oneline
+```
+
+```abc
+06b8997 (HEAD -> main) Merge branch 'development'
+68ccb0e Changed subset to blue
+7290b1c (development) Removed redundant means
+905d031 Subset the rgb values to just red
+2408b26 Added some documentation
+dea7c3c Added .gitignore
+927b884 Calculates the means
+6abea37 Add a line which loads the data from a CSV file
+3c865ca Start a script to calculate the mean
 ```
 
 We can see that this merge has created a new commit, and that the fact that
@@ -211,19 +270,35 @@ in the log.
 
 Let's see what the file actually looks like after the merge.
 
-```bash
-nano mean.py
+```sh
+cat mean.py
 ```
 
-We can see that git has added the new line from `development` at the bottom, 
-and kept the new line from `main` at the top. From Git's point of view, the
-merge was a success - it's managed to bring the divergent histories of this
-file into one text and kept the features of both.
+```abc
+import pandas as pd
+dataframe = pd.read_csv("rgb.csv")
 
-[ FIXME - this would be a point to introduce the idea that a merged file 
-could contain bugs and that git can't check this]
 
-TODO - some exercises?
+blues = dataframe["blue"]
+print(blue.means())
+```
+
+We can see that git has incorporated both sets of changes: the redundant 
+calculation of the means has been removed from the top of the file, and the
+subsetting is now done on "blue" rather than "red"
+
+From Git's point of view, the merge was a success - it's managed to bring the
+divergent histories of this file into one text and kept the features of both.
+
+It's worth pointing out that git is only interested in whether it can combined
+two sets of textual changes - just because a merge has succeeded, it's no 
+guarantee that your code actually works, or that it will even run.
+
+In practice, there are a lot of software engineering techniques for verifying
+that code still works correctly after a merge - running a battery of unit tests,
+for example. And it's possible to automate this process so that tests are run
+when, for example, a change is made to a particular branch on a repository on
+GitHub.
 
 
 
