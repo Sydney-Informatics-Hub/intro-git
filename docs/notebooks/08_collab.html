@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SIH Introduction to Version Control using Git - Collaborating</title>
+<title>SIH Introduction to Version Control using Git – collab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -138,12 +201,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Branches and workflows</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/12_pull_requests.html">
- <span class="dropdown-text">Pull requests</span></a>
+    <a class="dropdown-item" href="../notebooks/12_conflicts.html">
+ <span class="dropdown-text">Conflicts</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../notebooks/13_conflicts.html">
- <span class="dropdown-text">Conflicts</span></a>
+    <a class="dropdown-item" href="../notebooks/13_pull_requests.html">
+ <span class="dropdown-text">Forks and pull requests</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../notebooks/14_open_research.html">
@@ -162,30 +225,49 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#collaborating" id="toc-collaborating" class="nav-link active" data-scroll-target="#collaborating">Collaborating</a>
+  <ul class="collapse">
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key points</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Collaborating</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-    
-  </div>
-  
-
-</header>
-
+<section id="collaborating" class="level1">
+<h1>Collaborating</h1>
+<section id="questions" class="level3 questions">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ul>
+<li>How can I use version control to collaborate with other people?</li>
+</ul>
+</section>
+<section id="objectives" class="level3 objectives">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Clone a remote repository.</li>
+<li>Collaborate by pushing to a common repository.</li>
+<li>Describe the basic collaborative workflow.</li>
+</ul>
+</section>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key points</h3>
+<ul>
+<li><code>git clone</code> copies a remote repository to create a local repository with a remote called <code>origin</code> automatically set up.”</li>
+</ul>
+</section>
 <p>For the next step, get into pairs. One person will be the “Owner” and the other will be the “Collaborator”. The goal is that the Collaborator add changes into the Owner’s repository. We will switch roles at the end, so both persons will play Owner and Collaborator.</p>
 <blockquote class="blockquote">
-<h2 id="practicing-by-yourself" class="anchored">Practicing By Yourself</h2>
+<h2 id="practicing-by-yourself" class="anchored" data-anchor-id="collaborating">Practicing By Yourself</h2>
 <p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window. This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you. {: .callout}</p>
 </blockquote>
 <p>The Owner needs to give the Collaborator access. On GitHub, click the “Settings” button on the right, select “Collaborators”, click “Add people”, and then enter your partner’s username.</p>
@@ -199,10 +281,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Next, the Collaborator needs to download a copy of the Owner’s repository to her machine. This is called “cloning a repo”.</p>
 <p>The Collaborator doesn’t want to overwrite her own version of <code>planets.git</code>, so needs to clone the Owner’s repository to a different location than her own repository with the same name.</p>
 <p>To clone the Owner’s repo into her <code>Desktop</code> folder, the Collaborator enters:</p>
-<pre><code>$ git clone git@github.com:vlad/planets.git ~/Desktop/vlad-planets</code></pre>
-<p>{: .language-bash}</p>
-<p>Replace ‘vlad’ with the Owner’s username.</p>
-<p>If you choose to clone without the clone path (<code>~/Desktop/vlad-planets</code>) specified at the end, you will clone inside your own planets folder! Make sure to navigate to the <code>Desktop</code> folder first.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:bob/mean.git ~/Desktop/bob-mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Replace ‘bob’ with the Owner’s username.</p>
+<p>If you choose to clone without the clone path (<code>~/Desktop/bob-mean</code>) specified at the end, you will clone inside your own planets folder! Make sure to navigate to the <code>Desktop</code> folder first.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/github-collaboration.svg" class="img-fluid figure-img"></p>
@@ -210,34 +291,37 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>The Collaborator can now make a change in her clone of the Owner’s repository, exactly the same way as we’ve been doing before:</p>
-<pre><code>$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>It is so a planet!</code></pre>
-<p>{: .output}</p>
-<pre><code>$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"</code></pre>
-<p>{: .language-bash}</p>
-<pre><code> 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt</code></pre>
-<p>{: .output}</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/bob-mean</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> doc.txt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>This is a script to calculate mean values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add doc.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Added some documentation"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ch">[main</span> 2408b26<span class="ch">]</span> Added some documentation</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> 1 file changed, 1 insertion<span class="dt">(</span>+<span class="dt">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> create mode 100644 doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then push the change to the <em>Owner’s repository</em> on GitHub:</p>
-<pre><code>$ git push origin main</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>Enumerating objects: 4, done.
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (3/3), 306 bytes, done.
-Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
-   9272da5..29aba7c  main -&gt; main</code></pre>
-<p>{: .output}</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Enumerating objects<span class="ch">:</span> 4, done.</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Counting objects<span class="ch">:</span> 100<span class="co">% (4/4), done.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Delta compression using up to 12 threads</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Compressing objects<span class="ch">:</span> 100<span class="co">% (2/2), done.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>Writing objects<span class="ch">:</span> 100<span class="co">% (3/3), 325 bytes | 325.00 KiB/s, done.</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>Total 3 <span class="dt">(</span>delta 0<span class="dt">)</span>, reused 0 <span class="dt">(</span>delta 0<span class="dt">)</span>, pack-reused 0</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>To github.com<span class="ch">:</span>bob/mean.git</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>   927b884..2408b26  main -&gt; main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that we didn’t have to create a remote called <code>origin</code>: Git uses this name by default when we clone a repository. (This is why <code>origin</code> was a sensible choice earlier when we were setting up remotes by hand.)</p>
 <p>Take a look at the Owner’s repository on GitHub again, and you should be able to see the new commit made by the Collaborator. You may need to refresh your browser to see the new commit.</p>
-<blockquote class="blockquote">
-<h2 id="some-more-about-remotes" class="anchored">Some more about remotes</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Some more about remotes
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In this episode and the previous one, our local repository has had a single “remote”, called <code>origin</code>. A remote is a copy of the repository that is hosted somewhere else, that we can push to and pull from, and there’s no reason that you have to work with only one. For example, on some large projects you might have your own copy in your own GitHub account (you’d probably call this <code>origin</code>) and also the main “upstream” project repository (let’s call this <code>upstream</code> for the sake of examples). You would pull from <code>upstream</code> from time to time to get the latest updates that other people have committed.</p>
 <p>Remember that the name you give to a remote only exists locally. It’s an alias that you choose - whether <code>origin</code>, or <code>upstream</code>, or <code>fred</code> - and not something intrinstic to the remote repository.</p>
 <p>The <code>git remote</code> family of commands is used to set up and alter the remotes associated with a repository. Here are some of the most useful ones:</p>
@@ -246,29 +330,36 @@ To https://github.com/vlad/planets.git
 <li><code>git remote add [name] [url]</code> is used to add a new remote</li>
 <li><code>git remote remove [name]</code> removes a remote. Note that it doesn’t affect the remote repository at all - it just removes the link to it from the local repo.</li>
 <li><code>git remote set-url [name] [newurl]</code> changes the URL that is associated with the remote. This is useful if it has moved, e.g.&nbsp;to a different GitHub account, or from GitHub to a different hosting service. Or, if we made a typo when adding it!</li>
-<li><code>git remote rename [oldname] [newname]</code> changes the local alias by which a remote is known - its name. For example, one could use this to change <code>upstream</code> to <code>fred</code>. {: .callout}</li>
+<li><code>git remote rename [oldname] [newname]</code> changes the local alias by which a remote is known - its name. For example, one could use this to change <code>upstream</code> to <code>fred</code>.</li>
 </ul>
-</blockquote>
+</div>
+</div>
 <p>To download the Collaborator’s changes from GitHub, the Owner now enters:</p>
-<pre><code>$ git pull origin main</code></pre>
-<p>{: .language-bash}</p>
-<pre><code>remote: Enumerating objects: 4, done.
-remote: Counting objects: 100% (4/4), done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
-Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
- * branch            main     -&gt; FETCH_HEAD
-   9272da5..29aba7c  main     -&gt; origin/main
-Updating 9272da5..29aba7c
-Fast-forward
- pluto.txt | 1 +
- 1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt</code></pre>
-<p>{: .output}</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Enumerating objects<span class="ch">:</span> 4, done.</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Counting objects<span class="ch">:</span> 100<span class="co">% (4/4), done.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Compressing objects<span class="ch">:</span> 100<span class="co">% (2/2), done.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Total 3 <span class="dt">(</span>delta 0<span class="dt">)</span>, reused 3 <span class="dt">(</span>delta 0<span class="dt">)</span>, pack-reused 0</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>Unpacking objects<span class="ch">:</span> 100<span class="co">% (3/3), 305 bytes | 101.00 KiB/s, done.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>From github.com<span class="ch">:</span>bob/mean</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> * branch            main       -&gt; FETCH_HEAD</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>   927b884..2408b26  main       -&gt; origin/main</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>Updating 927b884..2408b26</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>Fast-forward</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> doc.txt <span class="ch">|</span> 1 +</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a> 1 file changed, 1 insertion<span class="dt">(</span>+<span class="dt">)</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a> create mode 100644 doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now the three repositories (Owner’s local, Collaborator’s local, and Owner’s on GitHub) are back in sync.</p>
-<blockquote class="blockquote">
-<h2 id="a-basic-collaborative-workflow" class="anchored">A Basic Collaborative Workflow</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+A Basic Collaborative Workflow
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In practice, it is good to be sure that you have an updated version of the repository you are collaborating on, so you should <code>git pull</code> before making our changes. The basic collaborative workflow would be:</p>
 <ul>
 <li>update your local repo with <code>git pull origin main</code>,</li>
@@ -276,33 +367,80 @@ Fast-forward
 <li>commit your changes with <code>git commit -m</code>, and</li>
 <li>upload the changes to GitHub with <code>git push origin main</code></li>
 </ul>
-<p>It is better to make many commits with smaller changes rather than of one commit with massive changes: small commits are easier to read and review. {: .callout}</p>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="switch-roles-and-repeat" class="anchored">Switch Roles and Repeat</h2>
-<p>Switch roles and repeat the whole process. {: .challenge}</p>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="review-changes" class="anchored">Review Changes</h2>
+<p>It is better to make many commits with smaller changes rather than of one commit with massive changes: small commits are easier to read and review.</p>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Switch Roles and Repeat
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Switch roles and repeat the whole process.</p>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Review Changes
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The Owner pushed commits to the repository without giving any information to the Collaborator. How can the Collaborator find out what has changed with command line? And on GitHub?</p>
-<blockquote class="blockquote">
-<h2 id="solution" class="anchored">Solution</h2>
+<div class="callout-solution callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>On the command line, the Collaborator can use <code>git fetch origin main</code> to get the remote changes into the local repository, but without merging them. Then by running <code>git diff main origin/main</code> the Collaborator will see the changes output in the terminal.</p>
-<p>On GitHub, the Collaborator can go to the repository and click on “commits” to view the most recent commits pushed to the repository. {: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="comment-changes-in-github" class="anchored">Comment Changes in GitHub</h2>
+<p>On GitHub, the Collaborator can go to the repository and click on “commits” to view the most recent commits pushed to the repository.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Comment Changes in GitHub
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The Collaborator has some questions about one line change made by the Owner and has some suggestions to propose.</p>
 <p>With GitHub, it is possible to comment on the diff of a commit. Over the line of code to comment, a blue comment icon appears to open a comment window.</p>
-<p>The Collaborator posts her comments and suggestions using the GitHub interface. {: .challenge}</p>
-</blockquote>
-<blockquote class="blockquote">
-<h2 id="version-history-backup-and-version-control" class="anchored">Version History, Backup, and Version Control</h2>
-<p>Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control? What are some of the benefits of using version control, Git and GitHub? {: .challenge}</p>
-</blockquote>
+<p>The Collaborator posts her comments and suggestions using the GitHub interface.</p>
+</div>
+</div>
+<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Version History, Backup, and Version Control
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control? What are some of the benefits of using version control, Git and GitHub?</p>
+</div>
+</div>
 
 
+</section>
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
