@@ -367,9 +367,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What’s happened here is that Git is refusing to try to reconcile the two branches, without being told what to do by default.</p>
 <p>To get our heads around this, we can go back to the directed acyclic graphs.</p>
 <p>So far, we’ve looked at reconciling two branches by merging them. You can think of this as Git’s attempt to make a version which contains all of the commits from both branches.</p>
-<p>[ illustration of a merge ]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/conflict-merge.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A merge, visualised as a graph</figcaption><p></p>
+</figure>
+</div>
 <p>The other way to reconcile two divergent branches is a separate tool, <code>git rebase</code>. Rebasing tells Git that I want to fetch the latest version of this branch from the remote, then take all of my local commits - all of the changes I’ve made since our branches diverged - and apply them to the latest HEAD of the branch. In a sense, it’s like rewriting history - we fast-forward the repository to get everyone else’s work, and then apply our own.</p>
-<p>[ illustration of a rebase ]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/conflict-rebase.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A rebase, visualised as a graph</figcaption><p></p>
+</figure>
+</div>
 <p>Rebasing can be complicated and counterintuitive, which is why we don’t have time to cover it in more detail here - it’s become common practice in large teams because it can effectively give the trunk of a repo a linear history, but it’s not really recommended for beginners.</p>
 <p>The reason for the change in the behaviour of <code>git pull</code> is that increasingly, rebasing is becoming more popular as a way of incorporating the latest updates from the team into your work. For small teams or solo developers, however, merging is fine.</p>
 <p>We want to tell Git to <em>not</em> rebase, but to try to merge.</p>
