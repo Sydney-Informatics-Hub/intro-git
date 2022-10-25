@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SIH Introduction to Version Control using Git – open_research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../lesson.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">SIH Introduction to Version Control using Git</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html">Setup</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 1</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-1">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/01_intro.html">
+ <span class="dropdown-text">Introduction to version control</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/02_config.html">
+ <span class="dropdown-text">Configure git</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/03_create.html">
+ <span class="dropdown-text">Creating a repository</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/04_changes.html">
+ <span class="dropdown-text">Making changes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/05_history.html">
+ <span class="dropdown-text">Exploring history</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/06_ignore.html">
+ <span class="dropdown-text">Ignoring files</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/07_github.html">
+ <span class="dropdown-text">Pushing to GitHub</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/08_collab.html">
+ <span class="dropdown-text">Collaborating</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-session-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Session 2</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-session-2">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/09_branches.html">
+ <span class="dropdown-text">Branching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/10_merging.html">
+ <span class="dropdown-text">Merging</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/11_workflows.html">
+ <span class="dropdown-text">Branches and workflows</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/12_conflicts.html">
+ <span class="dropdown-text">Conflicts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/13_pull_requests.html">
+ <span class="dropdown-text">Forks and pull requests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/14_open_research.html">
+ <span class="dropdown-text">Open research</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#open-research" id="toc-open-research" class="nav-link active" data-scroll-target="#open-research">Open research</a>
+  <ul class="collapse">
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  <li><a href="#making-code-citable" id="toc-making-code-citable" class="nav-link" data-scroll-target="#making-code-citable">Making code citable</a></li>
+  <li><a href="#licensing-your-code" id="toc-licensing-your-code" class="nav-link" data-scroll-target="#licensing-your-code">Licensing your code</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="open-research" class="level1">
+<h1>Open research</h1>
+<section id="questions" class="level3 questions">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ul>
+<li>How can version control help my work be more open?</li>
+<li>How can I make my code easier to cite?</li>
+<li>What licensing information should I include with my work?</li>
+</ul>
+</section>
+<section id="objectives" class="level3 objectives">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Explain how a version control system can help with open science</li>
+<li>Explain how to provide a guide for people to be able to cite code</li>
+<li>Explain how to find guidance on the right license for your code</li>
+</ul>
+</section>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Open research is more useful and highly-cited than closed</li>
+<li>Adding a citation guide makes your work easier to cite</li>
+<li>There are a range of open-source licenses to suit different cases</li>
+</ul>
+</section>
+<pre class="quotation"><code>The opposite of "open" isn't "closed".
+The opposite of "open" is "broken".
+
+--- John Wilbanks</code></pre>
+<p>Increasingly, every part of the research life-cycle, from data collection, analysis and computation, and pre-publication and review, can take place on open platforms.</p>
+<p>Version control, and public repositories on GitHub or an institutional repo, can serve as the equivalent of a shareable electronic lab notebook for computational work.</p>
+<ul>
+<li>The conceptual stages of your work are documented, including who did what and when. Every step is stamped with an identifier (the commit ID) that is for most intents and purposes unique.</li>
+<li>You can tie documentation of rationale, ideas, and other intellectual work directly to the changes that spring from them.</li>
+<li>You can refer to what you used in your research to obtain your computational results in a way that is unique and recoverable.</li>
+<li>With a version control system such as Git, the entire history of the repository is easy to archive for perpetuity.</li>
+</ul>
+<p>This makes it easier for computational research to be reproducible. Analytical tools can be refined and improved, but earlier versions are still available if required.</p>
+<section id="making-code-citable" class="level2">
+<h2 class="anchored" data-anchor-id="making-code-citable">Making code citable</h2>
+<p>Anything that is hosted in a version control repository (data, code, papers, etc.) can be turned into a citable object.</p>
+<p>To help people cite your code, you can include a file called <code>CITATION</code> or <code>CITATION.txt</code> that describes how to reference your project; for an example, see the <a href="https://scikit-learn.org/stable/about.html#citing-scikit-learn">citation guide for scikit-learn</a> or many other large open-source projects.</p>
+<p>More detailed advice, and other ways to make your code citable can be found <a href="https://www.software.ac.uk/how-cite-and-describe-software">at the Software Sustainability Institute blog</a>.</p>
+</section>
+<section id="licensing-your-code" class="level2">
+<h2 class="anchored" data-anchor-id="licensing-your-code">Licensing your code</h2>
+<p>When a repository with source code, a manuscript or other creative works becomes public, it should include a file <code>LICENSE</code> or <code>LICENSE.txt</code> in the base directory of the repository that clearly states under which license the content is being made available. This is because creative works are automatically eligible for intellectual property (and thus copyright) protection. Reusing creative works without a license is dangerous, because the copyright holders could sue you for copyright infringement.</p>
+<p>A license solves this problem by granting rights to others (the licensees) that they would otherwise not have. What rights are being granted under which conditions differs, often only slightly, from one license to another. In practice, a few licenses are by far the most popular, and <a href="https://choosealicense.com/">choosealicense.com</a> will help you find a common license that suits your needs. Important considerations include:</p>
+<ul>
+<li>Whether you want to address patent rights.</li>
+<li>Whether you require people distributing derivative works to also distribute their source code.</li>
+<li>Whether the content you are licensing is source code.</li>
+<li>Whether you want to license the code at all.</li>
+</ul>
+<p>Choosing a license that is in common use makes life easier for contributors and users, because they are more likely to already be familiar with the license and don’t have to wade through a bunch of jargon to decide if they’re ok with it. The <a href="https://opensource.org/licenses">Open Source Initiative</a> and <a href="https://www.gnu.org/licenses/license-list.html">Free Software Foundation</a> both maintain lists of licenses which are good choices.</p>
+<p><a href="https://doi.org/10.1371/journal.pcbi.1002598">This article</a> provides an excellent overview of licensing and licensing options from the perspective of scientists who also write code.</p>
+<p>At the end of the day what matters is that there is a clear statement as to what the license is. Also, the license is best chosen from the get-go, even if for a repository that is not public. Pushing off the decision only makes it more complicated later, because each time a new collaborator starts contributing, they, too, hold copyright and will thus need to be asked for approval once a license is chosen.</p>
+<pre class="callout-challenge"><code>## How to Track Large Data or Image Files using Git?
+
+Large data or image files such as `.md5` or `.psd` file types can be tracked within 
+a github repository using the [Git Large File Storage](https://git-lfs.github.com)
+open source extension tool.  This tool automatically uploads large file contents to 
+a remote server and replaces the file with a text pointer within the github repository.
+
+Try downloading and installing the Git Large File Storage extension tool, then add 
+tracking of a large file to your github repository.  Ask a colleague to clone your
+repository and describe what they see when they access that large file.   </code></pre>
+
+
+</section>
+</section>
+
+<p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
