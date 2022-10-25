@@ -88,7 +88,7 @@ And the graph is acyclic because loops aren't permitted - if you traverse the
 graph following a commit's parents back to the root commit, you won't pass 
 through any of the same commits twice.
 
-![A Directed Acyclic Graph](fig/merge-dag.svg)
+![A Directed Acyclic Graph](../fig/merge-dag.svg)
 
 # Fast-forwards
 
@@ -101,7 +101,7 @@ two histories.
 In these cases, Git can 'fast-forward': it simply updates the head of our
 `main` branch to the commit at the tip of the `develop` branch.
 
-![A Fast-Forward Merge](fig/merge-ff.svg)
+![A Fast-Forward Merge](../fig/merge-ff.svg)
 
 Because the merge is using commits which already exist, Git doesn't prompt
 us for a commit message when it can fast-forward.
