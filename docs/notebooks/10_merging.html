@@ -291,13 +291,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The commits which make up the history of a Git repository with multiple branches form a mathematical structure called a directed acyclic graph.</p>
 <p>Each commit is a node in the graph. The graph is directed because every edge links a commit to one or more parents, and this relationship is one-way.</p>
 <p>And the graph is acyclic because loops aren’t permitted - if you traverse the graph following a commit’s parents back to the root commit, you won’t pass through any of the same commits twice.</p>
-<p>[ Illustration of a DAG ]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig/merge-dag.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A Directed Acyclic Graph</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="fast-forwards" class="level1">
 <h1>Fast-forwards</h1>
 <p>These are the simplest merge: where the two commits we are merging have a common shared history. This was the case in the example we just merged. Nothing new had been added to the <code>main</code> branch while Alice was working on her <code>development</code> branch, so there’s no need to work out how to combine the two histories.</p>
 <p>In these cases, Git can ‘fast-forward’: it simply updates the head of our <code>main</code> branch to the commit at the tip of the <code>develop</code> branch.</p>
-<p>[ picture here of the fast-forward scenario]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fig/merge-ff.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A Fast-Forward Merge</figcaption><p></p>
+</figure>
+</div>
 <p>Because the merge is using commits which already exist, Git doesn’t prompt us for a commit message when it can fast-forward.</p>
 </section>
 <section id="merges" class="level1">
