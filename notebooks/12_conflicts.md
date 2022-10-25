@@ -25,12 +25,15 @@
 
 - Conflicts occur when two or more people change the same lines of the same file.
 - Git can emit a lot of warning messages when this happens
+- There have been recent changes to how Git behaves when you pull updates from a remote
 - The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
 </div>
 
 We've shown an example of the sorts of changes which Git can merge
 automatically - where the changes are in separate parts of the file. But, as
 soon as people can work in parallel, they'll likely step on each other's toes.
+
+![a meme comparing random git commands to pouring petrol on a bonfire](../fig/random_git_commands.png)
 
 This will even happen with a single person: if we are working on a piece of
 software on both our laptop and a server in the lab, we could make different
