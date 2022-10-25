@@ -33,45 +33,38 @@ of developers, each of whom has a local repo and who share a repo on GitHub.
 In this section, we'll step through what's called a fork-based workflow, which
 is a way to contribute code to another team's project.
 
-A fork-based workflow has the following steps:
+We'll do this exercise in pairs again, as we did for the first GitHub exercise,
+but this time we'll imagine that Bob and Alice aren't on the same team - instead,
+Bob wants to contribute a new feature to the `mean.py` script.
 
-1. You fork the projects repo on GitHub - this is similar to cloning, but you're
-creating a clone of the repo in your own GitHub account, not on your local machine.
+Because Bob's not part of Alice's team, he won't have write access to her
+repository, so he'll have to create his own.
 
-2. You create a local copy of your fork of the project
+Forking is the name for this process. It's essentially the same as a clone, but
+it's all happening on GitHub's servers.
 
-3. You create a branch on your repo where you'll work on the changes that you
-want to contribute
-
-4. You push your changes to your remote copy of the project's repo
-
-5. On GitHub, you create a pull request for the maintainer of the original
-project
-
-It's called a pull request because you're asking the maintainer to pull your
-contribution into their version of the project.
-
-After you've made the pull request, the maintainer can accept it straight away,
-or start a form of collaboration to talk about the changes - this can take the 
-form of a code review. We won't have time to cover that in this workshop, but
-it's a very common form of quality control for open source projects, and is
-also used within teams.
-
-### Outline of this section
-
-*Note: check whether Bob will already have write access to Alice's repo?*
-
-1. Bob creates a fork it
+To do this, Bob needs to visit Alice's repository on GitHub, and click on 
+the "Fork" button on the top right.
 
 ![Creating a Pull Request (Step 1)](../fig/pr01-fork-repository.png)
 
+This will create a new version of the `mean` repository in Bob's GitHub account
+
 ![Creating a Pull Request (Step 2)](../fig/pr02-new-fork.png)
 
-
-2. Bob starts a branch called `feature-median`
-
+Bob can now clone his own repository to his local machine. We'll put this 
+copy in a directory called `fork-mean` to keep it separate from any other
+copies we've made 
 
 ```sh
+git clone git@github.com:bob/mean.git ~/Desktop/fork-mean
+```
+
+Now Bob can start a new branch for development on his new feature, called
+`feature-median`:
+
+```sh
+cd fork-mean
 git checkout -b feature-median
 ```
 
@@ -79,7 +72,7 @@ git checkout -b feature-median
 Switched to a new branch 'feature-median'
 ```
 
-3. Bob makes a change to mean.py 
+Once he's create the new branch, he can make his edits to `mean.py`
 
 ```sh
 nano mean.py
@@ -96,6 +89,8 @@ print(subset.mean())
 print(subset.median())
 ```
 
+And add and commit the changes as usual:
+
 ```sh
 git add mean.py
 git commit mean.py -m "Added median calculation"
@@ -106,8 +101,9 @@ git commit mean.py -m "Added median calculation"
  1 file changed, 2 insertions(+), 2 deletions(-)
 ```
 
-
-5. Bob pushes his change to GitHub
+Bob now has his new, median-enabled version of the script on his feature branch.
+To create a pull request, the first thing he does is push it to his fork of
+the repository.
 
 ```sh
 git push
@@ -122,6 +118,9 @@ To push the current branch and set the remote as upstream, use
 To have this happen automatically for branches without a tracking
 upstream, see 'push.autoSetupRemote' in 'git help config'.
 ```
+
+Oh - that's right, we need to tell Git to set an upstream for our feature 
+branch, as it doesn't exist on GitHub yet.
 
 ```sh
 git push --set-upstream origin feature-median
@@ -144,21 +143,54 @@ To github.com:sih-gw-alice/mean.git
 branch 'feature-median' set up to track 'origin/feature-median'.
 ```
 
-6. Bob can now see his new branch on GitHub
+That's pushed Bob's changes to GitHub and created a new branch. Notice that
+GitHub is prompting us to create a pull request for this branch already, and has
+even provided us with a URL to visit. Note that this is a message from GitHub
+(this is what the `remote:` text means) rather than Git itself.
+
+If we go to Bob's GitHub, the new branch is there, and the frontend has noticed
+recent changes and is prompting us to "Compare & pull request".
 
 ![Creating a Pull Request (Step 3)](../fig/pr03-new-changes-pushed.png)
 
-8. Bob creates a pull request based on his `feature-median` branch 
+A pull request is exactly that - we're telling the maintainer of a project - 
+Alice, in this case - that we have something like a bug fix or a feature on
+our branch of the repository, and we want them to pull it into the main
+branch of the project.
+
+If Bob clicks the "Compare & pull request" button, he is taken to this page
 
 ![Creating a Pull Request (Step 4)](../fig/pr04-compare-changes.png)
 
-9. Alice confirms to see if the pull request is there
+This allows Bob to pick which repository and branches he wants to compare, 
+and GitHub decides whether the branches can be merged automatically, or if
+there's a conflict. In this case, there's no conflict between Bob's branch
+and the main branch of Alice's repo.
+
+Bob creates his pull request by adding some notes explaining his PR, and clicking
+the "Create pull request" button.
+
+If Alice or another of her project team visit their repository, they'll notice
+that the "Pull requests" item is highlighted, and if they click it, they
+should see Bob's pull request in the list.
 
 ![Creating a Pull Request (Step 5)](../fig/pr05-pull-request-list.png)
 
+Clicking the pull request title takes Alice through to a page for the pull
+request, which shows Bob's comments, and a lot of other ways to explore the
+pull request - she can see the list of commits, the files which have been
+changed, and so on.
+
+It's very common for projects to have continuous integration, or CI, set up on 
+GitHub - this will run tests automatically on pull requests or particular
+branches, and the 'Checks' tab is where Alice could see whether those tests
+had passed or not.
+
+Our repo hasn't had CI set up, so GitHub reminds us about it.
+
 ![Creating a Pull Request (Step 6)](../fig/pr06-merge-pull-request.png)
 
-10. Alice can now merge Bob's feature branch into the main of her version
+As there are no conflicts with the base branch, Alice can merge the changes.
 
 ![Creating a Pull Request (Step 7)](../fig/pr07-pull-request-merged.png)
 
@@ -181,3 +213,11 @@ they will, for instance, provide a checklist of things contributors should do
 when contributing code: require that PRs be raised against an existing issue,
 provide a template for issues and/or PR comments, and so on.
 
+A pull request can be seen as the start of a collaboration between a developer
+and the maintainer - this can take the form of comments on the PR, or a more
+detailed kind of collaboration called a code review, which GitHub has a very
+good interface for - this allows a maintainer to add comments or questions to
+each individual change in a PR.
+
+This isn't just used for open-source projects - many teams use pull requests
+and code review internally as an important form of quality control.
