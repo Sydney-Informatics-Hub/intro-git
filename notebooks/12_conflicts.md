@@ -33,7 +33,7 @@ We've shown an example of the sorts of changes which Git can merge
 automatically - where the changes are in separate parts of the file. But, as
 soon as people can work in parallel, they'll likely step on each other's toes.
 
-![a meme comparing random git commands to pouring petrol on a bonfire](../figs/random_git_commands.png)
+![a meme comparing random git commands to pouring petrol on a bonfire](../fig/random_git_commands.png)
 
 This will even happen with a single person: if we are working on a piece of
 software on both our laptop and a server in the lab, we could make different
