@@ -16,8 +16,6 @@
 
 </div>  
 
-Hello world
-
 We'll start by exploring how version control can be used to keep track of what one person did and when.
 Even if you aren't collaborating with other people, automated version control is much better than this situation:
 

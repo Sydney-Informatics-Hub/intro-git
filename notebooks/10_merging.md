@@ -28,6 +28,8 @@
 
 </div>
 
+![A meme about git merge](../fig/platypus.png)
+
 If Alice is happy with the changes she's made to her script, she'll want to
 bring the changes back to the main branch. 
 
