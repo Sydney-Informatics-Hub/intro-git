@@ -1,1 +1,1 @@
-Sitemap: https://Sydney-Informatics-Hub.github.io/intro-git/sitemap.xml
+Sitemap: https://github.com/Sydney-Informatics-Hub/intro-git/sitemap.xml

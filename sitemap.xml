@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/index.html</loc>
-    <lastmod>2022-10-25T05:15:03.366Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/index.html</loc>
+    <lastmod>2022-10-25T05:23:27.521Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/setup.html</loc>
-    <lastmod>2022-10-25T05:15:04.007Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/12_conflicts.html</loc>
+    <lastmod>2022-10-25T05:23:28.721Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/13_pull_requests.html</loc>
-    <lastmod>2022-10-25T05:15:04.674Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/01_intro.html</loc>
+    <lastmod>2022-10-25T05:23:29.605Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/11_workflows.html</loc>
-    <lastmod>2022-10-25T05:15:05.268Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/07_github.html</loc>
+    <lastmod>2022-10-25T05:23:30.609Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/05_history.html</loc>
-    <lastmod>2022-10-25T05:15:06.024Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/04_changes.html</loc>
+    <lastmod>2022-10-25T05:23:31.509Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/02_config.html</loc>
-    <lastmod>2022-10-25T05:15:06.620Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/06_ignore.html</loc>
+    <lastmod>2022-10-25T05:23:32.197Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/07_github.html</loc>
-    <lastmod>2022-10-25T05:15:07.366Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/02_config.html</loc>
+    <lastmod>2022-10-25T05:23:32.845Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/14_open_research.html</loc>
-    <lastmod>2022-10-25T05:15:07.923Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/03_create.html</loc>
+    <lastmod>2022-10-25T05:23:33.457Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/06_ignore.html</loc>
-    <lastmod>2022-10-25T05:15:08.508Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/00_otherresources.html</loc>
+    <lastmod>2022-10-25T05:23:33.749Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/04_changes.html</loc>
-    <lastmod>2022-10-25T05:15:09.342Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/11_workflows.html</loc>
+    <lastmod>2022-10-25T05:23:34.389Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/09_branches.html</loc>
-    <lastmod>2022-10-25T05:15:09.869Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/08_collab.html</loc>
+    <lastmod>2022-10-25T05:23:35.049Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/03_create.html</loc>
-    <lastmod>2022-10-25T05:15:10.469Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/10_merging.html</loc>
+    <lastmod>2022-10-25T05:23:35.705Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/01_intro.html</loc>
-    <lastmod>2022-10-25T05:15:10.997Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/13_pull_requests.html</loc>
+    <lastmod>2022-10-25T05:23:36.345Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/00_otherresources.html</loc>
-    <lastmod>2022-10-25T05:15:11.273Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/14_open_research.html</loc>
+    <lastmod>2022-10-25T05:23:36.941Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/10_merging.html</loc>
-    <lastmod>2022-10-25T05:15:11.880Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/05_history.html</loc>
+    <lastmod>2022-10-25T05:23:37.710Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/12_conflicts.html</loc>
-    <lastmod>2022-10-25T05:15:12.564Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/notebooks/09_branches.html</loc>
+    <lastmod>2022-10-25T05:23:38.306Z</lastmod>
   </url>
   <url>
-    <loc>https://Sydney-Informatics-Hub.github.io/intro-git/notebooks/08_collab.html</loc>
-    <lastmod>2022-10-25T05:15:13.142Z</lastmod>
+    <loc>https://github.com/Sydney-Informatics-Hub/intro-git/setup.html</loc>
+    <lastmod>2022-10-25T05:23:38.926Z</lastmod>
   </url>
 </urlset>
