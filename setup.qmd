@@ -154,10 +154,3 @@ pkg install developer/versioning/git
 pkg_add git
 ```
 
-***
-
-## (Optional) Install GitKraken
-
-- We will show but not necessarily walk through [GitKraken](https://www.gitkraken.com/), an excellent (but paid for!) Git GUI tool. When working on large, multi-branch open-source and internal projects, this type of a tool can be very useful to navigate the mess that a too-many branch workflow can create.
-
-- [GitHub Desktop](https://desktop.github.com/) is a free alternative developed by GitHub which you may want to use as a free GUI instead.
