@@ -171,6 +171,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  <li><a href="#making-code-citable" id="toc-making-code-citable" class="nav-link" data-scroll-target="#making-code-citable">Making code citable</a></li>
+  <li><a href="#licensing-your-code" id="toc-licensing-your-code" class="nav-link" data-scroll-target="#licensing-your-code">Licensing your code</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -185,17 +187,72 @@ ul.task-list li input[type="checkbox"] {
 <section id="questions" class="level3 questions">
 <h3 class="anchored" data-anchor-id="questions">Questions</h3>
 <ul>
-<li>What are best practices for open research using git and GitHub?</li>
+<li>How can version control help my work be more open?</li>
+<li>How can I make my code easier to cite?</li>
+<li>What licensing information should I include with my work?</li>
 </ul>
 </section>
 <section id="objectives" class="level3 objectives">
 <h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Explain how a version control system can help with open science</li>
+<li>Explain how to provide a guide for people to be able to cite code</li>
+<li>Explain how to find guidance on the right license for your code</li>
+</ul>
 </section>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Open research is more useful and highly-cited than closed</li>
+<li>Adding a citation guide makes your work easier to cite</li>
+<li>There are a range of open-source licenses to suit different cases</li>
+</ul>
 </section>
+<pre class="quotation"><code>The opposite of "open" isn't "closed".
+The opposite of "open" is "broken".
+
+--- John Wilbanks</code></pre>
+<p>Increasingly, every part of the research life-cycle, from data collection, analysis and computation, and pre-publication and review, can take place on open platforms.</p>
+<p>Version control, and public repositories on GitHub or an institutional repo, can serve as the equivalent of a shareable electronic lab notebook for computational work.</p>
+<ul>
+<li>The conceptual stages of your work are documented, including who did what and when. Every step is stamped with an identifier (the commit ID) that is for most intents and purposes unique.</li>
+<li>You can tie documentation of rationale, ideas, and other intellectual work directly to the changes that spring from them.</li>
+<li>You can refer to what you used in your research to obtain your computational results in a way that is unique and recoverable.</li>
+<li>With a version control system such as Git, the entire history of the repository is easy to archive for perpetuity.</li>
+</ul>
+<p>This makes it easier for computational research to be reproducible. Analytical tools can be refined and improved, but earlier versions are still available if required.</p>
+<section id="making-code-citable" class="level2">
+<h2 class="anchored" data-anchor-id="making-code-citable">Making code citable</h2>
+<p>Anything that is hosted in a version control repository (data, code, papers, etc.) can be turned into a citable object.</p>
+<p>To help people cite your code, you can include a file called <code>CITATION</code> or <code>CITATION.txt</code> that describes how to reference your project; for an example, see the <a href="https://scikit-learn.org/stable/about.html#citing-scikit-learn">citation guide for scikit-learn</a> or many other large open-source projects.</p>
+<p>More detailed advice, and other ways to make your code citable can be found <a href="https://www.software.ac.uk/how-cite-and-describe-software">at the Software Sustainability Institute blog</a>.</p>
+</section>
+<section id="licensing-your-code" class="level2">
+<h2 class="anchored" data-anchor-id="licensing-your-code">Licensing your code</h2>
+<p>When a repository with source code, a manuscript or other creative works becomes public, it should include a file <code>LICENSE</code> or <code>LICENSE.txt</code> in the base directory of the repository that clearly states under which license the content is being made available. This is because creative works are automatically eligible for intellectual property (and thus copyright) protection. Reusing creative works without a license is dangerous, because the copyright holders could sue you for copyright infringement.</p>
+<p>A license solves this problem by granting rights to others (the licensees) that they would otherwise not have. What rights are being granted under which conditions differs, often only slightly, from one license to another. In practice, a few licenses are by far the most popular, and <a href="https://choosealicense.com/">choosealicense.com</a> will help you find a common license that suits your needs. Important considerations include:</p>
+<ul>
+<li>Whether you want to address patent rights.</li>
+<li>Whether you require people distributing derivative works to also distribute their source code.</li>
+<li>Whether the content you are licensing is source code.</li>
+<li>Whether you want to license the code at all.</li>
+</ul>
+<p>Choosing a license that is in common use makes life easier for contributors and users, because they are more likely to already be familiar with the license and don’t have to wade through a bunch of jargon to decide if they’re ok with it. The <a href="https://opensource.org/licenses">Open Source Initiative</a> and <a href="https://www.gnu.org/licenses/license-list.html">Free Software Foundation</a> both maintain lists of licenses which are good choices.</p>
+<p><a href="https://doi.org/10.1371/journal.pcbi.1002598">This article</a> provides an excellent overview of licensing and licensing options from the perspective of scientists who also write code.</p>
+<p>At the end of the day what matters is that there is a clear statement as to what the license is. Also, the license is best chosen from the get-go, even if for a repository that is not public. Pushing off the decision only makes it more complicated later, because each time a new collaborator starts contributing, they, too, hold copyright and will thus need to be asked for approval once a license is chosen.</p>
+<pre class="callout-challenge"><code>## How to Track Large Data or Image Files using Git?
+
+Large data or image files such as `.md5` or `.psd` file types can be tracked within 
+a github repository using the [Git Large File Storage](https://git-lfs.github.com)
+open source extension tool.  This tool automatically uploads large file contents to 
+a remote server and replaces the file with a text pointer within the github repository.
+
+Try downloading and installing the Git Large File Storage extension tool, then add 
+tracking of a large file to your github repository.  Ask a colleague to clone your
+repository and describe what they see when they access that large file.   </code></pre>
 
 
+</section>
 </section>
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
