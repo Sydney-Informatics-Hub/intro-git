@@ -218,7 +218,7 @@ So far, we've looked at reconciling two branches by merging them. You can think
 of this as Git's attempt to make a version which contains all of the commits
 from both branches.
 
-[ illustration of a merge ]
+![A merge, visualised as a graph](../fig/conflict-merge.svg)
 
 The other way to reconcile two divergent branches is a separate tool, `git rebase`.
 Rebasing tells Git that I want to fetch the latest version of this branch from
@@ -227,7 +227,7 @@ made since our branches diverged - and apply them to the latest HEAD of the
 branch. In a sense, it's like rewriting history - we fast-forward the repository
 to get everyone else's work, and then apply our own.
 
-[ illustration of a rebase ]
+![A rebase, visualised as a graph](../fig/conflict-rebase.svg)
 
 Rebasing can be complicated and counterintuitive, which is why we don't have
 time to cover it in more detail here - it's become common practice in large
