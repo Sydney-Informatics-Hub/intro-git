@@ -52,7 +52,7 @@ or check for email notification. Once there she can accept access to the Owner's
 Next, the Collaborator needs to download a copy of the Owner's repository to her
 machine. This is called "cloning a repo". 
 
-The Collaborator doesn't want to overwrite her own version of `planets.git`, so 
+The Collaborator doesn't want to overwrite her own version of `mean.git`, so 
 needs to clone the Owner's repository to a different location than her own 
 repository with the same name.
  
@@ -66,7 +66,7 @@ Replace 'bob' with the Owner's username.
 
 If you choose to clone without the clone path
 (`~/Desktop/bob-mean`) specified at the end,
-you will clone inside your own planets folder!
+you will clone inside your own mean folder!
 Make sure to navigate to the `Desktop` folder first.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
