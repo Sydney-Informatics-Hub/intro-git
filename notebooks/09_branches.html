@@ -259,21 +259,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand how branches can help us break our code with confidence</li>
 </ul>
 </section>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
-<ul>
-<li><code>git checkout -b</code> creates a new branch.</li>
-<li>branches allow us to keep alternative versions of our code in a repository</li>
-<li><code>git diff</code> can show us the differences betweem branches</li>
-</ul>
-</section>
 <p>Part of software development is breaking things. You have code that works, but you need to add a new feature or fix a bug. Sometimes, these fixes are small and self-contained, but in many cases, they require the equivalent of putting the codebase up on some blocks, getting underneath it with a spanner and pulling all the bits out.</p>
 <p>While you are in this active development stage, your code will be broken. You still want to be able to commit small changes while you’re working on it. The problem is, each of these incremental commits will still be, in some sense, broken code. They might be passing more tests, but the whole thing is still not ready.</p>
 <p>It’s good to be able to get a copy of the last working version of the code while this active development is ongoing - this means that if you need to use the code, you don’t have to finish your development work first.</p>
 <p>With the tools we’ve covered so far, Alice and Bob could make a note of the most recent working commit of their script:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>34478ad This is the working version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This would give them the ability to retrieve the last version before they broke it. The problem with this is that they’d need to make a note of the hash somewhere.</p>
-<p>Git provides us with a better way to keep alternate versions of a single codebase - a branch.</p>
+<p>Git provides us with a better way to keep alternate versions of a single codebase - <strong>a branch</strong>.</p>
 <p>In this section of the workshop, we’ll just be creating branches in our local repository. We’ve already been using a <code>main</code> branch. Let’s create a new branch where we’re free to break things.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> development</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Switched to a new branch 'development'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -286,12 +278,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Alice wants to change her script to only calculate the mean of a single column, which is labelled “red”:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>means = dataframe.mean<span class="dt">()</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dataframe.mean()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>reds = dataframe.subset<span class="dt">(</span><span class="st">"red"</span><span class="dt">)</span> # not sure if this is right</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>reds.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>reds <span class="op">=</span> dataframe.subset(<span class="st">"red"</span>) <span class="co"># not sure if this is right</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reds.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>She commits the changes</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Subset the rgb values to just red"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -300,21 +292,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can check that the content of <code>mean.py</code> is as we left it:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>means = dataframe.mean<span class="dt">()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dataframe.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After calculating some means for Bob, Alice returns to her development branch, and fixes her refactored script.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout development</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>means = dataframe.mean<span class="dt">()</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dataframe.mean()</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>reds = dataframe<span class="ch">[</span>"red"<span class="ch">]</span> # Ok, that's better</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>reds.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>reds <span class="op">=</span> dataframe[<span class="st">"red"</span>] <span class="co"># Ok, that's better</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reds.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ve already seen how <code>git diff</code> can be used to show the differences between commits on a single branch. Alice can use it to double-check what she’s changed on the <code>development</code> branch:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>diff --git a/mean.py b/mean.py</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>index 67d0b5b..a099e2c 100644</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>--- a/mean.py</span>
@@ -327,6 +319,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>+reds = dataframe<span class="ch">[</span>"red"<span class="ch">]</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>+print<span class="dt">(</span>red.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This output shows what changes would need to be made to the <code>main</code> branch to make them the same as Alice’s <code>development</code> branch. So lines which Alice has added in <code>development</code> would have to be inserted, and are marked with a <code>+</code> sign.</p>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li><code>git checkout -b</code> creates a new branch.</li>
+<li>branches allow us to keep alternative versions of our code in a repository</li>
+<li><code>git diff</code> can show us the differences betweem branches</li>
+</ul>
+</section>
 
 
 </section>

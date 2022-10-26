@@ -233,11 +233,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
   </ul></li>
   <li><a href="#git-commits-as-a-data-structure" id="toc-git-commits-as-a-data-structure" class="nav-link" data-scroll-target="#git-commits-as-a-data-structure">Git commits as a data structure</a></li>
   <li><a href="#fast-forwards" id="toc-fast-forwards" class="nav-link" data-scroll-target="#fast-forwards">Fast-forwards</a></li>
-  <li><a href="#merges" id="toc-merges" class="nav-link" data-scroll-target="#merges">Merges</a></li>
+  <li><a href="#merges" id="toc-merges" class="nav-link" data-scroll-target="#merges">Merges</a>
+  <ul class="collapse">
+  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -261,14 +263,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand how git tries to merge two branches with divergent histories</li>
 </ul>
 </section>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
-<ul>
-<li><code>git merge BRANCH</code> merges changes from one branch to another</li>
-<li>Git will do its best to figure out how to combine changes to both branches</li>
-<li>Git can’t guarantee that merged code still works</li>
-</ul>
-</section>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/platypus.png" class="img-fluid figure-img"></p>
@@ -277,13 +271,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>If Alice is happy with the changes she’s made to her script, she’ll want to bring the changes back to the main branch.</p>
 <p>First, Alice has to commit her changes to <code>development</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add mean.py</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Usually, when bringing changes from one branch to another, we’ll start on the branch which we want to change - in this case we’re bringing changes from <code>development</code> to <code>main</code>, so we’ll checkout main:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Switched to branch 'main'.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To bring changes from the <code>development</code> branch to <code>main</code>, Alice uses the <code>git merge</code> command, specifying which branch she wants to merge:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git merge development</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge development</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Updating dea7c3c..905d031</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Fast-forward</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> mean.py <span class="ch">|</span> 3 +++</span>
@@ -323,12 +317,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout development</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>reds = dataframe<span class="ch">[</span>"red"<span class="ch">]</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>red.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>reds <span class="op">=</span> dataframe[<span class="st">"red"</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(red.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Alice then commits this change</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit mean.py <span class="at">-m</span> <span class="st">"Removed redundant means"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -338,12 +332,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>means = dataframe.mean<span class="dt">()</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dataframe.mean()</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>blues = dataframe<span class="ch">[</span>"blue"<span class="ch">]</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>blue.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>blues <span class="op">=</span> dataframe[<span class="st">"blue"</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ve decided to calculate the mean of the blue values, by modifying the two last lines of the script.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit mean.py <span class="at">-m</span> <span class="st">"One line near the bottom"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -399,16 +393,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can also see that commits from both main and development are now visible in the log.</p>
 <p>Let’s see what the file actually looks like after the merge.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>blues = dataframe<span class="ch">[</span>"blue"<span class="ch">]</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>blue.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>blues <span class="op">=</span> dataframe[<span class="st">"blue"</span>]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can see that git has incorporated both sets of changes: the redundant calculation of the means has been removed from the top of the file, and the subsetting is now done on “blue” rather than “red”</p>
 <p>From Git’s point of view, the merge was a success - it’s managed to bring the divergent histories of this file into one text and kept the features of both.</p>
 <p>It’s worth pointing out that git is only interested in whether it can combined two sets of textual changes - just because a merge has succeeded, it’s no guarantee that your code actually works, or that it will even run.</p>
-<p>In practice, there are a lot of software engineering techniques for verifying that code still works correctly after a merge - running a battery of unit tests, for example. And it’s possible to automate this process so that tests are run when, for example, a change is made to a particular branch on a repository on GitHub.</p>
+<p>In practice, there are a lot of software engineering techniques for verifying that code still works correctly after a merge - running a battery of unit tests, for example. And it’s possible to automate this process so that tests are run when, for example, a change is made to a particular branch on a repository on GitHub. This includes tools called <a href="https://github.com/features/actions">“GitHub Actions”</a> which are beyond the scope of this course.</p>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li><code>git merge BRANCH</code> merges changes from one branch to another</li>
+<li>Git will do its best to figure out how to combine changes to both branches</li>
+<li>Git can’t guarantee that merged code still works</li>
+</ul>
+</section>
 
 
 </section>
