@@ -263,29 +263,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/random_git_commands.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">a meme comparing random git commands to pouring petrol on a bonfire</figcaption><p></p>
+<p></p><figcaption class="figure-caption">A meme comparing random git commands to pouring petrol on a bonfire</figcaption><p></p>
 </figure>
 </div>
 <p>This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.</p>
 <p>To see how we can resolve conflicts, we must first create one.</p>
 <p>The file <code>mean.py</code> should currently look like this on the <code>main</code> branch of both partners’ copies of our <code>mean</code> repository:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blues = dataframe<span class="ch">[</span>"blue"<span class="ch">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>blue.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blues <span class="op">=</span> dataframe[<span class="st">"blue"</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s let Alice make a change to her file: she decides that she wants to set the column for the mean calculation in a constant at the top of her script:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>COLUMN = <span class="st">"blue"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>COLUMN <span class="op">=</span> <span class="st">"blue"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> dataframe[COLUMN]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(subset.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then push the change to GitHub:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Make the subset column a constant"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -305,13 +305,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mean.py</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We’ll make a change which overlaps with Alice’s changes - Bob’s had the same idea, but has given his constant a different name, and has changed its value back to “red”:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>COLOUR=<span class="st">"red"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>COLOUR<span class="op">=</span><span class="st">"red"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>coloured = dataframe<span class="ch">[</span>COLOUR<span class="ch">]</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>coloured.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>coloured <span class="op">=</span> dataframe[COLOUR]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coloured.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can commit the change locally:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Parametrised the column to subset"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -372,7 +372,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">A merge, visualised as a graph</figcaption><p></p>
 </figure>
 </div>
-<p>The other way to reconcile two divergent branches is a separate tool, <code>git rebase</code>. Rebasing tells Git that I want to fetch the latest version of this branch from the remote, then take all of my local commits - all of the changes I’ve made since our branches diverged - and apply them to the latest HEAD of the branch. In a sense, it’s like rewriting history - we fast-forward the repository to get everyone else’s work, and then apply our own.</p>
+<p>The other way to reconcile two divergent branches is a separate tool, <code>git rebase</code>. <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase">Rebasing</a> tells Git that I want to fetch the latest version of this branch from the remote, then take all of my local commits - all of the changes I’ve made since our branches diverged - and apply them to the latest HEAD of the branch. In a sense, it’s like rewriting history - we fast-forward the repository to get everyone else’s work, and then apply our own.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/conflict-rebase.svg" class="img-fluid figure-img"></p>
@@ -382,7 +382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Rebasing can be complicated and counterintuitive, which is why we don’t have time to cover it in more detail here - it’s become common practice in large teams because it can effectively give the trunk of a repo a linear history, but it’s not really recommended for beginners.</p>
 <p>The reason for the change in the behaviour of <code>git pull</code> is that increasingly, rebasing is becoming more popular as a way of incorporating the latest updates from the team into your work. For small teams or solo developers, however, merging is fine.</p>
 <p>We want to tell Git to <em>not</em> rebase, but to try to merge.</p>
-<p>If you’re one of the peopel who got the fatal error, try running <code>git pull</code> again, with the –no-rebase command line flag:</p>
+<p>If you’re one of the people who got the fatal error, try running <code>git pull</code> again, with the –no-rebase command line flag:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--no-rebase</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>From github.com<span class="ch">:</span>alice/mean</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> * branch            main       -&gt; FETCH_HEAD</span>
@@ -430,33 +430,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>git version 2.37.0 <span class="dt">(</span>Apple Git-136<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s just go around the room and check that everyone has a big CAPS-LOCK message saying CONFLICT (usually you don’t look for conflict in this kind of workshop, but it’s git.)</p>
-<p>So now that we’re all on the same page. Git has tried to merge changes from the remote branch, and has detected that changes made to the local copy overlap with those made to the remote repository, and therefore refuses to merge the two versions to stop us from trampling on our previous work. The conflict is marked in in the affected file:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So now that we’re all on the same page:</p>
+<ol type="1">
+<li>Git has tried to merge changes from the remote branch.</li>
+<li>Git has detected that changes made to the local copy overlap with those made to the remote repository.</li>
+<li>Therefore, git refuses to merge the two versions to stop us from trampling on our previous work.</li>
+</ol>
+<p>The conflict is marked in in the affected file:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb24"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>COLOUR=<span class="st">"red"</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>COLOUR=<span class="st">"red"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>coloured = dataframe<span class="ch">[</span>COLOUR<span class="ch">]</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>coloured.means<span class="dt">())</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>=======</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>COLUMN = <span class="st">"blue"</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>&gt;&gt;&gt;&gt;&gt;&gt;&gt; cde8d2ea9799a6ccbcfafabd311913cd3f70df17</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>coloured = dataframe<span class="ch">[</span>COLOUR<span class="ch">]</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>coloured.means<span class="dt">())</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>COLUMN = <span class="st">"blue"</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Our change is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>. Git has then inserted <code>=======</code> as a separator between the conflicting changes and marked the end of the content downloaded from GitHub with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. (The string of letters and digits after that marker identifies the commit we’ve just downloaded.)</p>
-<p>It is now up to us to edit this file to remove these markers and reconcile the changes. We can do anything we want: keep the change made in the local repository, keep the change made in the remote repository, write something new to replace both, or get rid of the change entirely. Let’s replace both so that the file looks like this - we’ll keep Alice’s constant name <code>COLUMN</code> but change the default value back to red.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<p>It is now up to us to edit this file to remove these markers and reconcile the changes. We can do anything we want: - Keep the change made in the local repository - Keep the change made in the remote repository - Write something new to replace both - Get rid of the change entirely.</p>
+<p>Let’s replace both so that the file looks like this - we’ll keep Alice’s constant name <code>COLUMN</code> but change the default value back to red.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>COLUMN<span class="op">=</span><span class="st">"red"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> dataframe[COLUMN]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(subset.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To finish merging, we let git know that we’ve resolved the conflict by using <code>git add</code>.</p>
 <p>This always feels like an anticlimax to me - when I’ve resolved a conflict I feel like I should be able to say <code>git resolve</code> or <code>git peace-out</code> or something - but from git’s point of view, this resolution is just another set of changes to add to the staging area:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
@@ -496,27 +500,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a> mean.py <span class="ch">|</span> 4 ++--</span>
 <span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a> 1 file changed, 2 insertions<span class="dt">(</span>+<span class="dt">)</span>, 2 deletions<span class="dt">(</span>-<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We get the merged file:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>COLUMN<span class="op">=</span><span class="st">"red"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dataframe <span class="op">=</span> pd.read_csv(<span class="st">"rgb.csv"</span>)</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> dataframe[COLUMN]</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(subset.means())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We don’t need to merge again because Git knows someone has already done that.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Conflict resolution in teams
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Git’s ability to resolve conflicts is very useful, but conflict resolution costs time and effort, and can introduce errors if conflicts are not resolved correctly. If you find yourself resolving a lot of conflicts in a project, consider these technical approaches to reducing them:</p>
 <ul>
-<li>Pull from upstream more frequently, especially before starting new work</li>
-<li>Use topic branches to segregate work, merging to main when complete</li>
-<li>Make smaller more atomic commits</li>
-<li>Where logically appropriate, break large files into smaller ones so that it is less likely that two authors will alter the same file simultaneously</li>
+<li>Pull from upstream more frequently, especially before starting new work.</li>
+<li>Use topic branches to segregate work, merging to main when complete.</li>
+<li>Make smaller more atomic commits.</li>
+<li>Where logically appropriate, break large files into smaller ones so that it is less likely that two authors will alter the same file simultaneously.</li>
 </ul>
 <p>Conflicts can also be minimized with project management strategies:</p>
 <ul>
-<li>Clarify who is responsible for what areas with your collaborators</li>
-<li>Discuss what order tasks should be carried out in with your collaborators so that tasks expected to change the same lines won’t be worked on simultaneously</li>
-<li>If the conflicts are stylistic churn (e.g.&nbsp;tabs vs.&nbsp;spaces), establish a project convention that is governing and use code style tools (e.g. <code>htmltidy</code>, <code>perltidy</code>, <code>rubocop</code>, etc.) to enforce, if necessary</li>
+<li>Clarify who is responsible for what areas with your collaborators.</li>
+<li>Discuss what order tasks should be carried out in with your collaborators so that tasks expected to change the same lines won’t be worked on simultaneously.</li>
+<li>If the conflicts are stylistic churn (e.g.&nbsp;tabs vs.&nbsp;spaces), establish a project convention that is governing and use code style tools (e.g. <code>htmltidy</code>, <code>perltidy</code>, <code>rubocop</code>, etc.) to enforce, if necessary.</li>
 </ul>
+</div>
+</div>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
 <ul>
