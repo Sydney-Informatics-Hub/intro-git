@@ -22,20 +22,17 @@
 This workshop will introduce you to Git and show you how it can be used at a
 couple of different levels.
 
-In the first sections we'll create a local git repository, and use it to
-keep track of changes to a very simple Python program.
+1. First, we'll create a local git repository, and use it to keep track of changes to a very simple Python program. 
 
-We'll then learn how to push code from our local repository to GitHub, and how
-GitHub can be used to share your code with a collaborator.
+2. We'll then learn how to push code from our local repository to GitHub. These two steps may be everything you want to use as a beginner, to write code (or your thesis) and to back it up online on GitHub.
 
-In the third section, we'll learn about branches, and how they can be used to
-maintain different versions of the same code, and help to organise your team's
-software development.
+3. Next, we'll level up to look at how GitHub can be used to share your code with a collaborator. 
 
-And in the final section, we'll show you how to fork a repository and create
-a pull request, which is how Git and GitHub are used to manage contributions
-to open source software projects, and hopefully also cover some best practices
-for open research with Git.
+4. We'll then learn about branches, and how they can be used to maintain different versions of the same code, and help to organise your team's software development or co-developed data science project.
+
+5. And in the final section, we'll show you how to fork a repository and create a pull request, which is how Git and GitHub are used to manage contributions to open source software projects.
+
+6. We'll finish with some best practices for open research with Git.
 
 ## What is version control?
 

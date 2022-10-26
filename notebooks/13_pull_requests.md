@@ -18,12 +18,11 @@
 </div>  
 
 
-
 We've just seen a branching workflow for allowing collaboration between a team
 of developers, each of whom has a local repo and who share a repo on GitHub.
 
-In this section, we'll step through what's called a fork-based workflow, which
-is a way to contribute code to another team's project.
+In this section, we'll step through what's called a [fork-based workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow), which
+is a way to contribute code to another team's project. This is how you would commonly contribute to open-source software like [scikit-learn](https://github.com/scikit-learn/scikit-learn), [pandas](https://github.com/pandas-dev/pandas) and even [Python itself](https://github.com/python/).
 
 We'll do this exercise in pairs again, as we did for the first GitHub exercise,
 but this time we'll imagine that Bob and Alice aren't on the same team - instead,
@@ -145,7 +144,7 @@ recent changes and is prompting us to "Compare & pull request".
 
 ![Creating a Pull Request (Step 3)](../fig/pr03-new-changes-pushed.png)
 
-A pull request is exactly that - we're telling the maintainer of a project - 
+A **pull request (PR)** is exactly that - we're telling the maintainer of a project - 
 Alice, in this case - that we have something like a bug fix or a feature on
 our branch of the repository, and we want them to pull it into the main
 branch of the project.
@@ -201,9 +200,9 @@ their end. How this is handled will depend a lot on the particular project
 being contributed to.
 
 Large open-source projects tend to have a lot of structure around pull requests:
-they will, for instance, provide a checklist of things contributors should do
-when contributing code: require that PRs be raised against an existing issue,
-provide a template for issues and/or PR comments, and so on.
+- They will, for instance, provide a checklist of things contributors should do when contributing code, for example
+- Require that PRs be raised against an existing issue
+- Provide a template for issues and/or PR comments, and so on.
 
 A pull request can be seen as the start of a collaboration between a developer
 and the maintainer - this can take the form of comments on the PR, or a more
@@ -211,8 +210,10 @@ detailed kind of collaboration called a code review, which GitHub has a very
 good interface for - this allows a maintainer to add comments or questions to
 each individual change in a PR.
 
-This isn't just used for open-source projects - many teams use pull requests
-and code review internally as an important form of quality control.
+Note, this isn't just used for open-source projects - many teams use pull requests
+and code review internally as an important form of quality control. For example, here at SIH, we use pull requests to make changes to our lesson materials, where the lesson author will be the only one who can commit to the main branch, whereas everyone else forks the repository to their accounts, makes changes and then puts in pull requests to have those changes integrated into the main codebase.
+
+The key difference between a forking-based workflow over a branch-based workflow, from a usability perspective, is that the forking-based workflow forces the owner of the main branch to review and approve all of the changes to the main codebase manually, thereby giving them more control over the codebase itself.
 
 <div class="keypoints">
 
