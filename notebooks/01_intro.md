@@ -16,15 +16,6 @@
 
 </div>  
 
-<div class="keypoints">
-
-### Key points
-
-- Version control is like an unlimited 'undo' (kind of, and not always)
-- Version control allows members of a team to work in parallel
-- Version control systems like GitHub are how people contribute to open source software
-
-</div>  
 
 ## What we'll cover in this workshop
 
@@ -100,3 +91,12 @@ These modern systems also include powerful merging tools that make it possible f
 
 The vast, vast majority of developers of both open-source and commercial software today use git as their version control system of choice - which is why we are teaching it in this course, and use it across all of our projects at SIH.
 
+<div class="keypoints">
+
+### Key points
+
+- Version control is like an unlimited 'undo' (kind of, and not always)
+- Version control allows members of a team to work in parallel
+- Version control systems like GitHub are how people contribute to open source software
+
+</div>  

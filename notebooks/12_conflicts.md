@@ -153,8 +153,10 @@ Now we come to some exciting, or exasperating, developments: Git is an actively
 developed piece of open-source software. Over the last couple of years, there
 have been some changes to the way Git handles the situation we're about to
 trigger, and depending on when you installed Git, we might get some different
-sorts of behaviour at the command line. I'll have to go into a little bit of
-detail to explain what's happening, even though the net result will be the same.
+sorts of behaviour at the command line.
+
+I'll have to go into a little bit of detail to explain what's happening, even
+though the net result will be the same.
 
 What we're going to use is the `git pull` command. This asks Git to do two things:
 fetch the HEAD of the branch we're interested in from a remote repository, 
@@ -171,9 +173,8 @@ through the explanations.
 git pull origin main
 ```
 
-If Bob has a recent version of Git (newer than version X, released on July, 2021), TODO FIXME pulling from 
-Alice's remote should result in a long message like the following, ending
-in a fatal error:
+If Bob has a recent version of Git (2.33 or newer), pulling from Alice's remote
+should result in a long message like the following, ending in a fatal error:
 
 ```abc
 remote: Enumerating objects: 20, done.
@@ -266,13 +267,14 @@ CONFLICT (content): Merge conflict in mean.py
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-This is the original (pre-2020) `git pull` behaviour, when it used to merge
-by default. If this happened to you, git has fetched Alice's copy and tried,
-and failed, to merge it with the local changes
+This is how `git pull` behaved before version 2.27, when it used to merge by
+default and not warn you about it. If this happened to you, git has fetched
+Alice's copy and tried, and failed, to merge it with the local changes.
 
-The third possibility is for people with a copy of Git from 2020 to 2021: this
-gives the long set of warnings about needing to specify a reconciliation
-strategy, but defaults to `merge` anyway, and should look something like this:
+The third possibility is for people with a copy of Git with a version between
+2.27 and 2.33: this gives the long set of warnings about needing to specify a
+reconciliation strategy, but defaults to `merge` anyway, and should look
+something like this:
 
 ```abc
 remote: Enumerating objects: 20, done.
@@ -300,6 +302,16 @@ CONFLICT (content): Merge conflict in mean.py
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
+You can check which version of Git you have installed by running this command:
+
+```sh
+git --version
+```
+
+```abc
+git version 2.37.0 (Apple Git-136)
+```
+
 Let's just go around the room and check that everyone has a big CAPS-LOCK
 message saying CONFLICT (usually you don't look for conflict in this kind
 of workshop, but it's git.)
@@ -318,21 +330,18 @@ cat mean.py
 
 ```abc
 import pandas as pd
-<<<<<<< HEAD
 COLOUR="red"
 dataframe = pd.read_csv("rgb.csv")
 
 
 coloured = dataframe[COLOUR]
 print(coloured.means())
-=======
 COLUMN = "blue"
 dataframe = pd.read_csv("rgb.csv")
 
 
 subset = dataframe[COLUMN]
 print(subset.means())
->>>>>>> cde8d2ea9799a6ccbcfafabd311913cd3f70df17
 ```
 
 Our change is preceded by `<<<<<<< HEAD`.
@@ -485,7 +494,7 @@ Conflicts can also be minimized with project management strategies:
 ### Key Points
 
 - Conflicts occur when two or more people change the same lines of the same file.
-- Git can emit A LOT of warning messages when this happens.
-- There have been recent changes to how Git behaves when you pull updates from a remote.
+- Git can emit a lot of warning messages when this happens
+- There have been recent changes to how Git behaves when you pull updates from a remote
 - The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
 </div>

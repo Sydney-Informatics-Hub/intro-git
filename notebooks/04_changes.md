@@ -563,7 +563,7 @@ we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`):
 
-![The Git Commit Workflow](https://swcarpentry.github.io/git-novice/fig/git-committing.svg)
+![The Git Commit Workflow](../fig/git-committing.svg)
 
 
 <div class="challenge">
