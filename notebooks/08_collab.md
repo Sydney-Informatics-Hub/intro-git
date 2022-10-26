@@ -18,26 +18,21 @@
 
 </div>  
 
-<div class="keypoints">
-
-### Key points
-
-- `git clone` copies a remote repository to create a local repository with a remote called `origin` automatically set up."
-
-</div>
 
 For the next step, get into pairs.  One person will be the "Owner" and the other
 will be the "Collaborator". The goal is that the Collaborator add changes into
 the Owner's repository. We will switch roles at the end, so both persons will
 play Owner and Collaborator.
 
-> ## Practicing By Yourself
->
-> If you're working through this lesson on your own, you can carry on by opening
-> a second terminal window.
-> This window will represent your partner, working on another computer. You
-> won't need to give anyone access on GitHub, because both 'partners' are you.
-{: .callout}
+<div class="callout">
+### Practicing By Yourself
+
+If you're working through this lesson on your own, you can carry on by opening
+a second terminal window.
+This window will represent your partner, working on another computer. You
+won't need to give anyone access on GitHub, because both 'partners' are you.
+
+</div>
 
 The Owner needs to give the Collaborator access. On GitHub, click the "Settings"
 button on the right, select "Collaborators", click "Add people", and
@@ -84,8 +79,8 @@ This is a script to calculate mean values
 ```
 
 ```sh
-$ git add doc.txt
-$ git commit -m "Added some documentation"
+git add doc.txt
+git commit -m "Added some documentation"
 ```
 
 ```abc
@@ -191,21 +186,21 @@ read and review.
 :::
 
 :::{.callout-challenge}
+
 ## Switch Roles and Repeat
 
 Switch roles and repeat the whole process.
-:::
 
+<div class="challenge">
 
-:::{.callout-challenge}
-## Review Changes
+### Challenge: Review Changes
 
-The Owner pushed commits to the repository without giving any information
-to the Collaborator. How can the Collaborator find out what has changed with
-command line? And on GitHub?
+- The Owner pushed commits to the repository without giving any information to the Collaborator. 
+- How can the Collaborator find out what has changed with command line? And on GitHub?
 
-:::{.callout-solution}
-## Solution
+<details>
+<summary>Solution</summary>
+
 On the command line, the Collaborator can use ```git fetch origin main```
 to get the remote changes into the local repository, but without merging
 them. Then by running ```git diff main origin/main``` the Collaborator
@@ -213,23 +208,39 @@ will see the changes output in the terminal.
 
 On GitHub, the Collaborator can go to the repository and click on 
 "commits" to view the most recent commits pushed to the repository.
-:::
-:::
 
-:::{.callout-challenge}
-## Comment Changes in GitHub
+</details>
+</div>   
+
+
+
+<div class="callout">
+
+### Comment Changes in GitHub
 
 The Collaborator has some questions about one line change made by the Owner and has some suggestions to propose.
 
 With GitHub, it is possible to comment on the diff of a commit. Over the line of code to comment, a blue comment icon appears to open a comment window.
 
 The Collaborator posts her comments and suggestions using the GitHub interface.
-:::
 
-:::{.callout-challenge}
-## Version History, Backup, and Version Control
+</div>
 
-Some backup software can keep a history of the versions of your files. They also
-allows you to recover specific versions. How is this functionality different from version control?
-What are some of the benefits of using version control, Git and GitHub?
-:::
+<div class="callout">
+
+### Version History, Backup, and Version Control
+
+- Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control?
+- What are some of the benefits of using version control, Git and GitHub?
+
+</div>
+
+
+
+<div class="keypoints">
+
+### Key points
+
+- `git clone` copies a remote repository to create a local repository with a remote called `origin` automatically set up."
+
+</div>
