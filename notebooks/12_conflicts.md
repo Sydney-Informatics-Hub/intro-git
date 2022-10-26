@@ -330,18 +330,22 @@ cat mean.py
 
 ```abc
 import pandas as pd
+<<<<<<< HEAD
 COLOUR="red"
 dataframe = pd.read_csv("rgb.csv")
 
 
 coloured = dataframe[COLOUR]
 print(coloured.means())
+=======
 COLUMN = "blue"
 dataframe = pd.read_csv("rgb.csv")
 
 
 subset = dataframe[COLUMN]
 print(subset.means())
+>>>>>>> cde8d2ea9799a6ccbcfafabd311913cd3f70df17
+```subset.means())
 ```
 
 Our change is preceded by `<<<<<<< HEAD`.
