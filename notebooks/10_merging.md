@@ -18,16 +18,6 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- `git merge BRANCH` merges changes from one branch to another
-- Git will do its best to figure out how to combine changes to both branches
-- Git can't guarantee that merged code still works
-
-</div>
-
 ![A meme about git merge](../fig/platypus.png)
 
 If Alice is happy with the changes she's made to her script, she'll want to
@@ -36,8 +26,8 @@ bring the changes back to the main branch.
 First, Alice has to commit her changes to `development`:
 
 ```bash
-$ git add mean.py
-$ git commit mean.py
+git add mean.py
+git commit mean.py
 ```
 
 Usually, when bringing changes from one branch to another, we'll start on the 
@@ -45,7 +35,7 @@ branch which we want to change - in this case we're bringing changes from
 `development` to `main`, so we'll checkout main:
 
 ```bash
-$ git checkout main
+git checkout main
 ```
 
 ```abc
@@ -56,7 +46,7 @@ To bring changes from the `development` branch to `main`, Alice uses the
 `git merge` command, specifying which branch she wants to merge:
 
 ```bash
-$ git merge development
+git merge development
 ```
 
 ```abc
@@ -123,7 +113,7 @@ nano mean.py
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 
@@ -151,7 +141,7 @@ git checkout main
 nano mean.py
 cat mean.py
 ```
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
@@ -276,7 +266,7 @@ Let's see what the file actually looks like after the merge.
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 
@@ -300,11 +290,16 @@ In practice, there are a lot of software engineering techniques for verifying
 that code still works correctly after a merge - running a battery of unit tests,
 for example. And it's possible to automate this process so that tests are run
 when, for example, a change is made to a particular branch on a repository on
-GitHub.
+GitHub. This includes tools called ["GitHub Actions"](https://github.com/features/actions) which are beyond the scope of this course. 
 
 
+<div class="keypoints">
 
+### Key Points
 
+- `git merge BRANCH` merges changes from one branch to another
+- Git will do its best to figure out how to combine changes to both branches
+- Git can't guarantee that merged code still works
 
-
+</div>
 
