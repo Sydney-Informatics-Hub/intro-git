@@ -18,14 +18,6 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- Forking allows you to create your own copy of an existing open-source project
-- Pull requests are a way to offer your changes back to a project
-
-</div>
 
 We've just seen a branching workflow for allowing collaboration between a team
 of developers, each of whom has a local repo and who share a repo on GitHub.
@@ -221,3 +213,12 @@ each individual change in a PR.
 
 This isn't just used for open-source projects - many teams use pull requests
 and code review internally as an important form of quality control.
+
+<div class="keypoints">
+
+### Key Points
+
+- Forking allows you to create your own copy of an existing open-source project
+- Pull requests are a way to offer your changes back to a project
+
+</div>
