@@ -26,8 +26,10 @@ Systems like Git allow us to move work between any two repositories.  In
 practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) or
-[GitLab](https://gitlab.com/) to hold those main copies; we'll explore the pros
-and cons of this in a later episode.
+[GitLab](https://gitlab.com/) to hold those main copies. Your institution
+may also have its own hosted GitHub or GitLab instance. Where you host research
+software can depend on whether you want it to be public or private, and on
+what options are available to research staff or students.
 
 Let's start by sharing the changes we've made to our current project with the
 world. To this end we are going to create a *remote* repository that will be
@@ -89,8 +91,7 @@ Click on the 'SSH' link to change the protocol from HTTPS to SSH.
 
 We use SSH here because, while it requires some additional configuration, it is a 
 security protocol widely used by many applications.  The steps below describe SSH at a 
-minimum level for GitHub. A supplemental episode to this lesson discusses advanced setup 
-and concepts of SSH and key pairs, and other material supplemental to git related SSH. 
+minimum level for GitHub. 
 
 </div>  
 
@@ -148,15 +149,6 @@ and send git commands as my GitHub account.”
 
 What we will do now is the minimum required to set up the SSH keys and add the
 public key to a GitHub account.
-
-
-<div class="callout">  
-### Advanced SSH
-
-- A supplemental episode in this lesson discusses SSH and key pairs in more
-  depth and detail. 
-
-</div> 
 
 The first thing we are going to do is check if this has already been done on the
 computer you’re on.  Because generally speaking, this setup only needs to
@@ -315,8 +307,7 @@ our local repository to the repository on GitHub:
 git push origin main
 ```
 
-Since Alice set up a passphrase, it will prompt her for it.  If you completed advanced settings for your authentication, it 
-will not prompt for a passphrase. 
+Since Alice set up a passphrase, it will prompt her for it.
 
 ```abc
 Enumerating objects: 16, done.
