@@ -60,7 +60,7 @@ cd mean
 git init
 ```
 
-If you remember back to the earlier [episode](../04-changes/) where we added and
+If you remember back to the earlier [episode](../04_changes.html) where we added and
 committed our earlier work on `mean.py`, we had a diagram of the local repository
 which looked like this:
 
@@ -99,7 +99,7 @@ and concepts of SSH and key pairs, and other material supplemental to git relate
 Copy that URL from the browser, go into the local `mean` repository, and run
 this command:
 
-```
+```sh
 git remote add origin git@github.com:spikelynch/mean.git
 ```
 
@@ -113,10 +113,10 @@ and GitHub, so it's helpful to stick with this unless there's a reason not to.
 We can check that the command has worked by running `git remote -v`:
 
 ```sh
-$ git remote -v
+git remote -v
 ```
 
-```sh
+```abc
 origin   git@github.com:spikelynch/mean.git (fetch)
 origin   git@github.com:spikelynch/mean.git (push)
 ```
@@ -131,7 +131,7 @@ to his remote repository.
 
 We are going to set up the method that is commonly used by many different
 services to authenticate access on the command line.  This method is called
-Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that
+[Secure Shell] Protocol (SSH)](https://en.wikipedia.org/wiki/Secure_Shell).  SSH is a cryptographic network protocol that
 allows secure communication between computers using an otherwise insecure
 network.  
 
@@ -183,7 +183,7 @@ has ever been set up on the computer you are using.
 
 Alice has not set up SSH on his computer, so her output is 
 
-```sh
+```abc
 ls: cannot access '/c/Users/Alice/.ssh': No such file or directory
 ```
 
@@ -202,29 +202,32 @@ ssh-keygen -t ed25519 -C "alice@myemail.org"
 ```
 
 If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
-`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 
 ```sh
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+```abc
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/c/Users/Alice/.ssh/id_ed25519):
 ```
 
 We want to use the default file, so just press <kbd>Enter</kbd>.
 
-```sh
+```abc
 Created directory '/c/Users/Alice/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
 Now, it is prompting Alice for a passphrase.  Since she is using his lab’s laptop that other people sometimes have access to, she wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option. 
 
-```sh
+```abc
 Enter same passphrase again:
 ```
 
 After entering the same passphrase a second time, we receive the confirmation
 
-```sh
+```abc
 Your identification has been saved in /c/Users/Alice/.ssh/id_ed25519
 Your public key has been saved in /c/Users/Alice/.ssh/id_ed25519.pub
 The key fingerprint is:
@@ -252,7 +255,7 @@ Now that we have generated the SSH keys, we will find the SSH files when we chec
 ls -al ~/.ssh
 ```
 
-```sh
+```abc
 drwxr-xr-x 1 Alice 197121   0 Jul 16 14:48 ./
 drwxr-xr-x 1 Alice 197121   0 Jul 16 14:48 ../
 -rw-r--r-- 1 Alice 197121 419 Jul 16 14:48 id_ed25519
@@ -267,7 +270,7 @@ ssh -T git@github.com
 ```
 
 
-```sh
+```abc
 The authenticity of host 'github.com (192.30.255.112)' can't be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
 This key is not known by any other names
@@ -285,7 +288,7 @@ First, we need to copy the public key.  Be sure to include the `.pub` at the end
 cat ~/.ssh/id_ed25519.pub
 ```
 
-```sh
+```abc
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI alice@myemail.org
 ```
 
@@ -297,7 +300,7 @@ Now that we’ve set that up, let’s check our authentication again from the co
 ssh -T git@github.com
 ```
 
-```sh
+```abc
 Hi Alice! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
@@ -312,10 +315,10 @@ our local repository to the repository on GitHub:
 git push origin main
 ```
 
-Since Alice set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it 
+Since Alice set up a passphrase, it will prompt her for it.  If you completed advanced settings for your authentication, it 
 will not prompt for a passphrase. 
 
-```sh
+```abc
 Enumerating objects: 16, done.
 Counting objects: 100% (16/16), done.
 Delta compression using up to 8 threads.
@@ -341,8 +344,8 @@ git config --global https.proxy https://user:password@proxy.url
 When you connect to another network that doesn't use a proxy, you will need to tell Git to disable the proxy using:
 
 ```sh
-$ git config --global --unset http.proxy
-$ git config --global --unset https.proxy
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 </div>  
@@ -394,7 +397,7 @@ We can pull changes from the remote repository to the local one as well:
 git pull origin main
 ```
 
-```sh
+```abc
 From https://github.com/spikelynch/mean
  * branch            main     -> FETCH_HEAD
 Already up-to-date.
@@ -403,13 +406,6 @@ Already up-to-date.
 Pulling has no effect in this case because the two repositories are already
 synchronized.  If someone else had pushed some changes to the repository on
 GitHub, though, this command would download them to our local repository.
-
-> ## GitHub GUI
->
-
->
-> > ## Solution
-
 
 
 <div class="challenge">
@@ -462,11 +458,11 @@ tree. You can read more about this [on this GitHub page](https://help.github.com
 
 ### Challenge: GitHub Timestamp
 
-- Create a remote repository on GitHub. 
-- Push the contents of your local repository to the remote. 
-- Make changes to your local repository and push these changes. 
-- Go to the repo you just created on GitHub and check the timestamps of the files. 
-- How does GitHub record times, and why?
+1. Create a remote repository on GitHub. 
+2. Push the contents of your local repository to the remote. 
+3. Make changes to your local repository and push these changes. 
+4. Go to the repo you just created on GitHub and check the timestamps of the files. 
+5. How does GitHub record times, and why?
 
 <details>
 <summary>Solution</summary>
@@ -482,8 +478,8 @@ tree. You can read more about this [on this GitHub page](https://help.github.com
 
 ### Challenge: Push vs. Commit
 
-- In this episode, we introduced the "git push" command.
-- How is "git push" different from "git commit"?
+- In this episode, we introduced the `git push` command.
+- How is `git push` different from `git commit`?
 
 <details>
 <summary>Solution</summary>
@@ -498,24 +494,19 @@ tree. You can read more about this [on this GitHub page](https://help.github.com
 
 ### Challenge: GitHub License and README files
 
-In this episode we learned about creating a remote repository on GitHub, but when you initialized 
-your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think 
-would have happened when you tried to link your local and remote repositories?
+- In this episode we learned about creating a remote repository on GitHub, but when you initialized your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when you tried to link your local and remote repositories?
 
 
 <details>
 <summary>Solution</summary>
 
-In this case, we'd see a merge conflict due to unrelated histories. When GitHub creates a 
-README.md file, it performs a commit in the remote repository. When you try to pull the remote 
-repository to your local repository, Git detects that they have histories that do not share a 
-common origin and refuses to merge.
+- In this case, we'd see a merge conflict due to unrelated histories. When GitHub creates a README.md file, it performs a commit in the remote repository. When you try to pull the remote repository to your local repository, Git detects that they have histories that do not share a common origin and refuses to merge.
 
 ```sh
 git pull origin main
 ```
 
-```sh
+```abc
 warning: no common commits
 remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
@@ -527,15 +518,13 @@ From https://github.com/spikelynch/mean
 fatal: refusing to merge unrelated histories
 ```
 
-You can force git to merge the two repositories with the option `--allow-unrelated-histories`. 
-Be careful when you use this option and carefully examine the contents of local and remote 
-repositories before merging.
+- You can force git to merge the two repositories with the option `--allow-unrelated-histories`.  Be careful when you use this option and carefully examine the contents of local and remote repositories before merging.
 
 ```sh
 git pull --allow-unrelated-histories origin main
 ```
 
-```sh
+```abc
 From https://github.com/spikelynch/mean
  * branch            main     -FETCH_HEAD
 Merge made by the 'recursive' strategy.
