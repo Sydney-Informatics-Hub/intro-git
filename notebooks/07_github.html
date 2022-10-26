@@ -273,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </section>
 <p>Version control really comes into its own when we begin to collaborate with other people. We already have most of the machinery we need to do this; the only thing missing is to copy changes from one repository to another.</p>
-<p>Systems like Git allow us to move work between any two repositories. In practice, though, it’s easiest to use one copy as a central hub, and to keep it on the web rather than on someone’s laptop. Most programmers use hosting services like <a href="https://github.com">GitHub</a>, <a href="https://bitbucket.org">Bitbucket</a> or <a href="https://gitlab.com/">GitLab</a> to hold those main copies; we’ll explore the pros and cons of this in a later episode.</p>
+<p>Systems like Git allow us to move work between any two repositories. In practice, though, it’s easiest to use one copy as a central hub, and to keep it on the web rather than on someone’s laptop. Most programmers use hosting services like <a href="https://github.com">GitHub</a>, <a href="https://bitbucket.org">Bitbucket</a> or <a href="https://gitlab.com/">GitLab</a> to hold those main copies. Your institution may also have its own hosted GitHub or GitLab instance. Where you host research software can depend on whether you want it to be public or private, and on what options are available to research staff or students.</p>
 <p>Let’s start by sharing the changes we’ve made to our current project with the world. To this end we are going to create a <em>remote</em> repository that will be linked to our <em>local</em> repository.</p>
 <section id="create-a-remote-repository" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-remote-repository">1. Create a remote repository</h2>
@@ -339,7 +339,7 @@ HTTPS vs.&nbsp;SSH
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We use SSH here because, while it requires some additional configuration, it is a security protocol widely used by many applications. The steps below describe SSH at a minimum level for GitHub. A supplemental episode to this lesson discusses advanced setup and concepts of SSH and key pairs, and other material supplemental to git related SSH.</p>
+<p>We use SSH here because, while it requires some additional configuration, it is a security protocol widely used by many applications. The steps below describe SSH at a minimum level for GitHub.</p>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -365,21 +365,6 @@ HTTPS vs.&nbsp;SSH
 <p>SSH uses what is called a key pair. This is two keys that work together to validate access. One key is publicly known and called the public key, and the other key called the private key is kept private. Very descriptive names.</p>
 <p>You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your GitHub account. You give this padlock, or public key, to GitHub and say “lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my GitHub account.”</p>
 <p>What we will do now is the minimum required to set up the SSH keys and add the public key to a GitHub account.</p>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Advanced SSH
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>A supplemental episode in this lesson discusses SSH and key pairs in more depth and detail.</li>
-</ul>
-</div>
-</div>
 <p>The first thing we are going to do is check if this has already been done on the computer you’re on. Because generally speaking, this setup only needs to happen once and then you can forget about it.</p>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -465,7 +450,7 @@ Keeping your keys secure
 <h2 class="anchored" data-anchor-id="push-local-changes-to-a-remote">4. Push local changes to a remote</h2>
 <p>Now that authentication is setup, we can return to the remote. This command will push the changes from our local repository to the repository on GitHub:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Since Alice set up a passphrase, it will prompt her for it. If you completed advanced settings for your authentication, it will not prompt for a passphrase.</p>
+<p>Since Alice set up a passphrase, it will prompt her for it.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Enumerating objects<span class="ch">:</span> 16, done.</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>Counting objects<span class="ch">:</span> 100<span class="co">% (16/16), done.</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>Delta compression using up to 8 threads.</span>
