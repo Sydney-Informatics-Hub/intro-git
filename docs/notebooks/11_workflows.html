@@ -261,19 +261,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand how and when to delete branches without losing history</li>
 </ul>
 </section>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
-<ul>
-<li>Creating a branch is a cheap, fast operation</li>
-<li>Branch-based workflows are a good way for an individual or team to organise their repository</li>
-<li>You can pick a naming convention which best suits your needs</li>
-<li>Once a branch is merged, it can be safely deleted</li>
-</ul>
-</section>
 <p>We’ve just seen an example of creating a branch to do some development work, and merging the changes back to the main branch.</p>
 <p>Our repository only has a few files, but if we were working on a repository with dozens or hundreds of files, creating a branch may seem like it’s inefficient, especially if the change we’re working on only affects one or two files.</p>
 <p>However, git is designed for working efficiently with large codebases. When you create a branch, internally, git isn’t creating another copy of your entire repository. Instead, it’s storing a reference to the HEAD of the branch which you’re starting from, and saying - here’s a new branch which starts at this commit.</p>
-<p>[ a diagram showing how a branch starts ]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/workflow_branch.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A diagram showing how a branch starts</figcaption><p></p>
+</figure>
+</div>
 <p>So, internally, a new branch isn’t really a “copy” of anything, it’s a reference to a new set of commits. You will only add new content to the repository when you add some new changes as a new commit, and the only extra content which your branch needs is the difference those changes represent.</p>
 <p>This is why you’ll see people saying things like “branches are free” or “branches are cheap” in Git, and it’s one of the differences between Git and older version control systems, where a branch really did equal a copy of your entire codebase.</p>
 <p>It also gives us a guiding principal for how to branch our code. In general, small branches are better - ideally, restricted to one feature or bugfix.</p>
@@ -321,6 +317,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb15"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>error<span class="ch">:</span> the branch 'just-testing' is not fully merged.</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>If you are sure you want to delete it, run 'git branch -D just-testing'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we’re sure that this branch isn’t worth keeping, the capital <code>-D</code> flag will get rid of it.</p>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<ul>
+<li>Creating a branch is a cheap, fast operation</li>
+<li>Branch-based workflows are a good way for an individual or team to organise their repository</li>
+<li>You can pick a naming convention which best suits your needs</li>
+<li>Once a branch is merged, it can be safely deleted</li>
+</ul>
+</section>
 
 
 </section>

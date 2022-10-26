@@ -19,15 +19,6 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- Conflicts occur when two or more people change the same lines of the same file.
-- Git can emit a lot of warning messages when this happens
-- There have been recent changes to how Git behaves when you pull updates from a remote
-- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
-</div>
 
 We've shown an example of the sorts of changes which Git can merge
 automatically - where the changes are in separate parts of the file. But, as
@@ -481,3 +472,12 @@ Conflicts can also be minimized with project management strategies:
   project convention that is governing and use code style tools (e.g.
   `htmltidy`, `perltidy`, `rubocop`, etc.) to enforce, if necessary
 
+<div class="keypoints">
+
+### Key Points
+
+- Conflicts occur when two or more people change the same lines of the same file.
+- Git can emit a lot of warning messages when this happens
+- There have been recent changes to how Git behaves when you pull updates from a remote
+- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
+</div>

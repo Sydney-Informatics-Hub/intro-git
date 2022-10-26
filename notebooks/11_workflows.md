@@ -20,18 +20,6 @@
 
 </div>  
 
-
-<div class="keypoints">
-
-### Key Points
-
-- Creating a branch is a cheap, fast operation
-- Branch-based workflows are a good way for an individual or team to organise their repository
-- You can pick a naming convention which best suits your needs
-- Once a branch is merged, it can be safely deleted
-
-</div>
-
 We've just seen an example of creating a branch to do some development work, 
 and merging the changes back to the main branch.
 
@@ -190,3 +178,15 @@ If you are sure you want to delete it, run 'git branch -D just-testing'
 
 If we're sure that this branch isn't worth keeping, the capital `-D` flag 
 will get rid of it.
+
+
+<div class="keypoints">
+
+### Key Points
+
+- Creating a branch is a cheap, fast operation
+- Branch-based workflows are a good way for an individual or team to organise their repository
+- You can pick a naming convention which best suits your needs
+- Once a branch is merged, it can be safely deleted
+
+</div>

@@ -21,16 +21,6 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- Open research is more useful and highly-cited than closed
-- Adding a citation guide makes your work easier to cite
-- There are a range of open-source licenses to suit different cases
-
-</div>
-
 ```quotation
 The opposite of "open" isn't "closed".
 The opposite of "open" is "broken".
@@ -115,3 +105,14 @@ Try downloading and installing the Git Large File Storage extension tool, then a
 tracking of a large file to your github repository.  Ask a colleague to clone your
 repository and describe what they see when they access that large file.   
 ```
+
+<div class="keypoints">
+
+### Key Points
+
+- Open research is more useful and highly-cited than closed
+- Adding a citation guide makes your work easier to cite
+- There are a range of open-source licenses to suit different cases
+
+</div>
+
