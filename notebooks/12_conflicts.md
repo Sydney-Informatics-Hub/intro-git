@@ -19,21 +19,11 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- Conflicts occur when two or more people change the same lines of the same file.
-- Git can emit a lot of warning messages when this happens
-- There have been recent changes to how Git behaves when you pull updates from a remote
-- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
-</div>
-
 We've shown an example of the sorts of changes which Git can merge
 automatically - where the changes are in separate parts of the file. But, as
 soon as people can work in parallel, they'll likely step on each other's toes.
 
-![a meme comparing random git commands to pouring petrol on a bonfire](../fig/random_git_commands.png)
+![A meme comparing random git commands to pouring petrol on a bonfire](../fig/random_git_commands.png)
 
 This will even happen with a single person: if we are working on a piece of
 software on both our laptop and a server in the lab, we could make different
@@ -48,7 +38,7 @@ The file `mean.py` should currently look like this on the `main` branch of both 
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 
@@ -65,7 +55,7 @@ nano mean.py
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 COLUMN = "blue"
 dataframe = pd.read_csv("rgb.csv")
@@ -114,7 +104,7 @@ We'll make a change which overlaps with Alice's changes - Bob's had the same
 idea, but has given his constant a different name, and has changed its value
 back to "red":
 
-```abc
+```python
 import pandas as pd
 COLOUR="red"
 dataframe = pd.read_csv("rgb.csv")
@@ -181,7 +171,7 @@ through the explanations.
 git pull origin main
 ```
 
-If Bob has a recent version of Git (newer than July, 2021), pulling from 
+If Bob has a recent version of Git (newer than version X, released on July, 2021), TODO FIXME pulling from 
 Alice's remote should result in a long message like the following, ending
 in a fatal error:
 
@@ -223,8 +213,8 @@ from both branches.
 
 ![A merge, visualised as a graph](../fig/conflict-merge.svg)
 
-The other way to reconcile two divergent branches is a separate tool, `git rebase`.
-Rebasing tells Git that I want to fetch the latest version of this branch from
+The other way to reconcile two divergent branches is a separate tool, `git rebase`. 
+[Rebasing](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase) tells Git that I want to fetch the latest version of this branch from
 the remote, then take all of my local commits - all of the changes I've 
 made since our branches diverged - and apply them to the latest HEAD of the 
 branch. In a sense, it's like rewriting history - we fast-forward the repository
@@ -244,7 +234,7 @@ merging is fine.
 
 We want to tell Git to *not* rebase, but to try to merge.
 
-If you're one of the peopel who got the fatal error, try running `git pull`
+If you're one of the people who got the fatal error, try running `git pull`
 again, with the --no-rebase command line flag:
 
 ```sh
@@ -314,14 +304,16 @@ Let's just go around the room and check that everyone has a big CAPS-LOCK
 message saying CONFLICT (usually you don't look for conflict in this kind
 of workshop, but it's git.)
 
-So now that we're all on the same page. Git has tried to merge changes from the
-remote branch, and has detected that changes made to the local copy overlap
-with those made to the remote repository, and therefore refuses to merge the
-two versions to stop us from trampling on our previous work. The conflict is
-marked in in the affected file:
+So now that we're all on the same page:
+
+1. Git has tried to merge changes from the remote branch.
+2. Git has detected that changes made to the local copy overlap with those made to the remote repository.
+3. Therefore, git refuses to merge the two versions to stop us from trampling on our previous work. 
+
+The conflict is marked in in the affected file:
 
 ```sh
-$ cat mean.py
+cat mean.py
 ```
 
 ```abc
@@ -351,17 +343,20 @@ identifies the commit we've just downloaded.)
 
 It is now up to us to edit this file to remove these markers
 and reconcile the changes.
-We can do anything we want: keep the change made in the local repository, keep
-the change made in the remote repository, write something new to replace both,
-or get rid of the change entirely.
+We can do anything we want: 
+- Keep the change made in the local repository
+- Keep the change made in the remote repository
+- Write something new to replace both
+- Get rid of the change entirely.
+
 Let's replace both so that the file looks like this - we'll keep Alice's 
 constant name `COLUMN` but change the default value back to red.
 
 ```sh
-$ cat mean.py
+cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 COLUMN="red"
 dataframe = pd.read_csv("rgb.csv")
@@ -447,10 +442,10 @@ Fast-forward
 We get the merged file:
 
 ```sh
-$ cat mean.py
+cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 COLUMN="red"
 dataframe = pd.read_csv("rgb.csv")
@@ -461,23 +456,36 @@ print(subset.means())
 
 We don't need to merge again because Git knows someone has already done that.
 
+:::{.callout-important}
+### Conflict resolution in teams
+
 Git's ability to resolve conflicts is very useful, but conflict resolution
 costs time and effort, and can introduce errors if conflicts are not resolved
 correctly. If you find yourself resolving a lot of conflicts in a project,
 consider these technical approaches to reducing them:
 
-- Pull from upstream more frequently, especially before starting new work
-- Use topic branches to segregate work, merging to main when complete
-- Make smaller more atomic commits
+- Pull from upstream more frequently, especially before starting new work.
+- Use topic branches to segregate work, merging to main when complete.
+- Make smaller more atomic commits.
 - Where logically appropriate, break large files into smaller ones so that it is
-  less likely that two authors will alter the same file simultaneously
+  less likely that two authors will alter the same file simultaneously.
 
 Conflicts can also be minimized with project management strategies:
 
-- Clarify who is responsible for what areas with your collaborators
+- Clarify who is responsible for what areas with your collaborators.
 - Discuss what order tasks should be carried out in with your collaborators so
-  that tasks expected to change the same lines won't be worked on simultaneously
+  that tasks expected to change the same lines won't be worked on simultaneously.
 - If the conflicts are stylistic churn (e.g. tabs vs. spaces), establish a
   project convention that is governing and use code style tools (e.g.
-  `htmltidy`, `perltidy`, `rubocop`, etc.) to enforce, if necessary
+  `htmltidy`, `perltidy`, `rubocop`, etc.) to enforce, if necessary.
+:::
 
+<div class="keypoints">
+
+### Key Points
+
+- Conflicts occur when two or more people change the same lines of the same file.
+- Git can emit A LOT of warning messages when this happens.
+- There have been recent changes to how Git behaves when you pull updates from a remote.
+- The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
+</div>
