@@ -260,7 +260,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Describe the purpose of the <code>.git</code> directory.</li>
 </ul>
 </section>
-<p>Once Git is configured, we can start using it.</p>
+<p>Once Git is configured, we can start using it. For our examples, we’re using two characters with a long history in computer science and cryptography, Alice and Bob.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/alice_and_bob.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Alice &amp; Bob</figcaption><p></p>
+</figure>
+</div>
 <p>First, let’s create a new directory in the <code>Desktop</code> folder for our work and then change the current working directory to the newly created one:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mean</span>
@@ -291,20 +297,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you are using a different version of <code>git</code>, the exact wording of the output might be slightly different.</p>
 <section id="challenge-places-to-create-git-repositories" class="level3 challenge">
 <h3 class="anchored" data-anchor-id="challenge-places-to-create-git-repositories">Challenge: Places to Create Git Repositories</h3>
-<p>Along with tracking information about our base project (the project we have already created), Alice would also like to track information about moons. Despite Bob’s concerns, Alice creates a <code>moons</code> project inside her <code>mean</code> project with the following sequence of commands:</p>
+<p>Along with tracking information about our base project (the project we have already created), Alice would also like to track information about her data collection. Despite Bob’s concerns, Alice creates a <code>data</code> project inside her <code>mean</code> project with the following sequence of commands:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop   <span class="co"># return to Desktop directory</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mean        <span class="co"># go into mean directory, which is already a Git repository</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span>          <span class="co"># ensure the .git subdirectory is still present in the mean directory</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> moons    <span class="co"># make a subdirectory mean/moons</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> moons       <span class="co"># go into moons subdirectory</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init       <span class="co"># make the moons subdirectory a Git repository</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data     <span class="co"># make a subdirectory mean/data</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data        <span class="co"># go into data subdirectory</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init       <span class="co"># make the data subdirectory a Git repository</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span>          <span class="co"># ensure the .git subdirectory is present indicating we have created a new Git repository</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Is the <code>git init</code> command, run inside the <code>moons</code> subdirectory, required for tracking files stored in the <code>moons</code> subdirectory?</p>
+<p>Is the <code>git init</code> command, run inside the <code>data</code> subdirectory, required for tracking files stored in the <code>data</code> subdirectory?</p>
 <details>
 <summary>
 Solution
 </summary>
-<p>No.&nbsp;Alice does not need to make the <code>moons</code> subdirectory a Git repository because the <code>mean</code> repository can track any files, sub-directories, and subdirectory files under the <code>mean</code> directory. Thus, in order to track all information about moons, Alice only needed to add the <code>moons</code> subdirectory to the <code>mean</code> directory.</p>
+<p>No.&nbsp;Alice does not need to make the <code>data</code> subdirectory a Git repository because the <code>mean</code> repository can track any files, sub-directories, and subdirectory files under the <code>mean</code> directory. Thus, in order to track all information about her data, Alice only needed to add the <code>data</code> subdirectory to the <code>mean</code> directory.</p>
 <p>Additionally, Git repositories can interfere with each other if they are “nested”: the outer repository will try to version-control the inner repository. Therefore, it’s best to create each new Git repository in a separate directory. To be sure that there is no conflicting repository in the directory, check the output of <code>git status</code>. If it looks like the following, you are good to go to create a new repository as shown above:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fatal<span class="ch">:</span> Not a git repository <span class="dt">(</span>or any of the parent directories<span class="dt">)</span><span class="ch">:</span> .git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -312,7 +318,7 @@ Solution
 </section>
 <section id="challenge-correcting-git-init-mistakes" class="level3 challenge">
 <h3 class="anchored" data-anchor-id="challenge-correcting-git-init-mistakes">Challenge: Correcting <code>git init</code> Mistakes</h3>
-<p>Bob explains to Alice that a nested repository is redundant and may cause confusion down the road. Alice would like to remove the nested repository. How can Alice undo her last <code>git init</code> in the <code>moons</code> subdirectory?</p>
+<p>Bob explains to Alice that a nested repository is redundant and may cause confusion down the road. Alice would like to remove the nested repository. How can Alice undo her last <code>git init</code> in the <code>data</code> subdirectory?</p>
 <details>
 <summary>
 Solution
@@ -326,8 +332,8 @@ Solution
 </section>
 <section id="solution" class="level4">
 <h4 class="anchored" data-anchor-id="solution">Solution</h4>
-<p>Git keeps all of its files in the <code>.git</code> directory. To recover from this little mistake, Alice can just remove the <code>.git</code> folder in the moons subdirectory by running the following command from inside the <code>mean</code> directory:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> moons/.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Git keeps all of its files in the <code>.git</code> directory. To recover from this little mistake, Alice can just remove the <code>.git</code> folder in the <code>data</code> subdirectory by running the following command from inside the <code>mean</code> directory:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> data/.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But be careful! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command <code>pwd</code>.</p>
 </section></details>
 </section>
@@ -343,6 +349,12 @@ Legitimate uses for nesting
 </div>
 <div class="callout-body-container callout-body">
 <p>But what happens if you WANT to have a nested repository, for example when you’re using a public project that you want to get updates for as part of your repository? Or a standard code library used across your entire lab/team that you all collectively maintain in another GitHub repo? This is the use case for something called <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">submodules</a>. Submodules are beyond the scope of this course, but we want to mention them here, in case you do need to do a version of the above, mixing open source software and your own tools in one repository.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/meme_submodules.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">A meme about submodules</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="key-points" class="level3 keypoints">

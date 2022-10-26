@@ -20,6 +20,8 @@
 - Restore old versions of files.
 </div>  
 
+![A seagull who is a git power user](../fig/git_log_seagull.jpg)
+
 As we saw in the previous episode, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
