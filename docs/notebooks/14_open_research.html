@@ -202,10 +202,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Explain how to find guidance on the right license for your code</li>
 </ul>
 </section>
-<pre class="quotation"><code>The opposite of "open" isn't "closed".
-The opposite of "open" is "broken".
-
---- John Wilbanks</code></pre>
+<blockquote class="blockquote">
+<p><em>The opposite of “open” isn’t “closed”.</em></p>
+<p><em>The opposite of “open” is “broken”.</em></p>
+<p><em>— John Wilbanks</em></p>
+</blockquote>
 <p>Increasingly, every part of the research life-cycle, from data collection, analysis and computation, and pre-publication and review, can take place on open platforms.</p>
 <p>Version control, and public repositories on GitHub or an institutional repo, can serve as the equivalent of a shareable electronic lab notebook for computational work.</p>
 <ul>
@@ -214,7 +215,7 @@ The opposite of "open" is "broken".
 <li>You can refer to what you used in your research to obtain your computational results in a way that is unique and recoverable.</li>
 <li>With a version control system such as Git, the entire history of the repository is easy to archive for perpetuity.</li>
 </ul>
-<p>This makes it easier for computational research to be reproducible. Analytical tools can be refined and improved, but earlier versions are still available if required.</p>
+<p>This makes it easier for computational research to be reproducible. Analytical tools can be refined and improved, but earlier versions are still available if required. Many academic journals require that any code used to generate results shown in the publication be provided and shared on GitHub, so, depending on discipline, you may not be able to publish without using git.</p>
 <section id="making-code-citable" class="level2">
 <h2 class="anchored" data-anchor-id="making-code-citable">Making code citable</h2>
 <p>Anything that is hosted in a version control repository (data, code, papers, etc.) can be turned into a citable object.</p>
@@ -234,22 +235,27 @@ The opposite of "open" is "broken".
 <p>Choosing a license that is in common use makes life easier for contributors and users, because they are more likely to already be familiar with the license and don’t have to wade through a bunch of jargon to decide if they’re ok with it. The <a href="https://opensource.org/licenses">Open Source Initiative</a> and <a href="https://www.gnu.org/licenses/license-list.html">Free Software Foundation</a> both maintain lists of licenses which are good choices.</p>
 <p><a href="https://doi.org/10.1371/journal.pcbi.1002598">This article</a> provides an excellent overview of licensing and licensing options from the perspective of scientists who also write code.</p>
 <p>At the end of the day what matters is that there is a clear statement as to what the license is. Also, the license is best chosen from the get-go, even if for a repository that is not public. Pushing off the decision only makes it more complicated later, because each time a new collaborator starts contributing, they, too, hold copyright and will thus need to be asked for approval once a license is chosen.</p>
-<pre class="callout-challenge"><code>## How to Track Large Data or Image Files using Git?
-
-Large data or image files such as `.md5` or `.psd` file types can be tracked within 
-a github repository using the [Git Large File Storage](https://git-lfs.github.com)
-open source extension tool.  This tool automatically uploads large file contents to 
-a remote server and replaces the file with a text pointer within the github repository.
-
-Try downloading and installing the Git Large File Storage extension tool, then add 
-tracking of a large file to your github repository.  Ask a colleague to clone your
-repository and describe what they see when they access that large file.   </code></pre>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+How to Track Large Data or Image Files using Git?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Large data or image files such as <code>.md5</code> or <code>.psd</code> file types can be tracked within a GitHub repository using the <a href="https://git-lfs.github.com">Git Large File Storage</a> open source extension tool. This tool automatically uploads large file contents to a remote server and replaces the file with a text pointer within the GitHub repository.</p>
+<p>Try downloading and installing the Git Large File Storage extension tool, then add tracking of a large file to your GitHub repository. Ask a colleague to clone your repository and describe what they see when they access that large file.</p>
+<p>If/when you need to do this in your own research, it may be wise to consider one of the tools discussed <a href="https://neptune.ai/blog/best-data-version-control-tools">here</a> OR to reach out to SIH or the corresponding support unit at your University for ideas on how to version control your data most effectively.</p>
+</div>
+</div>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
 <ul>
-<li>Open research is more useful and highly-cited than closed</li>
-<li>Adding a citation guide makes your work easier to cite</li>
-<li>There are a range of open-source licenses to suit different cases</li>
+<li>Open research is more useful and highly-cited than closed.</li>
+<li>Adding a citation guide makes your work easier to cite.</li>
+<li>There are a range of open-source licenses to suit different cases.</li>
 </ul>
 </section>
 

@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </section>
 <p>We’ve just seen a branching workflow for allowing collaboration between a team of developers, each of whom has a local repo and who share a repo on GitHub.</p>
-<p>In this section, we’ll step through what’s called a fork-based workflow, which is a way to contribute code to another team’s project.</p>
+<p>In this section, we’ll step through what’s called a <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow">fork-based workflow</a>, which is a way to contribute code to another team’s project. This is how you would commonly contribute to open-source software like <a href="https://github.com/scikit-learn/scikit-learn">scikit-learn</a>, <a href="https://github.com/pandas-dev/pandas">pandas</a> and even <a href="https://github.com/python/">Python itself</a>.</p>
 <p>We’ll do this exercise in pairs again, as we did for the first GitHub exercise, but this time we’ll imagine that Bob and Alice aren’t on the same team - instead, Bob wants to contribute a new feature to the <code>mean.py</code> script.</p>
 <p>Because Bob’s not part of Alice’s team, he won’t have write access to her repository, so he’ll have to create his own.</p>
 <p>Forking is the name for this process. It’s essentially the same as a clone, but it’s all happening on GitHub’s servers.</p>
@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">Creating a Pull Request (Step 3)</figcaption><p></p>
 </figure>
 </div>
-<p>A pull request is exactly that - we’re telling the maintainer of a project - Alice, in this case - that we have something like a bug fix or a feature on our branch of the repository, and we want them to pull it into the main branch of the project.</p>
+<p>A <strong>pull request (PR)</strong> is exactly that - we’re telling the maintainer of a project - Alice, in this case - that we have something like a bug fix or a feature on our branch of the repository, and we want them to pull it into the main branch of the project.</p>
 <p>If Bob clicks the “Compare &amp; pull request” button, he is taken to this page</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -367,9 +367,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This was an example of a simple pull request, where Git was able to automatically merge the new code with the existing main branch - using the same algorithm as when we merged a branch locally.</p>
 <p>It’s also possible for the changes on a pull request to conflict with the main branch - the two could have divergent history. In this case, GitHub will indicate this to the maintainer, and provides an interface for showing each of the conflicts, and also for resolving them via the web interface.</p>
 <p>There are other ways to handle this situation - the maintainer could ask the contributor to pull the latest updates from main and resolve the conflicts at their end. How this is handled will depend a lot on the particular project being contributed to.</p>
-<p>Large open-source projects tend to have a lot of structure around pull requests: they will, for instance, provide a checklist of things contributors should do when contributing code: require that PRs be raised against an existing issue, provide a template for issues and/or PR comments, and so on.</p>
+<p>Large open-source projects tend to have a lot of structure around pull requests: - They will, for instance, provide a checklist of things contributors should do when contributing code, for example - Require that PRs be raised against an existing issue - Provide a template for issues and/or PR comments, and so on.</p>
 <p>A pull request can be seen as the start of a collaboration between a developer and the maintainer - this can take the form of comments on the PR, or a more detailed kind of collaboration called a code review, which GitHub has a very good interface for - this allows a maintainer to add comments or questions to each individual change in a PR.</p>
-<p>This isn’t just used for open-source projects - many teams use pull requests and code review internally as an important form of quality control.</p>
+<p>Note, this isn’t just used for open-source projects - many teams use pull requests and code review internally as an important form of quality control. For example, here at SIH, we use pull requests to make changes to our lesson materials, where the lesson author will be the only one who can commit to the main branch, whereas everyone else forks the repository to their accounts, makes changes and then puts in pull requests to have those changes integrated into the main codebase.</p>
+<p>The key difference between a forking-based workflow over a branch-based workflow, from a usability perspective, is that the forking-based workflow forces the owner of the main branch to review and approve all of the changes to the main codebase manually, thereby giving them more control over the codebase itself.</p>
 <section id="key-points" class="level3 keypoints">
 <h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
 <ul>
