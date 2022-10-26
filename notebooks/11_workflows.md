@@ -46,7 +46,7 @@ entire repository. Instead, it's storing a reference to the HEAD of the
 branch which you're starting from, and saying - here's a new branch which 
 starts at this commit.
 
-![A diagram showing how a branch starts](../figs/workflow_branch.svg)
+![A diagram showing how a branch starts](../fig/workflow_branch.svg)
 
 So, internally, a new branch isn't really a "copy" of anything, it's a reference
 to a new set of commits. You will only add new content to the repository 
