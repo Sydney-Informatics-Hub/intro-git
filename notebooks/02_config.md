@@ -17,6 +17,8 @@
 
 </div>  
 
+![One does not simply understand Git](../fig/meme_lotr_git.jpg)
+
 
 When we use Git on a new computer for the first time,
 we need to configure a few things. Below are a few examples

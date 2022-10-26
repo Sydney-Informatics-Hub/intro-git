@@ -17,6 +17,7 @@
 
 </div>  
 
+![a meme about pull requests](../fig/meme_pr_cat.jpg)
 
 We've just seen a branching workflow for allowing collaboration between a team
 of developers, each of whom has a local repo and who share a repo on GitHub.

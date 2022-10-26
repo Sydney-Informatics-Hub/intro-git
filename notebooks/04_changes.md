@@ -19,6 +19,7 @@
 - Distinguish between descriptive and non-descriptive commit messages.
 </div>  
 
+![An xkcd comic about commit messages](../fig/git_commit_xkcd.png)
 
 
 First let's make sure we're still in the right directory. 
@@ -141,7 +142,6 @@ a longer message.
 [Good commit messages](https://cbea.ms/git-commit/) start with a brief (<50 characters) statement about the
 changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will" <commit message here>.
 
-![An xkcd comic about commit messages](../fig/git_commit_xkcd.png)
 
 If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
 

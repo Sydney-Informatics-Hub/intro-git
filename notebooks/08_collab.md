@@ -24,6 +24,9 @@ will be the "Collaborator". The goal is that the Collaborator add changes into
 the Owner's repository. We will switch roles at the end, so both persons will
 play Owner and Collaborator.
 
+In the examples, the Owner's username is `bob` and the collaborator is `alice`,
+but you'll need to replace these with your own GitHub usernames.
+
 <div class="callout">
 ### Practicing By Yourself
 
@@ -59,10 +62,9 @@ git clone git@github.com:bob/mean.git ~/Desktop/bob-mean
 
 Replace 'bob' with the Owner's username.
 
-If you choose to clone without the clone path
-(`~/Desktop/bob-mean`) specified at the end,
-you will clone inside your own mean folder!
-Make sure to navigate to the `Desktop` folder first.
+If you choose to clone without the clone path (`~/Desktop/bob-mean`) specified
+at the end, you will clone inside your own mean folder! Make sure to navigate
+to the `Desktop` folder first.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
 

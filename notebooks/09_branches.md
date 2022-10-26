@@ -18,6 +18,7 @@
 
 </div>  
 
+![a meme about git branches](../fig/meme_git_branch.jpg)
 
 Part of software development is breaking things. You have code that works, 
 but you need to add a new feature or fix a bug. Sometimes, these fixes are
