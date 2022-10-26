@@ -17,9 +17,11 @@
 
 </div>  
 
-Once Git is configured, we can start using it.
+Once Git is configured, we can start using it. For our examples, we're using
+two characters with a long history in computer science and cryptography, Alice
+and Bob.
 
-
+![Alice & Bob](../fig/alice_and_bob.jpg)
 
 First, let's create a new directory in the `Desktop` folder for our work and
 then change the current working directory to the newly created one:
@@ -111,39 +113,37 @@ wording of the output might be slightly different.
 ### Challenge: Places to Create Git Repositories
 
 Along with tracking information about our base project (the project we have
-already created), 
-Alice would also like to track information about moons.
-Despite Bob's concerns, Alice creates a `moons` project inside her `mean` 
-project with the following sequence of commands:
+already created), Alice would also like to track information about her data
+collection. Despite Bob's concerns, Alice creates a `data` project inside her
+`mean` project with the following sequence of commands:
 
 ```sh
 cd ~/Desktop   # return to Desktop directory
 cd mean        # go into mean directory, which is already a Git repository
 ls -a          # ensure the .git subdirectory is still present in the mean directory
-mkdir moons    # make a subdirectory mean/moons
-cd moons       # go into moons subdirectory
-git init       # make the moons subdirectory a Git repository
+mkdir data     # make a subdirectory mean/data
+cd data        # go into data subdirectory
+git init       # make the data subdirectory a Git repository
 ls -a          # ensure the .git subdirectory is present indicating we have created a new Git repository
 ```
-Is the `git init` command, run inside the `moons` subdirectory, required for 
-tracking files stored in the `moons` subdirectory?
+Is the `git init` command, run inside the `data` subdirectory, required for 
+tracking files stored in the `data` subdirectory?
 
 <details>
 <summary>Solution</summary>
 
-No. Alice does not need to make the `moons` subdirectory a Git repository 
+No. Alice does not need to make the `data` subdirectory a Git repository 
 because the `mean` repository can track any files, sub-directories, and 
 subdirectory files under the `mean` directory.  Thus, in order to track 
-all information about moons, Alice only needed to add the `moons` subdirectory
+all information about her data, Alice only needed to add the `data` subdirectory
 to the `mean` directory.
  
-Additionally, Git repositories can interfere with each other if they are "nested":
-the outer repository will try to version-control
-the inner repository. Therefore, it's best to create each new Git
-repository in a separate directory. To be sure that there is no conflicting
-repository in the directory, check the output of `git status`. If it looks
-like the following, you are good to go to create a new repository as shown
-above:
+Additionally, Git repositories can interfere with each other if they
+are "nested": the outer repository will try to version-control the inner
+repository. Therefore, it's best to create each new Git repository in a
+separate directory. To be sure that there is no conflicting repository in the
+directory, check the output of `git status`. If it looks like the following,
+you are good to go to create a new repository as shown above:
 
 ```sh
 git status
@@ -164,7 +164,7 @@ fatal: Not a git repository (or any of the parent directories): .git
 
 Bob explains to Alice that a nested repository is redundant and may cause confusion
 down the road. Alice would like to remove the nested repository. How can Alice undo 
-her last `git init` in the `moons` subdirectory?
+her last `git init` in the `data` subdirectory?
 
 <details>
 <summary>Solution</summary>
@@ -187,10 +187,10 @@ becomes another change that we will need to track, as we will see in the next ep
 
 Git keeps all of its files in the `.git` directory.
 To recover from this little mistake, Alice can just remove the `.git`
-folder in the moons subdirectory by running the following command from inside the `mean` directory:
+folder in the `data` subdirectory by running the following command from inside the `mean` directory:
 
 ```sh
-rm -rf moons/.git
+rm -rf data/.git
 ```
 But be careful! Running this command in the wrong directory will remove
 the entire Git history of a project you might want to keep.
@@ -203,6 +203,8 @@ Therefore, always check your current directory using the command `pwd`.
 ## Legitimate uses for nesting
 
 But what happens if you WANT to have a nested repository, for example when you're using a public project that you want to get updates for as part of your repository? Or a standard code library used across your entire lab/team that you all collectively maintain in another GitHub repo? This is the use case for something called [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). Submodules are beyond the scope of this course, but we want to mention them here, in case you do need to do a version of the above, mixing open source software and your own tools in one repository.
+
+![A meme about submodules](../fig/meme_submodules.png)
 
 :::
 
