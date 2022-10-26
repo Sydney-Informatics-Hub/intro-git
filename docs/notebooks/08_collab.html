@@ -233,7 +233,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#switch-roles-and-repeat" id="toc-switch-roles-and-repeat" class="nav-link" data-scroll-target="#switch-roles-and-repeat">Switch Roles and Repeat</a>
+  <ul class="collapse">
+  <li><a href="#challenge-review-changes" id="toc-challenge-review-changes" class="nav-link" data-scroll-target="#challenge-review-changes">Challenge: Review Changes</a></li>
   <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key points</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -259,17 +263,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Describe the basic collaborative workflow.</li>
 </ul>
 </section>
-<section id="key-points" class="level3 keypoints">
-<h3 class="anchored" data-anchor-id="key-points">Key points</h3>
-<ul>
-<li><code>git clone</code> copies a remote repository to create a local repository with a remote called <code>origin</code> automatically set up.”</li>
-</ul>
-</section>
 <p>For the next step, get into pairs. One person will be the “Owner” and the other will be the “Collaborator”. The goal is that the Collaborator add changes into the Owner’s repository. We will switch roles at the end, so both persons will play Owner and Collaborator.</p>
-<blockquote class="blockquote">
-<h2 id="practicing-by-yourself" class="anchored" data-anchor-id="collaborating">Practicing By Yourself</h2>
-<p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window. This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you. {: .callout}</p>
-</blockquote>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Practicing By Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window. This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you.</p>
+</div>
+</div>
 <p>The Owner needs to give the Collaborator access. On GitHub, click the “Settings” button on the right, select “Collaborators”, click “Add people”, and then enter your partner’s username.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -295,8 +302,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> doc.txt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>This is a script to calculate mean values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add doc.txt</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">"Added some documentation"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add doc.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Added some documentation"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ch">[main</span> 2408b26<span class="ch">]</span> Added some documentation</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> 1 file changed, 1 insertion<span class="dt">(</span>+<span class="dt">)</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> create mode 100644 doc.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -370,47 +377,25 @@ A Basic Collaborative Workflow
 <p>It is better to make many commits with smaller changes rather than of one commit with massive changes: small commits are easier to read and review.</p>
 </div>
 </div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Switch Roles and Repeat
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>:::{.callout-challenge}</p>
+<section id="switch-roles-and-repeat" class="level2">
+<h2 class="anchored" data-anchor-id="switch-roles-and-repeat">Switch Roles and Repeat</h2>
 <p>Switch roles and repeat the whole process.</p>
-</div>
-</div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Review Changes
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The Owner pushed commits to the repository without giving any information to the Collaborator. How can the Collaborator find out what has changed with command line? And on GitHub?</p>
-<div class="callout-solution callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
+<section id="challenge-review-changes" class="level3 challenge">
+<h3 class="anchored" data-anchor-id="challenge-review-changes">Challenge: Review Changes</h3>
+<ul>
+<li>The Owner pushed commits to the repository without giving any information to the Collaborator.</li>
+<li>How can the Collaborator find out what has changed with command line? And on GitHub?</li>
+</ul>
+<details>
+<summary>
 Solution
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</summary>
 <p>On the command line, the Collaborator can use <code>git fetch origin main</code> to get the remote changes into the local repository, but without merging them. Then by running <code>git diff main origin/main</code> the Collaborator will see the changes output in the terminal.</p>
 <p>On GitHub, the Collaborator can go to the repository and click on “commits” to view the most recent commits pushed to the repository.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+</details>
+</section>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -425,7 +410,7 @@ Comment Changes in GitHub
 <p>The Collaborator posts her comments and suggestions using the GitHub interface.</p>
 </div>
 </div>
-<div class="callout-challenge callout callout-style-default no-icon callout-captioned">
+<div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -435,11 +420,21 @@ Version History, Backup, and Version Control
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control? What are some of the benefits of using version control, Git and GitHub?</p>
+<ul>
+<li>Some backup software can keep a history of the versions of your files. They also allows you to recover specific versions. How is this functionality different from version control?</li>
+<li>What are some of the benefits of using version control, Git and GitHub?</li>
+</ul>
 </div>
 </div>
+<section id="key-points" class="level3 keypoints">
+<h3 class="anchored" data-anchor-id="key-points">Key points</h3>
+<ul>
+<li><code>git clone</code> copies a remote repository to create a local repository with a remote called <code>origin</code> automatically set up.”</li>
+</ul>
+</section>
 
 
+</section>
 </section>
 
 <p>All materials copyright Sydney Informatics Hub, University of Sydney</p></main> <!-- /main -->
