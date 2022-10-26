@@ -299,11 +299,11 @@ mistake is to use the number of the commit in which we made the change we're
 trying to discard. In the example below, we want to retrieve the state from
 before the most recent commit (`HEAD~1`), which is commit `f22b25e`:
 
-![Git Checkout](https://swcarpentry.github.io/git-novice/fig/git-checkout.svg)
+![Git Checkout](../fig/git-checkout.svg)
 
 So, to put it all together, here's how Git works in cartoon form:
 
-![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](https://swcarpentry.github.io/git-novice/fig/git_staging.svg)
+![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git_staging.svg)
 
 :::{.callout-note}
 ## Simplifying the Common Case

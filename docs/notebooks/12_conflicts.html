@@ -264,10 +264,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Conflicts occur when two or more people change the same lines of the same file.</li>
 <li>Git can emit a lot of warning messages when this happens</li>
+<li>There have been recent changes to how Git behaves when you pull updates from a remote</li>
 <li>The version control system does not allow people to overwrite each other’s changes blindly, but highlights conflicts so that they can be resolved.</li>
 </ul>
 </section>
 <p>We’ve shown an example of the sorts of changes which Git can merge automatically - where the changes are in separate parts of the file. But, as soon as people can work in parallel, they’ll likely step on each other’s toes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/random_git_commands.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">a meme comparing random git commands to pouring petrol on a bonfire</figcaption><p></p>
+</figure>
+</div>
 <p>This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.</p>
 <p>To see how we can resolve conflicts, we must first create one.</p>
 <p>The file <code>mean.py</code> should currently look like this on the <code>main</code> branch of both partners’ copies of our <code>mean</code> repository:</p>
