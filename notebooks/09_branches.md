@@ -19,17 +19,6 @@
 </div>  
 
 
-<div class="keypoints">
-
-### Key Points
-
-- `git checkout -b` creates a new branch.
-- branches allow us to keep alternative versions of our code in a repository
-- `git diff` can show us the differences betweem branches
-
-</div>
-
-
 Part of software development is breaking things. You have code that works, 
 but you need to add a new feature or fix a bug. Sometimes, these fixes are
 small and self-contained, but in many cases, they require the equivalent of
@@ -58,7 +47,7 @@ it. The problem with this is that they'd need to make a note of the hash
 somewhere.
 
 Git provides us with a better way to keep alternate versions of a single
-codebase - a branch.
+codebase - **a branch**.
 
 In this section of the workshop, we'll just be creating branches in our local
 repository. We've already been using a `main` branch. Let's create a new branch
@@ -101,7 +90,7 @@ nano mean.py
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
@@ -133,7 +122,7 @@ We can check that the content of `mean.py` is as we left it:
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
@@ -147,7 +136,7 @@ nano mean.py
 cat mean.py
 ```
 
-```abc
+```python
 import pandas as pd
 dataframe = pd.read_csv("rgb.csv")
 means = dataframe.mean()
@@ -161,7 +150,7 @@ commits on a single branch. Alice can use it to double-check what she's changed
 on the `development` branch:
 
 ```bash
-$ git diff main
+git diff main
 ```
 
 ```abc
@@ -183,3 +172,12 @@ make them the same as Alice's `development` branch. So lines which Alice has
 added in `development` would have to be inserted, and are marked with a `+`
 sign.
 
+<div class="keypoints">
+
+### Key Points
+
+- `git checkout -b` creates a new branch.
+- branches allow us to keep alternative versions of our code in a repository
+- `git diff` can show us the differences betweem branches
+
+</div>
