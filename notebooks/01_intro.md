@@ -26,6 +26,28 @@
 
 </div>  
 
+## What we'll cover in this workshop
+
+This workshop will introduce you to Git and show you how it can be used at a
+couple of different levels.
+
+In the first sections we'll create a local git repository, and use it to
+keep track of changes to a very simple Python program.
+
+We'll then learn how to push code from our local repository to GitHub, and how
+GitHub can be used to share your code with a collaborator.
+
+In the third section, we'll learn about branches, and how they can be used to
+maintain different versions of the same code, and help to organise your team's
+software development.
+
+And in the final section, we'll show you how to fork a repository and create
+a pull request, which is how Git and GitHub are used to manage contributions
+to open source software projects, and hopefully also cover some best practices
+for open research with Git.
+
+## What is version control?
+
 We'll start by exploring how version control can be used to keep track of what
 one person did and when. Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
@@ -81,21 +103,3 @@ These modern systems also include powerful merging tools that make it possible f
 
 The vast, vast majority of developers of both open-source and commercial software today use git as their version control system of choice - which is why we are teaching it in this course, and use it across all of our projects at SIH.
 
-## What we'll cover in this workshop
-
-We're going to introduce Git and show you how it can be used at a couple of 
-different levels.
-
-In the first sections we'll create a local git repository, and use it to
-keep track of changes to a simple program.
-
-We'll then learn how to push code from our local git onto GitHub, and how 
-GitHub can be used to share your code with a collaborator.
-
-In the third section, we'll learn about branches, and how they can be used to
-maintain different versions of the same code, and help to organise your team's
-software development.
-
-And in the final section, we'll show you how to fork a repository and create
-a pull request - this is how Git and GitHub are used to manage contributions
-to open source software projects.
