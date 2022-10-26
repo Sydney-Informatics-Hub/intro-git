@@ -20,18 +20,6 @@
 
 </div>  
 
-
-<div class="keypoints">
-
-### Key Points
-
-- Creating a branch is a cheap, fast operation
-- Branch-based workflows are a good way for an individual or team to organise their repository
-- You can pick a naming convention which best suits your needs
-- Once a branch is merged, it can be safely deleted
-
-</div>
-
 We've just seen an example of creating a branch to do some development work, 
 and merging the changes back to the main branch.
 
@@ -65,12 +53,8 @@ This way of working with git, where a team collaborates with their own set
 of branches, is called a branch-basked workflow.
 
 Large or busy software development teams often use a convention for naming
-branches: [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
-is one popular example, although it's fallen out of fashion in favour of other
-workflows which are suited to modern commercial software deployment practices.
-
-These are likely to be overkill for the sorts of code you'll be working on,
-but they have some features which are useful at a small scale.
+branches. [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
+is one popular example that established the foundation for several key principles for how software teams can work together. While Git Flow in its initial implementation has fallen out of fashion in favour of other workflows which are more suited to modern commercial software deployment practices (see below), there are a few key features that we as researchers can really take advantage of in our work.
 
 One convention is a two-part naming strategy where the first part indicates
 what kind of branch this is, and the second part gives more details:
@@ -79,12 +63,9 @@ what kind of branch this is, and the second part gives more details:
 * bugfix-divide-by-zero
 * release-v1.2
 
-A feature branch adds a new ability or interface to the code; a bugfix is
-to correct a mistake.
-
-And release branches allow you to collect a set of features for a planned
-release into a single branch where they can be tested together and then
-merged back to the main branch when they're all ready to go.
+1. A **feature branch** adds a new ability or interface to the code
+2. A **bugfix** is to correct a mistake.
+3. And **release branches** allow you to collect a set of features for a planned release into a single branch where they can be tested together and then merged back to the main branch when they're all ready to go.
 
 As a codebase is worked on over time, it will accumulate branches. It can be
 helpful to remove these, so that you're not having to sort through bugfixes
@@ -96,6 +77,17 @@ we won't lose any history by doing so.
 
 You might also want to keep certain branches - for example, release branches are
 a way of being able to switch to a particular state of your codebase's history.
+
+:::{.callout-tip}
+### Modern software engineering git workflows
+
+Most modern software engineering teams use so-called [trunk-based workflows](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development), which offer better support for [continuous integration, continuous delivery, and continuous deployment (CI/CD)](https://www.atlassian.com/continuous-delivery)).
+
+A simpler but no less powerful modern approach that can be adopted by developer teams and researchers is advocated by GitHub, and called (rather confusingly) [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow).
+:::
+
+
+
 
 Let's add another branch to Alice's repository (remembering that branching
 is a cheap operation):
@@ -112,7 +104,7 @@ Switched to a new branch 'just-testing'
 nano mean.py
 ```
 
-It doesn't matter what you add to mean.py - a comment is fine. Now, add and
+It doesn't matter what you add to `mean.py` - a comment is fine. Now, add and
 commit the changes to the current branch, which is `just-testing`:
 
 ```sh
@@ -190,3 +182,14 @@ If you are sure you want to delete it, run 'git branch -D just-testing'
 
 If we're sure that this branch isn't worth keeping, the capital `-D` flag 
 will get rid of it.
+
+<div class="keypoints">
+
+### Key Points
+
+- Creating a branch is a cheap, fast operation.
+- Branch-based workflows are a good way for an individual or team to organise their repository.
+- You can pick a naming convention which best suits your needs.
+- Once a branch is merged, it can be safely deleted.
+
+</div>
