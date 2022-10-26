@@ -334,12 +334,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch. What we have to do is pull the changes from GitHub.</p>
-<p>Now we come to some exciting, or exasperating, developments: Git is an actively developed piece of open-source software. Over the last couple of years, there have been some changes to the way Git handles the situation we’re about to trigger, and depending on when you installed Git, we might get some different sorts of behaviour at the command line. I’ll have to go into a little bit of detail to explain what’s happening, even though the net result will be the same.</p>
+<p>Now we come to some exciting, or exasperating, developments: Git is an actively developed piece of open-source software. Over the last couple of years, there have been some changes to the way Git handles the situation we’re about to trigger, and depending on when you installed Git, we might get some different sorts of behaviour at the command line.</p>
+<p>I’ll have to go into a little bit of detail to explain what’s happening, even though the net result will be the same.</p>
 <p>What we’re going to use is the <code>git pull</code> command. This asks Git to do two things: fetch the HEAD of the branch we’re interested in from a remote repository, giving us a local copy of the latest version from the remote. We then want Git to <code>merge</code> that set of changes into our current branch.</p>
 <p>We’ve set up a situation, however, where Bob and Alice’s version of the file are inconsistent, in a way which <code>merge</code> is unable to resolve.</p>
 <p>Let’s see what happens, and I’ll see what messages we’re getting, and step through the explanations.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If Bob has a recent version of Git (newer than July, 2021), pulling from Alice’s remote should result in a long message like the following, ending in a fatal error:</p>
+<p>If Bob has a recent version of Git (2.33 or newer), pulling from Alice’s remote should result in a long message like the following, ending in a fatal error:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Enumerating objects<span class="ch">:</span> 20, done.</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Counting objects<span class="ch">:</span> 100<span class="co">% (20/20), done.</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Compressing objects<span class="ch">:</span> 100<span class="co">% (9/9), done.</span></span>
@@ -400,8 +401,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>Auto-merging mean.py</span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>CONFLICT <span class="dt">(</span>content<span class="dt">)</span><span class="ch">:</span> Merge conflict in mean.py</span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>Automatic merge failed; fix conflicts and then commit the result.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This is the original (pre-2020) <code>git pull</code> behaviour, when it used to merge by default. If this happened to you, git has fetched Alice’s copy and tried, and failed, to merge it with the local changes</p>
-<p>The third possibility is for people with a copy of Git from 2020 to 2021: this gives the long set of warnings about needing to specify a reconciliation strategy, but defaults to <code>merge</code> anyway, and should look something like this:</p>
+<p>This is how <code>git pull</code> behaved before version 2.27, when it used to merge by default and not warn you about it. If this happened to you, git has fetched Alice’s copy and tried, and failed, to merge it with the local changes.</p>
+<p>The third possibility is for people with a copy of Git with a version between 2.27 and 2.33: this gives the long set of warnings about needing to specify a reconciliation strategy, but defaults to <code>merge</code> anyway, and should look something like this:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Enumerating objects<span class="ch">:</span> 20, done.</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Counting objects<span class="ch">:</span> 100<span class="co">% (20/20), done.</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Compressing objects<span class="ch">:</span> 100<span class="co">% (9/9), done.</span></span>
@@ -425,80 +426,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>Auto-merging mean.py</span>
 <span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>CONFLICT <span class="dt">(</span>content<span class="dt">)</span><span class="ch">:</span> Merge conflict in mean.py</span>
 <span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>Automatic merge failed; fix conflicts and then commit the result.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can check which version of Git you have installed by running this command:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>git version 2.37.0 <span class="dt">(</span>Apple Git-136<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s just go around the room and check that everyone has a big CAPS-LOCK message saying CONFLICT (usually you don’t look for conflict in this kind of workshop, but it’s git.)</p>
 <p>So now that we’re all on the same page. Git has tried to merge changes from the remote branch, and has detected that changes made to the local copy overlap with those made to the remote repository, and therefore refuses to merge the two versions to stop us from trampling on our previous work. The conflict is marked in in the affected file:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>COLOUR=<span class="st">"red"</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>coloured = dataframe<span class="ch">[</span>COLOUR<span class="ch">]</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>coloured.means<span class="dt">())</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>=======</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>COLUMN = <span class="st">"blue"</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>&gt;&gt;&gt;&gt;&gt;&gt;&gt; cde8d2ea9799a6ccbcfafabd311913cd3f70df17</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Our change is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>. Git has then inserted <code>=======</code> as a separator between the conflicting changes and marked the end of the content downloaded from GitHub with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. (The string of letters and digits after that marker identifies the commit we’ve just downloaded.)</p>
-<p>It is now up to us to edit this file to remove these markers and reconcile the changes. We can do anything we want: keep the change made in the local repository, keep the change made in the remote repository, write something new to replace both, or get rid of the change entirely. Let’s replace both so that the file looks like this - we’ll keep Alice’s constant name <code>COLUMN</code> but change the default value back to red.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb24"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>COLOUR=<span class="st">"red"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>coloured = dataframe<span class="ch">[</span>COLOUR<span class="ch">]</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>coloured.means<span class="dt">())</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>=======</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>COLUMN = <span class="st">"blue"</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>&gt;&gt;&gt;&gt;&gt;&gt;&gt; cde8d2ea9799a6ccbcfafabd311913cd3f70df17</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Our change is preceded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>. Git has then inserted <code>=======</code> as a separator between the conflicting changes and marked the end of the content downloaded from GitHub with <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. (The string of letters and digits after that marker identifies the commit we’ve just downloaded.)</p>
+<p>It is now up to us to edit this file to remove these markers and reconcile the changes. We can do anything we want: keep the change made in the local repository, keep the change made in the remote repository, write something new to replace both, or get rid of the change entirely. Let’s replace both so that the file looks like this - we’ll keep Alice’s constant name <code>COLUMN</code> but change the default value back to red.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To finish merging, we let git know that we’ve resolved the conflict by using <code>git add</code>.</p>
 <p>This always feels like an anticlimax to me - when I’ve resolved a conflict I feel like I should be able to say <code>git resolve</code> or <code>git peace-out</code> or something - but from git’s point of view, this resolution is just another set of changes to add to the staging area:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>All conflicts fixed but you are still merging.</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">(</span>use <span class="st">"git commit"</span> to conclude merge<span class="dt">)</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>Changes to be committed<span class="ch">:</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    modified<span class="ch">:</span>   mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Merge changes from GitHub"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ch">[main</span> 2abf2b1<span class="ch">]</span> Merge changes from GitHub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mean.py</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>All conflicts fixed but you are still merging.</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">(</span>use <span class="st">"git commit"</span> to conclude merge<span class="dt">)</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>Changes to be committed<span class="ch">:</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    modified<span class="ch">:</span>   mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Merge changes from GitHub"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ch">[main</span> 2abf2b1<span class="ch">]</span> Merge changes from GitHub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now Bob can push his changes to GitHub:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Enumerating objects<span class="ch">:</span> 10, done.</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Counting objects<span class="ch">:</span> 100<span class="co">% (10/10), done.</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>Delta compression using up to 12 threads</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>Compressing objects<span class="ch">:</span> 100<span class="co">% (6/6), done.</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>Writing objects<span class="ch">:</span> 100<span class="co">% (6/6), 709 bytes | 709.00 KiB/s, done.</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>Total 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, reused 0 <span class="dt">(</span>delta 0<span class="dt">)</span>, pack-reused 0</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Resolving deltas<span class="ch">:</span> 100<span class="co">% (2/2), completed with 2 local objects.</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>To github.com<span class="ch">:</span>alice/mean.git</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>   cde8d2e..19cb059  main -&gt; main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Enumerating objects<span class="ch">:</span> 10, done.</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>Counting objects<span class="ch">:</span> 100<span class="co">% (10/10), done.</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>Delta compression using up to 12 threads</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>Compressing objects<span class="ch">:</span> 100<span class="co">% (6/6), done.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>Writing objects<span class="ch">:</span> 100<span class="co">% (6/6), 709 bytes | 709.00 KiB/s, done.</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>Total 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, reused 0 <span class="dt">(</span>delta 0<span class="dt">)</span>, pack-reused 0</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Resolving deltas<span class="ch">:</span> 100<span class="co">% (2/2), completed with 2 local objects.</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>To github.com<span class="ch">:</span>alice/mean.git</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>   cde8d2e..19cb059  main -&gt; main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Git keeps track of what we’ve merged with what, so we don’t have to fix things by hand again when Alice pulls again:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Enumerating objects<span class="ch">:</span> 10, done.</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Counting objects<span class="ch">:</span> 100<span class="co">% (10/10), done.</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Compressing objects<span class="ch">:</span> 100<span class="co">% (4/4), done.</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Total 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, reused 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, pack-reused 0</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>Unpacking objects<span class="ch">:</span> 100<span class="co">% (6/6), 689 bytes | 137.00 KiB/s, done.</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>From github.com<span class="ch">:spikelynch/mean</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a> * branch            main       -&gt; FETCH_HEAD</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>   cde8d2e..19cb059  main       -&gt; origin/main</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>Updating cde8d2e..19cb059</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>Fast-forward</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a> mean.py <span class="ch">|</span> 4 ++--</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a> 1 file changed, 2 insertions<span class="dt">(</span>+<span class="dt">)</span>, 2 deletions<span class="dt">(</span>-<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Enumerating objects<span class="ch">:</span> 10, done.</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Counting objects<span class="ch">:</span> 100<span class="co">% (10/10), done.</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Compressing objects<span class="ch">:</span> 100<span class="co">% (4/4), done.</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>remote<span class="ch">:</span> Total 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, reused 6 <span class="dt">(</span>delta 2<span class="dt">)</span>, pack-reused 0</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>Unpacking objects<span class="ch">:</span> 100<span class="co">% (6/6), 689 bytes | 137.00 KiB/s, done.</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>From github.com<span class="ch">:spikelynch/mean</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a> * branch            main       -&gt; FETCH_HEAD</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>   cde8d2e..19cb059  main       -&gt; origin/main</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>Updating cde8d2e..19cb059</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>Fast-forward</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a> mean.py <span class="ch">|</span> 4 ++--</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a> 1 file changed, 2 insertions<span class="dt">(</span>+<span class="dt">)</span>, 2 deletions<span class="dt">(</span>-<span class="dt">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We get the merged file:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mean.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode abc code-with-copy"><code class="sourceCode abc"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>COLUMN=<span class="st">"red"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dataframe = pd.read_csv<span class="dt">(</span><span class="st">"rgb.csv"</span><span class="dt">)</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>subset = dataframe<span class="ch">[</span>COLUMN<span class="ch">]</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>print<span class="dt">(</span>subset.means<span class="dt">())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We don’t need to merge again because Git knows someone has already done that.</p>
 <p>Git’s ability to resolve conflicts is very useful, but conflict resolution costs time and effort, and can introduce errors if conflicts are not resolved correctly. If you find yourself resolving a lot of conflicts in a project, consider these technical approaches to reducing them:</p>
 <ul>
